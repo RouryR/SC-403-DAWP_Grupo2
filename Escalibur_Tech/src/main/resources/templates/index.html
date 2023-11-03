@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns="http://www.w3.org/1999/xhtml">
+    <head th:replace="~{layout/plantilla :: head}">
+        <title>Excalibur-Tech</title>        
+    </head>
+    <body>
+        <header th:replace="~{layout/plantilla :: header}"/>
+
+        <!-- Alerta de cookies -->
+        <div class="alert alert-warning alert-dismissible fade show fixed-bottom" role="alert"
+             style="text-align: center;">
+            <i class="bi bi-exclamation-triangle-fill me-2"></i>
+            <strong> Esta página usa Cookies 🍪 para su funcionamiento. </strong>
+            <button type="button" class="btn btn-success" data-bs-dismiss="alert" id="acceptButton">ACEPTAR</button>
+        </div>
+
+        <div id="carouselExampleDark" class="carousel carousel-dark slide" data-bs-ride="carousel">
+            <div class="carousel-indicators">
+                <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="0" class="active"
+                        aria-current="true" aria-label="Naruto"></button>
+
+                <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="1"
+                        aria-label="Sasuke"></button>
+
+                <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="2"
+                        aria-label="Itachi"></button>
+
+                <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="3"
+                        aria-label="Kakashi"></button>
+
+                <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="4"
+                        aria-label="Sai"></button>
+
+            </div>
+            <div class="carousel-inner">
+                <div class="carousel-item active" data-bs-interval="4000">
+                    <img src="img/carousel/slide1.jpg" class="d-block w-100" alt="" height="350">
+                        <div class="carousel-caption d-none d-md-block"> 
+                            <h5 style="font-size: 30px; ">Soporte</h5>
+                            <p style="font-size: 38px; color: #163A59">Contamos con personal altamente capacitado</p>
+                        </div>
+                </div>
+
+                <div class="carousel-item" data-bs-interval="4000">
+                    <img src="img/carousel/slide2.jpg" class="d-block w-100" alt="" height="350">
+                        <div class="carousel-caption d-none d-md-block"> 
+                            <h5 style="font-size: 30px;">Soluciones</h5>
+                            <p style="font-size: 38px;  color: #163A59" >Visitamos y brindamos soluciones inmediatas</p>
+                        </div>
+                </div>
+
+                <div class="carousel-item" data-bs-interval="4000">
+                    <img src="img/carousel/slide3.jpg" class="d-block w-100" alt=""height="350">
+                        <div class="carousel-caption d-none d-md-block"> 
+                            <h5 style="font-size: 30px;">Tutoria</h5>
+                            <p style="font-size: 38px;  color: #163A59">Capacitaciones en la comodidad de su empresa</p>
+                        </div>
+                </div>
+
+            </div>
+            <!-- Anterior -->
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="prev">
+                <img src="img/carousel/prev.png" alt="Anterior">
+                    <span class="visually-hidden">Anterior</span>
+            </button>
+            <!-- Siguiente -->
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="next">
+                <img src="img/carousel/next.png" alt="Siguiente">
+                    <span class="visually-hidden">Siguiente</span>
+            </button>
+        </div>
+        </header>
+
+        <div class="content-container">
+            <section>
+                <p style="color: white; font-weight: bold; font-size: 25px; background-color: #2069AD; margin-top: 0; text-align: center; border-bottom: 1px solid black">¡Bienvenido!</p>
+                <h2>Sobre nosotros</h2>
+                <p>Somos un grupo dinámico con gran experiencia en el mercado del desarrollo de software empresarial aplicables al ámbito del ERP 
+                    en áreas como Ruteo y Distribución, Financiero Contable, Importaciones, Manufactura y más..</p>
+
+                <p2>Con EXCALIBUR-TECH, usted como empresario, desde cualquier rincón del mundo podrá ver el tiempo real, el comportamiento de 
+                    su compañía, a tan solo un click de su mano.</p2>
+
+            </section>
+
+            <aside class="text-center">
+                <!-- Contenido de la barra lateral izquierda -->
+                <p style="color: white; font-weight: bold; font-size: 25px; background-color: #2069AD; margin-top: 0; text-align: center; border-bottom: 1px solid black">Casos de Éxito</p>
+                <div id="carouselExampleInterval" class="carousel slide" data-bs-ride="carousel">
+                    <div class="carousel-inner">
+                        <div class="carousel-item active" data-bs-interval="1000">
+                            <img src="img/casos_exito/02.jpg" class="d-block w-100" alt="...">
+                        </div>
+                        <div class="carousel-item" data-bs-interval="1000">
+                            <img src="img/casos_exito/04.jpg" class="d-block w-100" alt="...">
+                        </div>
+                        <div class="carousel-item" data-bs-interval="1000">
+                            <img src="img/casos_exito/10.jpg" class="d-block w-100" alt="...">
+                        </div>
+                    </div>
+                    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Anterior</span>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Siguiente</span>
+                    </button>
+                </div>
+
+                <div class="card" style="width: 265; border:  1px solid black;">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3929.493143790535!2d-84.14319946496333!3d9.976061027686155!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8fa0fb07759872f9%3A0x6ea635cbbf7e8f60!2sMulticomercial+Baden!5e0!3m2!1sen!2s!4v1489010248162" width="264" height="218" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0" class="d-block mx-auto"></iframe>
+                    <div class="card-body text-center">
+                        <h5 class="card-title">Encuentranos</h5>
+                        <p>Multicomercial Badem, Heredia</p>
+                        <a href="https://maps.app.goo.gl/7rQVKvmHe2rrWDg3A" class="btn btn-success" target="_blank">Abrir Mapa</a>
+                    </div>
+                </div>
+            </aside>
+        </div>
+
+        <style>
+            /* Estilos para el section */
+            section {
+                width: 73%; /* O el porcentaje que desees */
+                background-color: #cccccc; /* Color de fondo del section */
+                color: white; /* Color del texto del section */
+                padding: 20px; /* Espaciado interior del section */
+                color: #000000;
+                text-align: center;
+            }
+
+            /* Estilos para el aside */
+            aside {
+                width: 25%; /* O el porcentaje que desees */
+                background-color: #cccccc; /* Color de fondo del aside */
+                color: white; /* Color del texto del aside */
+                padding: 20px; /* Espaciado interior del aside */
+                color: #000000;
+                text-align: center;
+            }
+            .content-container {
+                display: flex;
+                justify-content: space-between; /* Alinea los elementos a los extremos */
+                padding: 20px; /* Espaciado interior del contenedor */
+            }
+        </style>
+
+
+
+
+        <footer th:replace="~{layout/plantilla :: footer}"/>          
+    </body>
+</html>

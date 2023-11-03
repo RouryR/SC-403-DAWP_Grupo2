@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+    <head th:fragment="head">
+        <title>Excalibur-Tech</title>
+        <meta charset="UTF-8"/>
+        <link th:href="@{/webjars/bootstrap/css/bootstrap.min.css}" rel="stylesheet"/>
+        <link th:href="@{/webjars/font-awesome/css/all.css}" rel="stylesheet"/>
+        <link th:href="@{/webjars/font-awesome/css/all.css}" rel="stylesheet"/>
+        <script th:src="@{/js/rutinas.js}"></script>
+        <script th:src="@{/webjars/popper.js/umd/popper.min.js}"></script>
+        <script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>        
+    </head>
+    <body>
+        <header th:fragment="header" class="header">
+            <!--inicio del header-->
+            <nav class="navbar navbar-light bg-light fixed-top" style="list-style: none;">
+                <div class="container-fluid">
+                    <div class="d-flex justify-content-start align-items-center">
+                        <div class="logo-container">
+                            <a class="justify-content-start align-items-center navbar-brand" href="#">
+                                <img src="img/logo.svg" alt=""/>
+                                [[#{main.web_Name}]]
+                            </a>
+                        </div>
+                    </div>
+                    <div class="d-flex justify-content-center align-items-center">
+                        <div class="nav-container d-flex">
+                            <div class="btn-group">
+                                <button type="button" class="btn btn-primary btn-lg me-2 rounded-pill dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                                    [[#{main.productos}]]
+                                </button>
+                                <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="dropdownMenuButton2">
+                                    <li><a class="dropdown-item" th:href="@{/producto/listado}"> [[#{main.accion}]]</a></li>
+                                    <li><a class="dropdown-item" th:href="@{/producto/listado}">[[#{main.ruteo}]]</a></li>
+                                    <li><a class="dropdown-item" th:href="@{/producto/listado}">[[#{main.punto_venta}]]</a></li>
+                                    <li><a class="dropdown-item" th:href="@{/producto/listado}">[[#{main.nomina}]]</a></li>
+                                    <li><a class="dropdown-item" th:href="@{/producto/listado}">[[#{main.manufactura}]]</a></li>
+                                    <li><a class="dropdown-item" th:href="@{/producto/listado}">[[#{main.factura}]]</a></li>
+                                    
+                                </ul>
+                            </div>
+                            <div class="btn-group">
+                                <button type="button" class="btn btn-primary btn-lg me-2 rounded-pill dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                                    [[#{main.servicios}]]
+                                </button>
+                                <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="dropdownMenuButton2">
+                                    <li><a class="dropdown-item" th:href="@{/producto/listado}">[[#{main.callcenter}]]</a></li>
+                                    <li><a class="dropdown-item" th:href="@{/producto/listado}">[[#{main.capacitacion}]]</a></li>
+                                    <li><a class="dropdown-item" th:href="@{/producto/listado}">[[#{main.soporte}]]</a></li>
+                                    
+
+                                </ul>
+                            </div>
+                            <li class="nav-item" role="presentation">
+                                <a  class="btn btn-primary btn-lg me-2 rounded-pill" tabindex="-1" role="button" aria-disabled="true" th:href="@{/producto/listado}">[[#{main.casos_Exito}]]</a>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                                <a  class="btn btn-primary btn-lg me-2 rounded-pill" tabindex="-1" role="button" aria-disabled="true" th:href="@{/producto/listado}">[[#{main.contactenos}]]</a>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                                <a  class="btn btn-primary btn-lg me-2 rounded-pill" tabindex="-1" role="button" aria-disabled="true" th:href="@{/producto/listado}">[[#{main.about}]]</a>
+                            </li>
+                        </div>
+                    </div>
+
+
+                    <div class="d-flex justify-content-end align-items-center ">
+                        <div class="nav-container">
+                            <li class="nav-item" role="presentation">
+                                <a  class="btn bg-warning text-dark rounded-pill" tabindex="-1" role="button" aria-disabled="true" th:href="@{/producto/listado}">[[#{main.iniciar_Sesion}]]</a>
+                                <a  class="btn bg-warning text-dark rounded-pill nav-item px-2"  tabindex="-1" role="button" aria-disabled="true" th:href="@{/(lang=es)}">ES</a>
+                                <a  class="btn bg-warning text-dark rounded-pill nav-item px-1" tabindex="-1" role="button" aria-disabled="true" th:href="@{/(lang=en)}">EN</a>
+                            </li>
+                        </div>
+                    </div>
+                </div>
+
+                <style>
+                    /* Estilos Header */
+                    .container-fluid {
+                        position: fixed;
+                        top: 0;
+                        height: 80px;
+                        width: 100%;
+                        border-bottom: 1px solid black;
+                        z-index: 5;
+                        background-color: #2069AD;
+                        /*Color de fondo de la barra lateral */
+                        border-bottom: 1px solid black;
+                    }
+
+
+                    .logo-img {
+                        height: 79px;
+                        /* Ajusta según el tamaño deseado */
+                    }
+
+                    .carousel {
+                        border-bottom: 1px solid black;
+                        background-color: lightgray;
+                        width: 100%;
+                        padding: 0px;
+                        margin-top: 50px;
+
+                    }
+
+
+                    .active {
+                        background-color: #ffffff !important;
+                        color: #000000 !important;
+                        border: 1px solid black !important;
+                    }
+
+
+                    .nav-container .btn{
+                        font-size: 15px;
+                        color: #ffffff;
+                        background-color: #475152;
+                        margin-top: 14px;
+                        border: 1px solid white;
+                    }
+
+
+                    .btn:hover {
+                        color: #000000 !important;
+                        ;
+                        /* Cambia este valor al color que desees cuando se pasa el mouse sobre el botón */
+                        background-color: #ffffff !important;
+                        border: 1px solid black !important;
+                    }
+
+                    /* Estilos para el contenedor de contenido */
+                    .content-container {
+                        display: flex;
+                        justify-content: space-between; /* Alinea los elementos a los extremos */
+                        padding: 20px; /* Espaciado interior del contenedor */
+                    }
+
+                </style>
+            </nav>
+            <!--fin del header-->
+<!--            <section id="main-header" class="py-2 bg-success text-white">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <h1><i class="fa-solid fa-shop"></i> [[#{main.web_Name}]]</h1>
+                                                        <img src="../../static/img/icons8-casa-64.png" alt="TechShop Logo" style="height: 50px;" class="logo-img"/>
+                        </div>
+                    </div>
+                </div>
+            </section>-->
+
+        </header>
+
+
+        <footer th:fragment="footer" class="bg-dark text-white mt-5 p-2">
+            <div class="container">
+                <div class="col">
+                    <p class="lead text-center">
+                        &COPY [[#{main.derechos}]]
+                    </p>
+                </div>
+            </div>
+        </footer>
+    </body>
+</html>
