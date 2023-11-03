@@ -18,55 +18,50 @@
         <div id="carouselExampleDark" class="carousel carousel-dark slide" data-bs-ride="carousel">
             <div class="carousel-indicators">
                 <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="0" class="active"
-                        aria-current="true" aria-label="Naruto"></button>
+                        aria-current="true" aria-label=""></button>
 
                 <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="1"
-                        aria-label="Sasuke"></button>
+                        aria-label=""></button>
 
                 <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="2"
-                        aria-label="Itachi"></button>
+                        aria-label=""></button>
 
-                <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="3"
-                        aria-label="Kakashi"></button>
-
-                <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="4"
-                        aria-label="Sai"></button>
 
             </div>
             <div class="carousel-inner">
                 <div class="carousel-item active" data-bs-interval="4000">
-                    <img src="img/carousel/slide1.jpg" class="d-block w-100" alt="" height="350">
-                        <div class="carousel-caption d-none d-md-block"> 
-                            <h5 style="font-size: 30px; ">Soporte</h5>
-                            <p style="font-size: 38px; color: #163A59">Contamos con personal altamente capacitado</p>
-                        </div>
+                    <img th:src="@{/carousel/slide1.jpg}" class="d-block w-100" alt="" height="350"/>
+                    <div class="carousel-caption d-none d-md-block"> 
+                        <h5 style="font-size: 30px; ">Soporte</h5>
+                        <p style="font-size: 38px; color: #163A59">Contamos con personal altamente capacitado</p>
+                    </div>
                 </div>
 
                 <div class="carousel-item" data-bs-interval="4000">
-                    <img src="img/carousel/slide2.jpg" class="d-block w-100" alt="" height="350">
-                        <div class="carousel-caption d-none d-md-block"> 
-                            <h5 style="font-size: 30px;">Soluciones</h5>
-                            <p style="font-size: 38px;  color: #163A59" >Visitamos y brindamos soluciones inmediatas</p>
-                        </div>
+                    <img th:src="@{/carousel/slide2.jpg}" class="d-block w-100" alt="" height="350"/>
+                    <div class="carousel-caption d-none d-md-block"> 
+                        <h5 style="font-size: 30px;">Soluciones</h5>
+                        <p style="font-size: 38px;  color: #163A59" >Visitamos y brindamos soluciones inmediatas</p>
+                    </div>
                 </div>
 
                 <div class="carousel-item" data-bs-interval="4000">
-                    <img src="img/carousel/slide3.jpg" class="d-block w-100" alt=""height="350">
-                        <div class="carousel-caption d-none d-md-block"> 
-                            <h5 style="font-size: 30px;">Tutoria</h5>
-                            <p style="font-size: 38px;  color: #163A59">Capacitaciones en la comodidad de su empresa</p>
-                        </div>
+                    <img th:src="@{/carousel/slide3.jpg}" class="d-block w-100" alt=""height="350"/>
+                    <div class="carousel-caption d-none d-md-block"> 
+                        <h5 style="font-size: 30px;">Tutoria</h5>
+                        <p style="font-size: 38px;  color: #163A59">Capacitaciones en la comodidad de su empresa</p>
+                    </div>
                 </div>
 
             </div>
             <!-- Anterior -->
             <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="prev">
-                <img src="img/carousel/prev.png" alt="Anterior">
+                <img th:src="@{/carousel/prev.png}" alt="Anterior">
                     <span class="visually-hidden">Anterior</span>
             </button>
             <!-- Siguiente -->
             <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="next">
-                <img src="img/carousel/next.png" alt="Siguiente">
+                <img th:src="@{/carousel/next.png}" alt="Siguiente">
                     <span class="visually-hidden">Siguiente</span>
             </button>
         </div>
@@ -87,16 +82,16 @@
             <aside class="text-center">
                 <!-- Contenido de la barra lateral izquierda -->
                 <p style="color: white; font-weight: bold; font-size: 25px; background-color: #2069AD; margin-top: 0; text-align: center; border-bottom: 1px solid black">Casos de Éxito</p>
-                <div id="carouselExampleInterval" class="carousel slide" data-bs-ride="carousel">
+                <div id="carouselExampleDark" class="carousel carousel-dark slide" data-bs-ride="carousel">
                     <div class="carousel-inner">
-                        <div class="carousel-item active" data-bs-interval="1000">
-                            <img src="img/casos_exito/02.jpg" class="d-block w-100" alt="...">
+                        <div class="carousel-item active" data-bs-interval="3000">
+                            <img th:src="@{/CasosExito/02.jpg}" class="d-block w-100" alt="...">
                         </div>
-                        <div class="carousel-item" data-bs-interval="1000">
-                            <img src="img/casos_exito/04.jpg" class="d-block w-100" alt="...">
+                        <div class="carousel-item" data-bs-interval="3000">
+                            <img th:src="@{/CasosExito/04.jpg}" class="d-block w-100" alt="...">
                         </div>
-                        <div class="carousel-item" data-bs-interval="1000">
-                            <img src="img/casos_exito/10.jpg" class="d-block w-100" alt="...">
+                        <div class="carousel-item" data-bs-interval="3000">
+                            <img th:src="@{/CasosExito/10.jpg}" class="d-block w-100" alt="...">
                         </div>
                     </div>
                     <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="prev">
