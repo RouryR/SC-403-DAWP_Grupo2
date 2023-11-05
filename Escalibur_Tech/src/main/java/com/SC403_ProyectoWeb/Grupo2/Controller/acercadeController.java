@@ -8,6 +8,6 @@ package com.SC403_ProyectoWeb.Grupo2.Controller;
  *
  * @author RouryR
  */
-public class UsuarioController {
+public class acercadeController {
     
 }
