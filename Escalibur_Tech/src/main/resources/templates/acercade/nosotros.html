@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns="http://www.w3.org/1999/xhtml">
+    <head th:replace="~{layout/plantilla :: head}">
+        <title>Excalibur-Tech</title>        
+    </head>
+    <body>
+        <header th:replace="~{layout/plantilla :: header}"/>
+
+        <!-- Alerta de cookies -->
+        <div class="alert alert-warning alert-dismissible fade show fixed-bottom" role="alert"
+             style="text-align: center;">
+            <i class="bi bi-exclamation-triangle-fill me-2"></i>
+            <strong> Esta página usa Cookies 🍪 para su funcionamiento. </strong>
+            <button type="button" class="btn btn-success" data-bs-dismiss="alert" id="acceptButton">ACEPTAR</button>
+        </div>
+
+
+        </header>
+
+       <body>
+    <div class="grid-container">
+        <div class="grid-item">
+            <h2>Acerca de nosotros</h2>
+            <a><img src="https://www.excalibur-tech.com/wp-content/uploads/2017/03/acerca-1.jpg" alt="acercade" width="50%" height="300"/></a>
+            <p>Desde 1999 Excalibur-Tech nace siendo una empresa costarricense, actualmente somos líderes en el desarrollo de software para la gestión empresarial de pequeñas, medianas y grandes compañías.</p>
+            <p>Somos un aliado estratégico para todos nuestros clientes, gracias al compromiso, servicios y personal altamente calificado para satisfacer cada una de las necesidades de los clientes.</p>
+            <p>Nuestro ERP (Planificación de Recursos empresariales), es un software especializado a fin a los diferentes perfiles comerciales, distribuidores, importadores, exportadores, manufactureros y más.</p>
+        </div>
+        <div class="grid-item">
+            
+            <p><img src="http://www.excalibur-tech.com/wp-content/uploads/2017/03/mision1.jpg" alt="acercade" width="10%" height="40"/></p>
+            <h2>Misión</h2>
+            <p>En Excalibur-Tech S.A. somos una empresa líder en soluciones de tecnología de la información, ofreciendo un servicio de calidad del más alto nivel competitivo que garantiza a nuestros clientes la administración adecuada de su información.</p>
+            
+            <p><img src="http://www.excalibur-tech.com/wp-content/uploads/2017/03/vision2.jpg" alt="acercade" width="10%" height="40"/></p>
+            <h2>Visión</h2>
+            <p>En Excalibur-Tech S.A. buscamos ser un proveedor de servicios de tecnología de la información de primer nivel, que ayude a los clientes en el cumplimiento de sus objetivos mediante una herramienta flexible, amigable, poderosa y acorde a las necesidades de cada uno.</p>
+            
+        </div>
+    </div>
+</body>
+
+
+        <style>
+            .grid-container {
+                display: grid;
+                grid-template-columns: 3fr 1fr; /* Three equal columns */
+                grid-gap: 10px; /* Adjust the gap between columns as needed */
+                padding: 82px;
+            }
+
+            .grid-item {
+                padding: 10px;
+                text-align: center;
+            }
+
+            .grid-item .row1 {
+                padding: 10px;
+                text-align: center;
+                border: 1px solid black;
+                
+            }
+
+        </style>         
+
+        <footer th:replace="~{layout/plantilla :: footer}"/>          
+    </body>
+</html>
