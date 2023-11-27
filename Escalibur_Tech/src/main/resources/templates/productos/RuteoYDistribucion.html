@@ -1,15 +1,84 @@
 <!DOCTYPE html>
-<!--
-Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
-Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this template
--->
-<html>
-    <head>
-        <title>TODO supply a title</title>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns="http://www.w3.org/1999/xhtml">
+    <head th:replace="~{layout/plantilla :: head}">
+        <title>Excalibur-Tech</title>        
     </head>
     <body>
-        <div>TODO write content</div>
+        <header th:replace="~{layout/plantilla :: header}"/>
+
+        <!-- Alerta de cookies -->
+        <div class="alert alert-warning alert-dismissible fade show fixed-bottom" role="alert"
+             style="text-align: center;">
+            <i class="bi bi-exclamation-triangle-fill me-2"></i>
+            <strong> Esta página usa Cookies 🍪 para su funcionamiento. </strong>
+            <button type="button" class="btn btn-success" data-bs-dismiss="alert" id="acceptButton">ACEPTAR</button>
+        </div>
+
+
+        </header>
+
+       <body>
+    <div class="grid-container">
+        <div class="grid-item">
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+
+            <a><img src="http://www.excalibur-tech.com/wp-content/uploads/2017/03/internas/ruteo.jpg" alt="ruteo" width="100%" height="400"/></a>
+        </div>
+        <div class="grid-item">
+            
+            <h2>Ruteo y distribución</h2>
+            <p>Con esta herramienta usted podrá mediante el uso de herramientas como celulares, netbooks,
+                portátiles o tablets en la plataforma android, realizar procesos de facturación Directa y Pre Venta, administrando rutas de venta, reparto y cobro según sea su necesidad empresarial.
+            </p>
+            <p>    Tendrá acceso a la información tanto en su empresa como en la ruta en tiempo real gracias a la sincronización en línea vía Internet. Tendrá acceso a:
+            </p>
+            <p>    –Facturación directa con control de inventarios en cada camión.</p>
+               <p> –Control de cuentas por cobrar con documentos físicos impresos.</p>
+                <p>–Clasificación de clientes por rutas, sectores, días y secuencia de visita.</p>
+                <p>–Consulta de información detallada de los clientes.</p>
+                <p>–Aplicación de descuentos según la necesidad.</p>
+                <p>–Elaboración de notas de crédito por devolución de mercadería.</p>
+                <p>–Transmisión vía Internet.</p>
+                <p>–Registro del inventario de productos del cliente eliminando el uso de tarjetas manuales.</p>
+                <p>–Facturación de combos.</p>
+                <p>–Actualización de información vía Internet.</p>
+                <p>–Impresión de documentos.</p>
+                <p>–Análisis de la efectividad de Rutas y tiempos de visitas de los diferentes agentes.</p>
+                <p>-Geolocalización mediante Google Maps o Waze.</p>
+
+        </div>
+    </div>
+</body>
+
+
+        <style>
+            .grid-container {
+                display: grid;
+                grid-template-columns: 2fr 2fr; 
+                grid-gap: 10px; 
+                padding: 82px;
+            }
+
+            .grid-item {
+                padding: 10px;
+                text-align: center;
+            }
+
+            .grid-item .row1 {
+                padding: 10px;
+                text-align: center;
+                border: 1px solid black;
+                
+            }
+
+        </style>         
+
+        <footer th:replace="~{layout/plantilla :: footer}"/>          
     </body>
 </html>

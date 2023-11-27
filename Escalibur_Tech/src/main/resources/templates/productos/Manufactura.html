@@ -1,15 +1,85 @@
 <!DOCTYPE html>
-<!--
-Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
-Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this template
--->
-<html>
-    <head>
-        <title>TODO supply a title</title>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns="http://www.w3.org/1999/xhtml">
+    <head th:replace="~{layout/plantilla :: head}">
+        <title>Excalibur-Tech</title>        
     </head>
     <body>
-        <div>TODO write content</div>
+        <header th:replace="~{layout/plantilla :: header}"/>
+
+        <!-- Alerta de cookies -->
+        <div class="alert alert-warning alert-dismissible fade show fixed-bottom" role="alert"
+             style="text-align: center;">
+            <i class="bi bi-exclamation-triangle-fill me-2"></i>
+            <strong> Esta página usa Cookies 🍪 para su funcionamiento. </strong>
+            <button type="button" class="btn btn-success" data-bs-dismiss="alert" id="acceptButton">ACEPTAR</button>
+        </div>
+
+
+        </header>
+
+       <body>
+    <div class="grid-container">
+        <div class="grid-item">
+            <h2>Manufactura</h2>
+            
+            <p>Con el módulo de Manufactura podrá:</p>
+            <p>– Crear ordenes de manufactura.</p>
+            <p>– Costeo de ordenes de manufactura al costo estándar vs costo real.</p>
+            <p>– Manejo de ensambles o producción en serie.</p>
+            <p>– Cálculo automático del requirimiento de materiales.</p>
+            <p>– Generar ordenes de Compra y ordenes de Manufactura de forma automática de acuerdo a un requerimiento
+            previamente autorizado.</p>
+            <p>– Consulta de histórico de ordenes de manufactura.</p>
+            <p>– Transacciones inventario por proceso (departamento) y equipo.</p>
+            <p>– Requisición de materias primas e insumos.</p>
+            <p>– Entradas de producciones.</p>
+            <p>-Administrar  Lotes & Trazabilidad Ascendente y descendente.</p>
+            <p>– Consulta del histórico de transacciones de inventario por proceso.</p>
+            <p>– Medición de la eficiencia de producción</p>
+            <p>– Auditoria individual de transacciones.</p>
+            <p>– Utilización de múltiples bodegas.</p>
+            <p>– Restricción de bodegas por usuario.</p>
+            <p>– Control y administración de lotes de producto.</p>
+            <p>– Contabilización de las diferentes transacciones de producción.</p>
+            <p>– Registrar en el histórico transaccional en línea.</p>
+
+
+        </div>
+        <div class="grid-item">
+            <br>
+            <br>
+            <br>
+            <br>    
+            <p><img src="http://www.excalibur-tech.com/wp-content/uploads/2017/03/internas/manufactura1.jpg" alt="manufactura" width="100%" height="500"/></p>
+
+        </div>
+    </div>
+</body>
+
+
+        <style>
+            .grid-container {
+                display: grid;
+                grid-template-columns: 2fr 2fr; 
+                grid-gap: 10px; 
+                padding: 82px;
+            }
+
+            .grid-item {
+                padding: 10px;
+                text-align: center;
+            }
+
+            .grid-item .row1 {
+                padding: 10px;
+                text-align: center;
+                border: 1px solid black;
+                
+            }
+
+        </style>         
+
+        <footer th:replace="~{layout/plantilla :: footer}"/>          
     </body>
 </html>

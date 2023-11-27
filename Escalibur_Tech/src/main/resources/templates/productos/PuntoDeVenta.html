@@ -1,15 +1,72 @@
 <!DOCTYPE html>
-<!--
-Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
-Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this template
--->
-<html>
-    <head>
-        <title>TODO supply a title</title>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns="http://www.w3.org/1999/xhtml">
+    <head th:replace="~{layout/plantilla :: head}">
+        <title>Excalibur-Tech</title>        
     </head>
     <body>
-        <div>TODO write content</div>
+        <header th:replace="~{layout/plantilla :: header}"/>
+
+        <!-- Alerta de cookies -->
+        <div class="alert alert-warning alert-dismissible fade show fixed-bottom" role="alert"
+             style="text-align: center;">
+            <i class="bi bi-exclamation-triangle-fill me-2"></i>
+            <strong> Esta página usa Cookies 🍪 para su funcionamiento. </strong>
+            <button type="button" class="btn btn-success" data-bs-dismiss="alert" id="acceptButton">ACEPTAR</button>
+        </div>
+
+
+        </header>
+
+       <body>
+    <div class="grid-container">
+        <div class="grid-item">
+            <h2>Punto de venta</h2>
+            
+            <p>Con un software multi-tienda usted podrá:</p>
+                <p>-Realizar una facturación rápida de forma independiente.</p>
+                <p>– Tendrá acceso a la pantalla interactiva de punto de venta donde podrá colocar diferentes opciones como
+                logo de marca, fotografías de los productos y videos.</p>
+                <p>– Automatizar el control del inventario, reduciendo posibles pérdidas.</p>
+                <p>– Generar reportes de ventas en minutos.</p>
+                <p>– Podrá obtener estadísticas de venta por producto, categoría, hora, tienda y más de 20 diferentes tipos de
+                reportes que le ayudarán en la toma de desiciones.</p>
+                <p>– Integración con los demá módulos.</p>
+                <p>– Alertas de clientes morosos, cambios de precio y muchas cosas más.</p>
+                <p>– Sincronización automática por Internet con la casa matriz.</p>
+
+        </div>
+        <div class="grid-item">
+            
+            <p><img src="https://www.excalibur-tech.com/wp-content/uploads/2017/03/puntodeventa.jpg" alt="puntoventa" width="100%" height="500"/></p>
+
+        </div>
+    </div>
+</body>
+
+
+        <style>
+            .grid-container {
+                display: grid;
+                grid-template-columns: 2fr 2fr; 
+                grid-gap: 10px; 
+                padding: 82px;
+            }
+
+            .grid-item {
+                padding: 10px;
+                text-align: center;
+            }
+
+            .grid-item .row1 {
+                padding: 10px;
+                text-align: center;
+                border: 1px solid black;
+                
+            }
+
+        </style>         
+
+        <footer th:replace="~{layout/plantilla :: footer}"/>          
     </body>
 </html>

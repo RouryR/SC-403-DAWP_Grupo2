@@ -1,15 +1,68 @@
 <!DOCTYPE html>
-<!--
-Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
-Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this template
--->
-<html>
-    <head>
-        <title>TODO supply a title</title>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns="http://www.w3.org/1999/xhtml">
+    <head th:replace="~{layout/plantilla :: head}">
+        <title>Excalibur-Tech</title>        
     </head>
     <body>
-        <div>TODO write content</div>
+        <header th:replace="~{layout/plantilla :: header}"/>
+
+        <!-- Alerta de cookies -->
+        <div class="alert alert-warning alert-dismissible fade show fixed-bottom" role="alert"
+             style="text-align: center;">
+            <i class="bi bi-exclamation-triangle-fill me-2"></i>
+            <strong> Esta página usa Cookies 🍪 para su funcionamiento. </strong>
+            <button type="button" class="btn btn-success" data-bs-dismiss="alert" id="acceptButton">ACEPTAR</button>
+        </div>
+
+
+        </header>
+
+       <body>
+    <div class="grid-container">
+        <div class="grid-item">
+        <br>
+
+            <a><img src="http://www.excalibur-tech.com/wp-content/uploads/2017/03/internas/contabilidad1.jpg" alt="conta" width="100%" height="400"/></a>
+        </div>
+        <div class="grid-item">
+            
+            <h2>Contabilidad</h2>
+            <p>Este módulo permite resumir la funcionalidad de los otros módulos mediante asientos contables automáticos,
+            sin embargo también permite el registro de asientos manuales que no provienen de los auxiliares.</p>
+            <p>– Permite el manjeo de catálogos de cuentas, uso de centros de costo, asientos de diario automáticos y
+            manuales.</p>
+            <p>– Controla los balances contables.</p>
+            <p>– Permite la generación de estados financieros automáticos diarios.</p>
+            <p>– Elaboración del presupuesto financiero y sus herramientas de análisis.</p>
+            <p>– Gastos diferidos.</p>
+        </div>
+    </div>
+</body>
+
+
+        <style>
+            .grid-container {
+                display: grid;
+                grid-template-columns: 2fr 2fr; 
+                grid-gap: 10px; 
+                padding: 82px;
+            }
+
+            .grid-item {
+                padding: 10px;
+                text-align: center;
+            }
+
+            .grid-item .row1 {
+                padding: 10px;
+                text-align: center;
+                border: 1px solid black;
+                
+            }
+
+        </style>         
+
+        <footer th:replace="~{layout/plantilla :: footer}"/>          
     </body>
 </html>

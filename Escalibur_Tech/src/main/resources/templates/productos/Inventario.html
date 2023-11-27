@@ -1,15 +1,72 @@
 <!DOCTYPE html>
-<!--
-Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
-Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this template
--->
-<html>
-    <head>
-        <title>TODO supply a title</title>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns="http://www.w3.org/1999/xhtml">
+    <head th:replace="~{layout/plantilla :: head}">
+        <title>Excalibur-Tech</title>        
     </head>
     <body>
-        <div>TODO write content</div>
+        <header th:replace="~{layout/plantilla :: header}"/>
+
+        <!-- Alerta de cookies -->
+        <div class="alert alert-warning alert-dismissible fade show fixed-bottom" role="alert"
+             style="text-align: center;">
+            <i class="bi bi-exclamation-triangle-fill me-2"></i>
+            <strong> Esta página usa Cookies 🍪 para su funcionamiento. </strong>
+            <button type="button" class="btn btn-success" data-bs-dismiss="alert" id="acceptButton">ACEPTAR</button>
+        </div>
+
+
+        </header>
+
+       <body>
+    <div class="grid-container">
+        <div class="grid-item">
+        <br>
+
+
+            <a><img src="http://www.excalibur-tech.com/wp-content/uploads/2017/03/internas/inventarios1.jpg" alt="inv" width="100%" height="400"/></a>
+        </div>
+        <div class="grid-item">
+            
+            <h2>Inventarios</h2>
+            <p>Este módulo permite a los empresarios:</p>
+            <p>– Una administración del inventario por bodegas con seguridad personalizada, localizaciones, lotes, conteos
+            físicos programados y cuadre.</p>
+            <p>- Uso de Hand Held´s para el registro de conteos con el uso de los códigos de barras.</p>
+            <p>– Permite una administración de las diferentes transacciones de inventario donde las mismas son configurables
+            (requisiciones/ ajustes/ producciones), control de lotes vencidos, etc.</p>
+            <p>– Permite el manejo de estructuras de combos y recetas de artículos acorde a la necesidad del cliente.</p>
+            <p>– Registro de compras de mercadería local.</p>
+            <p>– Permite la consulta a reportes de existencias, transacciones, kardex, análisis de inventarios en exceso y otros
+            reportes.</p>
+            <p>– Aceptación compras regimen tradicional y regimen simplificado.</p>
+        </div>
+    </div>
+</body>
+
+
+        <style>
+            .grid-container {
+                display: grid;
+                grid-template-columns: 2fr 2fr; 
+                grid-gap: 10px; 
+                padding: 82px;
+            }
+
+            .grid-item {
+                padding: 10px;
+                text-align: center;
+            }
+
+            .grid-item .row1 {
+                padding: 10px;
+                text-align: center;
+                border: 1px solid black;
+                
+            }
+
+        </style>         
+
+        <footer th:replace="~{layout/plantilla :: footer}"/>          
     </body>
 </html>
