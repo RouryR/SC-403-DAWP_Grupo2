@@ -18,28 +18,46 @@
 
         </header>
 
-       <body>
-    <div class="grid-container">
-        <div class="grid-item">
-            <h2>E.R.P</h2>
+        <body>
             
-            <p>Para toda empresa es importante poseer una herramienta multi-usuarios, multi-compañía y multi-moneda que
-            sea ágil, sencilla de utilizar, que permita a sus trabajadores el cumplimiento de funciones de forma ordenada,
-            controlando todo proceso administrativo, operativo y financiero.</p>
-            <p>"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."</p>
-            <p>"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."</p>
-            
-        </div>
-        <div class="grid-item">
-            <br>
-            <p><img src="https://www.excalibur-tech.com/wp-content/uploads/2017/03/GRAFICO-1.jpg" alt="ERP" width="100%" height="500"/></p>
+            <div class="grid-container">
+                <div class="grid-item">
+                    <div class="card border border-secondary">
+  <h5 class="custom-card-header">E.R.P</h5>
+  <div class="card-body">
+    <p class="custom-card-text">Para toda empresa es importante poseer una herramienta multi-usuarios, multi-compañía y multi-moneda que sea ágil, sencilla de utilizar, que permita a sus trabajadores el cumplimiento de funciones de forma ordenada, controlando todo proceso administrativo, operativo y financiero.</p>
+    <p class="custom-card-text">"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."</p>
+    <p class="custom-card-text">"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."</p>
+  </div>
+</div>
+                </div>
 
-        </div>
-    </div>
-</body>
+                <div class="grid-item">
+                    <br>
+                        <div class="zoom-effect">
+                            <p><img src="https://www.excalibur-tech.com/wp-content/uploads/2017/03/GRAFICO-1.jpg" alt="ERP" width="904" height="415"/></p>
+                        </div>
+                </div>
+
+            </div>
+        </body>
 
 
         <style>
+            .custom-card-text {
+                text-align: center;
+                font-weight: bold;
+                font-style: italic;
+            }
+
+            .custom-card-header {
+                background-color: #2069AD;
+                color: white;
+                text-align: center;
+                padding: 10px;
+                margin: 0;
+                font-size: 28px;
+            }
             .grid-container {
                 display: grid;
                 grid-template-columns: 2fr 2fr;
@@ -56,10 +74,42 @@
                 padding: 10px;
                 text-align: center;
                 border: 1px solid black;
-                
             }
 
-        </style>         
+            .zoom-effect {
+                overflow: hidden;
+                position: relative;
+            }
+
+            .zoom-effect img {
+                transition: transform 0.1s;
+            }
+
+        </style>
+
+        <script>
+            document.addEventListener('DOMContentLoaded', function () {
+                const zoomEffectContainers = document.querySelectorAll('.zoom-effect');
+
+                zoomEffectContainers.forEach(container => {
+                    container.addEventListener('mousemove', function (event) {
+                        const rect = container.getBoundingClientRect();
+                        const x = (event.clientX - rect.left) / rect.width * 2 - 1;
+                        const y = (event.clientY - rect.top) / rect.height * 2 - 1;
+
+                        const rangeMultiplierX = 30; // Ajusta este valor para aumentar el rango en la dirección X
+                        const rangeMultiplierY = 30; // Ajusta este valor para aumentar el rango en la dirección Y
+                        const zoomLevel = 1.1; // Ajusta este valor para cambiar el nivel de zoom
+
+                        container.querySelector('img').style.transform = `scale(${zoomLevel}) translate(${-x * rangeMultiplierX}px, ${-y * rangeMultiplierY}px)`;
+                    });
+
+                    container.addEventListener('mouseleave', function () {
+                        container.querySelector('img').style.transform = 'scale(1) translate(0, 0)';
+                    });
+                });
+            });
+        </script>
 
         <footer th:replace="~{layout/plantilla :: footer}"/>          
     </body>
