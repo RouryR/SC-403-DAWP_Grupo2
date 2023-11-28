@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/xhtml">
+
+<head th:replace="~{layout/plantilla :: head}">
+    <title>Excalibur-Tech</title>
+</head>
+
+<body>
+    <header th:replace="~{layout/plantilla :: header}">
+
+        <!-- Alerta de cookies -->
+        <div class="alert alert-warning alert-dismissible fade show fixed-bottom" role="alert"
+            style="text-align: center;">
+            <i class="bi bi-exclamation-triangle-fill me-2"></i>
+            <strong> Esta página usa Cookies 🍪 para su funcionamiento. </strong>
+            <button type="button" class="btn btn-success" data-bs-dismiss="alert" id="acceptButton">ACEPTAR</button>
+        </div>
+    </header>
+
+    <section class="h-100 gradient-form" style="background-color: #eee;">
+        <div class="container py-5 h-100">
+            <div class="row d-flex justify-content-center align-items-center h-100">
+                <div class="col-xl-10">
+                    <div class="card rounded-3 text-black">
+                        <div class="row g-0">
+                            <div class="col-lg-6">
+                                <div class="card-body p-md-5 mx-md-4">
+                                    <div class="text-center">
+                                        <img th:src="@{/img/logo.svg}" style="width: 240px;" alt="logo" />
+                                        <h2 class="mt-1 mb-5 pb-1">¡Soporte!</h2>
+                                    </div>
+                                    <form class="zoom-form">
+                                        <div class="row">
+                                                <div class="col mb-3">
+                                                    <input type="text" class="form-control" placeholder="Nombre" aria-label="*Nombre">
+                                                </div>
+                                                <div class="col mb-3">
+                                                    <input type="text" class="form-control" placeholder="Apellidos" aria-label="*Apellidos">
+                                                </div>
+                                            </div>
+
+                                            <div class="mb-3">
+                                                <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="*Correo" aria-label="Correo">
+                                                    <div id="emailHelp" class="form-text">No compartiremos su correo con terceros.</div>
+                                            </div>
+
+                                            <div class="mb-3">
+                                                <input type="text" class="form-control" id="formGroupExampleInput" placeholder="*Teléfono">
+                                            </div>
+
+                                            <div class="mb-3">
+                                                <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Nombre de la empresa">
+                                            </div>
+
+                                            <div class="mb-3">
+                                                <label for="exampleInputConsulta" class="form-label">*Motivo</label>
+                                                <select class="form-select  mb-4" aria-label="Default select example">
+                                                    <option selected>Seleccione la opción de su consulta</option>
+                                                    <option value="1">Crear cuenta</option>
+                                                    <option value="2">Recuperar contraseña</option>
+                                                    <option value="3">Solicitar Cita</option>
+                                                    <option value="4">Reportar problema</option>
+                                                </select>
+                                            </div>
+
+                                            <div class="input-group mb-3">
+                                                <span class="input-group-text">*Detalles</span>
+                                                <textarea class="form-control" aria-label="With textarea"></textarea>
+                                            </div>
+
+
+
+                                            <div class="orm-check mb-3">
+                                                <p class="small mb-0">Compos con * son obligatorios.</p>
+
+                                            </div>
+                                        <button type="submit" class="btn btn-primary">Enviar</button>
+                                    </form>
+                                </div>
+                            </div>
+                            <div class="col-lg-6 d-flex align-items-center justify-content-center gradient-custom-2">
+                                <div class="text-white px-3 py-4 p-md-5 mx-md-4 text-center">
+                                    <i class="fa-solid fa-bell-concierge fa-beat mb-3" style="color: #ffffff; font-size: 5em;"></i>
+                                    <h2 class="mt-1 mb-5 pb-1">¡La solución a un clic!</h2>
+                                    <h4 class="mb-4">Más que una compañia</h4>
+                                    <p class="small mb-0">Somos un grupo dinámico con gran experiencia en el mercado del desarrollo de software empresarial aplicables al ámbito del ERP en áreas como Ruteo y Distribución, Financiero Contable, Importaciones, Manufactura y más.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <style>
+        .gradient-custom-2 {
+            background: #fccb90;
+            background: -webkit-linear-gradient(to right, #ee7724, #d8363a, #dd3675, #b44593);
+            background: linear-gradient(to right, #1f66f2, #1943ae, #12338d, #0a246f);
+        }
+
+        @media (min-width: 768px) {
+            .gradient-form {
+                height: 100vh !important;
+            }
+        }
+
+        @media (min-width: 769px) {
+            .gradient-custom-2 {
+                border-top-right-radius: .3rem;
+                border-bottom-right-radius: .3rem;
+            }
+        }
+
+        .zoom-form {
+            transition: transform 0.3s;
+        }
+
+        .zoom-form:hover {
+            transform: scale(1.1);
+        }
+    </style>
+
+    <footer th:replace="~{layout/plantilla :: footer}" />
+</body>
+
+</html>
+

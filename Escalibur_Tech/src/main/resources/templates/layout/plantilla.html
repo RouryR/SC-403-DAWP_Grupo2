@@ -49,7 +49,7 @@
                                     <li><a class="dropdown-item" th:href="@{/productos/Inventario}">[[#{main.inventario}]]</a></li>
                                     <li><a class="dropdown-item" th:href="@{/productos/ActivosFijos}">[[#{main.activos}]]</a></li>
                                     <li><a class="dropdown-item" th:href="@{/productos/Compras}">[[#{main.compras}]]</a></li>
-                                    
+
                                 </ul>
                             </div>
                             <div class="btn-group">
@@ -60,7 +60,7 @@
                                     <li><a class="dropdown-item" th:href="@{/producto/listado}">[[#{main.callcenter}]]</a></li>
                                     <li><a class="dropdown-item" th:href="@{/producto/listado}">[[#{main.capacitacion}]]</a></li>
                                     <li><a class="dropdown-item" th:href="@{/producto/listado}">[[#{main.soporte}]]</a></li>
-                                    
+
 
                                 </ul>
                             </div>
@@ -80,35 +80,35 @@
                     <div class="d-flex justify-content-end align-items-center ">
                         <div class="nav-container">
                             <li class="nav-item" role="presentation">
-                                <a  class="btn bg-warning text-dark rounded-pill" tabindex="-1" role="button" aria-disabled="true" th:href="@{/producto/listado}">[[#{main.iniciar_Sesion}]]</a>
+                                <a  class="btn bg-warning text-dark rounded-pill" tabindex="-1" role="button" aria-disabled="true" th:href="@{/sesion/InicioSesion}">[[#{main.iniciar_Sesion}]]</a>
                                 <a  class="btn bg-warning text-dark rounded-pill nav-item px-2"  tabindex="-1" role="button" aria-disabled="true" th:href="@{/(lang=es)}">ES</a>
                                 <a  class="btn bg-warning text-dark rounded-pill nav-item px-1" tabindex="-1" role="button" aria-disabled="true" th:href="@{/(lang=en)}">EN</a>
                             </li>
                         </div>
                     </div>
-                    
+
                     <div class="container-bar">
-	<input type="checkbox" id="btn-social">
-	<label for="btn-social" class="fa fa-play"></label>
-		<div class="icon-social">
-			<a href="#" class="fa fa-facebook">
-				<span id="title">Facebook</span>
-			</a>
-			<a href="#" class="fa fa-youtube">
-				<span id="title">Youtube</span>
-			</a>
-			<a href="#" class="fa fa-twitter">
-				<span id="title">Twitter</span>
-			</a>
-			<a href="#" class="fa fa-github">
-				<span id="title">Github</span>
-			</a>
-			<a href="#" class="fa fa-pinterest">
-				<span id="title">Pinterest</span>
-			</a>
-		</div>
-	</div>
-                    
+                        <input type="checkbox" id="btn-social">
+                            <label for="btn-social" class="fa fa-play"></label>
+                            <div class="icon-social">
+                                <a href="#" class="fa fa-facebook">
+                                    <span id="title">Facebook</span>
+                                </a>
+                                <a href="#" class="fa fa-youtube">
+                                    <span id="title">Youtube</span>
+                                </a>
+                                <a href="#" class="fa fa-twitter">
+                                    <span id="title">Twitter</span>
+                                </a>
+                                <a href="#" class="fa fa-whatsapp">
+                                    <span id="title">Whatsapp</span> 
+                                </a>
+                                <a href="#" class="fa fa-envelope">
+                                    <span id="title">Correo</span>
+                                </a>
+                            </div>
+                    </div>
+
                 </div>
 
                 <style>
@@ -171,114 +171,115 @@
                         justify-content: space-between; /* Alinea los elementos a los extremos */
                         padding: 20px; /* Espaciado interior del contenedor */
                     }
-                    
+
                     .container-bar{
-	width: 100%;
-	max-width: 50px;
-	position: fixed;
-	left: 0;
-	top: 25%;
-}
-.container-bar a{
-	display: block;
-	width: 50px;
-	height: 50px;
-	line-height: 50px;
-	text-align: center;
-	text-decoration: none;
-	font-size: 18px;
-	position: relative;
-	transition: all 500ms ease;
-	color: #fff;
-}
-.container-bar a:hover{
-	background: #1c1c1c;
-}
-.container-bar .fa-facebook{
-	background: #3b5998;
-	border-radius: 0px 5px 0px 0px;
-}
-.container-bar .fa-youtube{
-	background: #e52a23;
-}
-.container-bar .fa-twitter{
-	background: #00acee;
-}
-.container-bar .fa-github{
-	background: #747473;
-}
-.container-bar .fa-pinterest{
-	background: #c8232c;
-	border-radius: 0px 0px 5px 0px;
-}
-.container-bar #title{
-	position: absolute;
-	background: #1c1c1c;
-	padding: 0px 8px;
-	height: 30px;
-	line-height: 30px;
-	text-align: center;
-	border-radius: 3px;
-	font-size: 15px;
-	top:12px; left: 0px;
-	transition: all 500ms ease;
-	opacity: 0;
-	visibility: hidden;
-	z-index: -1;
-}
-.container-bar a:hover #title{
-	opacity: 1;
-	visibility: visible;
-	left: 64px;
-}
-.container-bar #title:after{
-	position: absolute;
-	content: '';
-	border-left: 7px solid transparent;
-	border-right: 6px solid #1c1c1c;
-	border-top: 7px solid transparent;
-	border-bottom: 7px solid transparent;
-	right: 100%;
-	top: 8px;
-}
-#btn-social{
-	display: none;
-}
-.fa-play{
-	cursor: pointer;
-	transition: all 0.4s;
-	font-size: 12px;
-	margin-bottom: 5px;
-	display: inline-block;
-	transform: rotate(180deg);
-	color: #49b0e6;
-}
-#btn-social:checked ~ .fa-play{
-	transform: rotate(0deg);
-}
-.icon-social{
-	transition: all 0.4s;
-	transform: translateX(0%);
-	box-shadow: 0px 1px 10px rgba(0,0,0,0.3);
-}
-#btn-social:checked ~ .icon-social{
-	transform: translateX(-100%);
-	box-shadow: 0px 1px 10px rgba(0,0,0,0.0);
-}
+                        width: 100%;
+                        max-width: 50px;
+                        position: fixed;
+                        left: 0;
+                        top: 25%;
+                    }
+                    .container-bar a{
+                        display: block;
+                        width: 50px;
+                        height: 50px;
+                        line-height: 50px;
+                        text-align: center;
+                        text-decoration: none;
+                        font-size: 18px;
+                        position: relative;
+                        transition: all 500ms ease;
+                        color: #fff;
+                    }
+                    .container-bar a:hover{
+                        background: #1c1c1c;
+                    }
+                    .container-bar .fa-facebook{
+                        background: #3b5998;
+                        border-radius: 0px 5px 0px 0px;
+                    }
+                    .container-bar .fa-youtube{
+                        background: #e52a23;
+                    }
+                    .container-bar .fa-twitter{
+                        background: #00acee;
+                    }
+                    .container-bar .fa-whatsapp{
+                        background: #4ac926;
+                    }
+                    .container-bar .fa-envelope{
+                        background: #999999;
+                        border-radius: 0px 0px 5px 0px;
+                    }
+                    .container-bar #title{
+                        position: absolute;
+                        background: #1c1c1c;
+                        padding: 0px 8px;
+                        height: 30px;
+                        line-height: 30px;
+                        text-align: center;
+                        border-radius: 3px;
+                        font-size: 15px;
+                        top:12px;
+                        left: 0px;
+                        transition: all 500ms ease;
+                        opacity: 0;
+                        visibility: hidden;
+                        z-index: -1;
+                    }
+                    .container-bar a:hover #title{
+                        opacity: 1;
+                        visibility: visible;
+                        left: 64px;
+                    }
+                    .container-bar #title:after{
+                        position: absolute;
+                        content: '';
+                        border-left: 7px solid transparent;
+                        border-right: 6px solid #1c1c1c;
+                        border-top: 7px solid transparent;
+                        border-bottom: 7px solid transparent;
+                        right: 100%;
+                        top: 8px;
+                    }
+                    #btn-social{
+                        display: none;
+                    }
+                    .fa-play{
+                        cursor: pointer;
+                        transition: all 0.4s;
+                        font-size: 12px;
+                        margin-bottom: 5px;
+                        display: inline-block;
+                        transform: rotate(180deg);
+                        color: #49b0e6;
+                    }
+                    #btn-social:checked ~ .fa-play{
+                        transform: rotate(0deg);
+                    }
+                    .icon-social{
+                        transition: all 0.4s;
+                        transform: translateX(0%);
+                        box-shadow: 0px 1px 10px rgba(0,0,0,0.3);
+                    }
+                    #btn-social:checked ~ .icon-social{
+                        transform: translateX(-100%);
+                        box-shadow: 0px 1px 10px rgba(0,0,0,0.0);
+                    }
 
                 </style>
             </nav>
             <!--fin del header-->
-<!--            <section id="main-header" class="py-2 bg-success text-white">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-md-6">
-                            <h1><i class="fa-solid fa-shop"></i> [[#{main.web_Name}]]</h1>
-                                                        <img src="../../static/img/icons8-casa-64.png" alt="TechShop Logo" style="height: 50px;" class="logo-img"/>
-                        </div>
-                    </div>
-                </div>
-            </section>-->
+            <!--            <section id="main-header" class="py-2 bg-success text-white">
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <h1><i class="fa-solid fa-shop"></i> [[#{main.web_Name}]]</h1>
+                                                                    <img src="../../static/img/icons8-casa-64.png" alt="TechShop Logo" style="height: 50px;" class="logo-img"/>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>-->
 
         </header>
 
