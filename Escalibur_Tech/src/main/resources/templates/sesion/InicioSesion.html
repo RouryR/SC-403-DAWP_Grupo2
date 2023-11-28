@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns="http://www.w3.org/1999/xhtml">
+    <head th:replace="~{layout/plantilla :: head}">
+        <title>Excalibur-Tech</title>        
+    </head>
+    <body>
+        <header th:replace="~{layout/plantilla :: header}">
+
+            <!-- Alerta de cookies -->
+            <div class="alert alert-warning alert-dismissible fade show fixed-bottom" role="alert"
+                 style="text-align: center;">
+                <i class="bi bi-exclamation-triangle-fill me-2"></i>
+                <strong> Esta página usa Cookies 🍪 para su funcionamiento. </strong>
+                <button type="button" class="btn btn-success" data-bs-dismiss="alert" id="acceptButton">ACEPTAR</button>
+            </div>
+        </header>
+
+        <section class="h-100 gradient-form" style="background-color: #eee;">
+            <div class="container py-5 h-100">
+                <div class="row d-flex justify-content-center align-items-center h-100">
+                    <div class="col-xl-10">
+                        <div class="card rounded-3 text-black">
+                            <div class="row g-0">
+                                <div class="col-lg-6">
+                                    <div class="card-body p-md-5 mx-md-4">
+
+                                        <div class="text-center">
+                                            <img th:src="@{/img/logo.svg}"
+                                                 style="width: 240px;" alt="logo"/>
+                                            <h4 class="mt-1 mb-5 pb-1">¡La solución a un clic!</h4>
+                                            <h2 class="mt-1 mb-5 pb-1">Inicio de Sesión</h2>
+                                        </div>
+
+                                        <form class="btn-zoom">
+
+
+                                            <div class="mb-3">
+                                                <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="*Correo" aria-label="Correo Electronico">
+                                                    <div id="emailHelp" class="form-text">No compartiremos su correo con terceros.</div>
+                                            </div>
+
+                                            <div class="mb-3">
+                                                <input type="password" class="form-control" id="exampleInputPassword1" placeholder="*Contraseña" aria-label="Contraseña">
+                                            </div>
+
+                                            <div class="text-center pt-1 mb-5 pb-1">
+                                                <button type="submit" class="btn btn-primary">Enviar</button>
+                                                <a class="text-muted" th:href="@{/tiketes/FormularioTiketes}">¿Olvidate tu contraseña?</a>
+                                            </div>
+
+                                            <div class="d-flex align-items-center justify-content-center pb-4">
+                                                <p class="mb-0 me-2">¿No tienes una cuenta?</p>
+                                                <a th:href="@{/tiketes/FormularioTiketes}" class="btn btn-outline-danger btn-zoom">Crear Cuenta</a>
+                                            </div>
+
+                                        </form>
+
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 d-flex align-items-center justify-content-center gradient-custom-2">
+                                    <div class="text-white px-3 py-4 p-md-5 mx-md-4 text-center">
+                                        <i class="fa-solid fa-user fa-beat mb-3" style="color: #ffffff; font-size: 5em;"></i>  
+                                        <h2 class="mt-1 mb-5 pb-1">¡La solución a un click!</h2>
+                                        <h4 class="mb-4">Más que una compañia</h4>
+                                        <p class="small mb-0">Somos un grupo dinámico con gran experiencia en el mercado del desarrollo de software empresarial aplicables al ámbito del ERP en áreas como Ruteo y Distribución, Financiero Contable, Importaciones, Manufactura y más.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+
+
+
+        <style>
+            .gradient-custom-2 {
+                /* fallback for old browsers */
+                background: #fccb90;
+
+                /* Chrome 10-25, Safari 5.1-6 */
+                background: -webkit-linear-gradient(to right, #ee7724, #d8363a, #dd3675, #b44593);
+
+                /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+                background: linear-gradient(to right,#1f66f2 ,#1943ae, #12338d,#0a246f);
+            }
+
+            @media (min-width: 768px) {
+                .gradient-form {
+                    height: 100vh !important;
+                }
+            }
+            @media (min-width: 769px) {
+                .gradient-custom-2 {
+                    border-top-right-radius: .3rem;
+                    border-bottom-right-radius: .3rem;
+                }
+            }
+
+
+            .btn-zoom:hover {
+                transform: scale(1.1);
+                background-color: white;
+                color: #edb718;
+                font-weight: bold;
+
+            }
+
+            .btn-zoom {
+                transition: transform 0.3s;
+                transition: transform 0.3s, background-color 0.3s, color 0.3s;
+            }
+
+            /* Efecto de zoom al pasar el mouse para los elementos del formulario */
+            .btn-zoom:hover input,
+            .btn-zoom:hover label {
+                transform: scale(1.1);
+            }
+        </style>
+
+
+
+        <footer th:replace="~{layout/plantilla :: footer}"/>          
+    </body>
+</html>
