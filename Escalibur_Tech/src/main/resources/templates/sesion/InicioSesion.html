@@ -45,7 +45,7 @@
                                             </div>
 
                                             <div class="text-center pt-1 mb-5 pb-1">
-                                                <button type="submit" class="btn btn-primary">Enviar</button>
+                                                <a th:href="@{/usuario/UsuarioPage}" class="btn btn-primary">Enviar</a>
                                                 <a class="text-muted" th:href="@{/tiketes/FormularioTiketes}">¿Olvidate tu contraseña?</a>
                                             </div>
 
@@ -126,4 +126,5 @@
 
         <footer th:replace="~{layout/plantilla :: footer}"/>          
     </body>
+
 </html>

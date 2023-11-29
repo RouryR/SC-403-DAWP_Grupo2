@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns="http://www.w3.org/1999/xhtml">
+    <head th:replace="~{layout/plantilla :: head}">
+        <title>Excalibur-Tech</title>        
+    </head>
+    <body>
+        <header th:replace="~{layout/plantilla :: header}"/>
+
+        <!-- Alerta de cookies -->
+        <div class="alert alert-warning alert-dismissible fade show fixed-bottom" role="alert"
+             style="text-align: center;">
+            <i class="bi bi-exclamation-triangle-fill me-2"></i>
+            <strong> Esta página usa Cookies 🍪 para su funcionamiento. </strong>
+            <button type="button" class="btn btn-success" data-bs-dismiss="alert" id="acceptButton">ACEPTAR</button>
+        </div>
+
+        </header>
+
+        <div class="content-container">
+            
+
+            <section class="text-center">
+                <!-- Contenido de la barra lateral izquierda -->
+                <p style="color: white; font-weight: bold; font-size: 25px; background-color: #2069AD; margin-top: 0; text-align: center; border-bottom: 1px solid black">Casos de Éxito</p>
+                <div id="carouselExampleDark" class="carousel carousel-dark slide" data-bs-ride="carousel">
+                    <div class="carousel-inner">
+                        <div class="carousel-item active" data-bs-interval="1000">
+                            <img th:src="@{/CasosExito/02.jpg}" class="d-block w-100" alt="...">
+                        </div>
+                        <div class="carousel-item" data-bs-interval="1000">
+                            <img th:src="@{/CasosExito/04.jpg}" class="d-block w-100" alt="...">
+                        </div>
+                        <div class="carousel-item" data-bs-interval="1000">
+                            <img th:src="@{/CasosExito/10.jpg}" class="d-block w-100" alt="...">
+                        </div>
+                    </div>
+                    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Anterior</span>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Siguiente</span>
+                    </button>
+                </div>
+
+              
+            </section>
+        </div>
+
+        <style>
+            /* Estilos para el section */
+            section {
+                width: 30%; /* O el porcentaje que desees */
+                background-color: #cccccc; /* Color de fondo del section */
+                color: white; /* Color del texto del section */
+                padding: 20px; /* Espaciado interior del section */
+                color: #000000;
+                text-align: center;
+            }
+
+            /* Estilos para el aside */
+            aside {
+                width: 25%; /* O el porcentaje que desees */
+                background-color: #cccccc; /* Color de fondo del aside */
+                color: white; /* Color del texto del aside */
+                padding: 20px; /* Espaciado interior del aside */
+                color: #000000;
+                text-align: center;
+            }
+            .content-container {
+                display: flex;
+                justify-content: space-between; /* Alinea los elementos a los extremos */
+                padding: 20px; /* Espaciado interior del contenedor */
+                margin-top:130px;
+                margin-left: 780px;
+            }
+        </style>
+
+
+
+
+        <footer th:replace="~{layout/plantilla :: footer}"/>          
+    </body>
+</html>
