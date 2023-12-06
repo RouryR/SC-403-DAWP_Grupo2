@@ -32,20 +32,22 @@
                                             <h2 class="mt-1 mb-5 pb-1">Inicio de Sesión</h2>
                                         </div>
 
-                                        <form class="btn-zoom">
 
-
+                                
+                                        
+                                        <form class="btn-zoom" action="/sesion/login" method="post">
                                             <div class="mb-3">
-                                                <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="*Correo" aria-label="Correo Electronico">
+                                                <input type="text" name="correo" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="*Correo" aria-label="Correo Electronico"/>
                                                     <div id="emailHelp" class="form-text">No compartiremos su correo con terceros.</div>
                                             </div>
 
                                             <div class="mb-3">
-                                                <input type="password" class="form-control" id="exampleInputPassword1" placeholder="*Contraseña" aria-label="Contraseña">
+                                                <input type="password" name="password" class="form-control" id="exampleInputPassword1" placeholder="*Contraseña" aria-label="Contraseña"/>
                                             </div>
 
                                             <div class="text-center pt-1 mb-5 pb-1">
-                                                <a th:href="@{/usuario/UsuarioPage}" class="btn btn-primary">Enviar</a>
+                                                <button type="submit" class="btn btn-primary" >Enviar</button>
+                                               
                                                 <a class="text-muted" th:href="@{/tiketes/FormularioTiketes}">¿Olvidate tu contraseña?</a>
                                             </div>
 
@@ -54,7 +56,11 @@
                                                 <a th:href="@{/tiketes/FormularioTiketes}" class="btn btn-outline-danger btn-zoom">Crear Cuenta</a>
                                             </div>
 
-                                        </form>
+                                        </form>
+
+
+                                        <!-- ... Otro código HTML después del formulario ... -->
+
 
                                     </div>
                                 </div>

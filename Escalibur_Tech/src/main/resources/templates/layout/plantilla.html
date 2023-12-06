@@ -81,11 +81,32 @@
                     <div class="d-flex justify-content-end align-items-center ">
                         <div class="nav-container">
                             <li class="nav-item" role="presentation">
-                                <a  class="btn bg-warning text-dark rounded-pill" tabindex="-1" role="button" aria-disabled="true" th:href="@{/sesion/InicioSesion}">[[#{main.iniciar_Sesion}]]</a>
-                                <a  class="btn bg-warning text-dark rounded-pill nav-item px-2"  tabindex="-1" role="button" aria-disabled="true" th:href="@{/(lang=es)}">ES</a>
-                                <a  class="btn bg-warning text-dark rounded-pill nav-item px-1" tabindex="-1" role="button" aria-disabled="true" th:href="@{/(lang=en)}">EN</a>
+                                 
+                                <th:block th:if="${usuarioAutenticado}">
+                                    <a class="btn bg-warning text-dark rounded-pill" tabindex="-1" role="button" aria-disabled="true" th:href="@{/sesion/CerrarSesion}">[[#{main.cerrar_Sesion}]]</a>
+                                </th:block>
+                                <th:block th:unless="${usuarioAutenticado}">
+                                    <a class="btn bg-warning text-dark rounded-pill" tabindex="-1" role="button" aria-disabled="true" th:href="@{/sesion/InicioSesion}">[[#{main.iniciar_Sesion}]]</a>
+                                </th:block>
+                                
+                                                                
+<!--                                <div th:if="${#authorization.expression('isAuthenticated()')}">
+                                    <form th:action="@{/sesion/CerrarSesion}" method="post">
+                                        <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
+                                        <button type="submit" class="btn btn-danger">[[#{main.cerrar_Sesion}]]</button>
+                                    </form>
+                                </div>
+                                <div th:unless="${#authorization.expression('isAuthenticated()')}">
+                                    <a th:href="@{sesion/InicioSesion}" class="btn btn-success">[[#{main.iniciar_Sesion}]]</a>
+                                </div>-->
+
+
+
+                                <a class="btn bg-warning text-dark rounded-pill nav-item px-2" tabindex="-1" role="button" aria-disabled="true" th:href="@{/(lang=es)}">ES</a>
+                                <a class="btn bg-warning text-dark rounded-pill nav-item px-1" tabindex="-1" role="button" aria-disabled="true" th:href="@{/(lang=en)}">EN</a>
                             </li>
                         </div>
+
                     </div>
 
                     <div class="container-bar">

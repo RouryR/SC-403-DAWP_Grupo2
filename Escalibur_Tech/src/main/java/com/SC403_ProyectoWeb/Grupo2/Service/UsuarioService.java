@@ -4,10 +4,16 @@
  */
 package com.SC403_ProyectoWeb.Grupo2.Service;
 
+import com.SC403_ProyectoWeb.Grupo2.Domain.Usuario;
+
+
 /**
  *
  * @author RouryR
  */
+
 public interface UsuarioService {
-    
+    Usuario autenticarUsuario(String correo, String password);
 }
+
+

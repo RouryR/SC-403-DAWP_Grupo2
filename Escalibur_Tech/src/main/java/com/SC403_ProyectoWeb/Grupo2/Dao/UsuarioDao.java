@@ -4,10 +4,15 @@
  */
 package com.SC403_ProyectoWeb.Grupo2.Dao;
 
+import com.SC403_ProyectoWeb.Grupo2.Domain.Usuario;
+import org.springframework.data.jpa.repository.JpaRepository;
+
 /**
  *
  * @author RouryR
  */
-public class UsuarioDao {
-    
+
+public interface UsuarioDao extends JpaRepository<Usuario, Long> {
+    Usuario findByCorreoAndPassword(String correo, String password);
 }
+

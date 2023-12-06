@@ -29,31 +29,32 @@
 
             </div>
             <div class="carousel-inner">
-                <div class="carousel-item active" data-bs-interval="4000">
-                    <img th:src="@{/carousel/slide1.jpg}" class="d-block w-100" alt="" height="350"/>
-                    <div class="carousel-caption d-none d-md-block"> 
-                        <h5 style="font-size: 30px; ">Soporte</h5>
-                        <p style="font-size: 38px; color: #163A59">Contamos con personal altamente capacitado</p>
-                    </div>
-                </div>
+    <div class="carousel-item active" data-bs-interval="4000">
+        <img th:src="@{/carousel/slide1.jpg}" class="d-block mx-auto" alt="" style="width: 70%; max-height: 350px;" />
+        <div class="carousel-caption d-none d-md-block">
+            <h5 style="font-size: 30px;">Soporte</h5>
+            <p style="font-size: 38px; color: #163A59">Contamos con personal altamente capacitado</p>
+        </div>
+    </div>
 
-                <div class="carousel-item" data-bs-interval="4000">
-                    <img th:src="@{/carousel/slide2.jpg}" class="d-block w-100" alt="" height="350"/>
-                    <div class="carousel-caption d-none d-md-block"> 
-                        <h5 style="font-size: 30px;">Soluciones</h5>
-                        <p style="font-size: 38px;  color: #163A59" >Visitamos y brindamos soluciones inmediatas</p>
-                    </div>
-                </div>
+    <div class="carousel-item" data-bs-interval="4000">
+        <img th:src="@{/carousel/slide2.jpg}" class="d-block mx-auto" alt="" style="width: 70%; max-height: 350px;" />
+        <div class="carousel-caption d-none d-md-block">
+            <h5 style="font-size: 30px;">Soluciones</h5>
+            <p style="font-size: 38px; color: #163A59">Visitamos y brindamos soluciones inmediatas</p>
+        </div>
+    </div>
 
-                <div class="carousel-item" data-bs-interval="4000">
-                    <img th:src="@{/carousel/slide3.jpg}" class="d-block w-100" alt=""height="350"/>
-                    <div class="carousel-caption d-none d-md-block"> 
-                        <h5 style="font-size: 30px;">Tutoria</h5>
-                        <p style="font-size: 38px;  color: #163A59">Capacitaciones en la comodidad de su empresa</p>
-                    </div>
-                </div>
+    <div class="carousel-item" data-bs-interval="4000">
+        <img th:src="@{/carousel/slide3.jpg}" class="d-block mx-auto" alt="" style="width: 70%; max-height: 350px;" />
+        <div class="carousel-caption d-none d-md-block">
+            <h5 style="font-size: 30px;">Tutoría</h5>
+            <p style="font-size: 38px; color: #163A59">Capacitaciones en la comodidad de su empresa</p>
+        </div>
+    </div>
+</div>
 
-            </div>
+
             <!-- Anterior -->
             <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="prev">
                 <img th:src="@{/carousel/prev.png}" alt="Anterior">
@@ -69,7 +70,11 @@
 
         <div class="content-container">
             <section>
-                <p style="color: white; font-weight: bold; font-size: 25px; background-color: #2069AD; margin-top: 0; text-align: center; border-bottom: 1px solid black">¡Bienvenido!</p>
+                
+                <p style="color: white; font-weight: bold; font-size: 25px; background-color: #2069AD; margin-top: 0; text-align: center; border-bottom: 1px solid black">
+    <i class="fa-solid fa-briefcase fa-beat fa-sm" style="color: #ffffff;"></i> ¡Bienvenido!
+</p>
+
                 <h2>Sobre nosotros</h2>
                 <p>Somos un grupo dinámico con gran experiencia en el mercado del desarrollo de software empresarial aplicables al ámbito del ERP 
                     en áreas como Ruteo y Distribución, Financiero Contable, Importaciones, Manufactura y más..</p>
@@ -81,7 +86,8 @@
 
             <aside class="text-center">
                 <!-- Contenido de la barra lateral izquierda -->
-                <p style="color: white; font-weight: bold; font-size: 25px; background-color: #2069AD; margin-top: 0; text-align: center; border-bottom: 1px solid black">Casos de Éxito</p>
+                <p style="color: white; font-weight: bold; font-size: 25px; background-color: #2069AD; margin-top: 0; text-align: center; border-bottom: 1px solid black">
+                    <i class="fa-solid fa-thumbs-up fa-beat fa-sm" style="color: #ffffff;"></i> Casos de Éxito</p>
                 <div id="carouselExampleDark" class="carousel carousel-dark slide" data-bs-ride="carousel">
                     <div class="carousel-inner">
                         <div class="carousel-item active" data-bs-interval="3000">
@@ -118,12 +124,12 @@
         <style>
             /* Estilos para el section */
             section {
-                width: 73%; /* O el porcentaje que desees */
-                background-color: #cccccc; /* Color de fondo del section */
+                width: 50%; /* O el porcentaje que desees */
                 color: white; /* Color del texto del section */
-                padding: 20px; /* Espaciado interior del section */
+                padding: 0px; /* Espaciado interior del section */
                 color: #000000;
                 text-align: center;
+                margin-left: 10%;
             }
 
             /* Estilos para el aside */

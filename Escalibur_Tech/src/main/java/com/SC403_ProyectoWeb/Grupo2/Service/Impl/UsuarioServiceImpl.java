@@ -4,10 +4,26 @@
  */
 package com.SC403_ProyectoWeb.Grupo2.Service.Impl;
 
+import com.SC403_ProyectoWeb.Grupo2.Dao.UsuarioDao;
+import com.SC403_ProyectoWeb.Grupo2.Domain.Usuario;
+import com.SC403_ProyectoWeb.Grupo2.Service.UsuarioService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
 /**
  *
  * @author RouryR
  */
-public class UsuarioServiceImpl {
-    
+
+@Service
+public class UsuarioServiceImpl implements UsuarioService {
+    @Autowired
+    private UsuarioDao usuarioDao;  
+
+    @Override
+    public Usuario autenticarUsuario(String correo, String password) {
+
+        return usuarioDao.findByCorreoAndPassword(correo, password);
+    }
 }
+
