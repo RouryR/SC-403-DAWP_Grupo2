@@ -17,9 +17,19 @@ import jakarta.persistence.Table;
 public class Usuario {
      @Id
     private Long id;
-    private String correo;
+    private String nombre;
+     private String usuario;
     private String password;
+     private String apellidos;
+    private String correo;
+     private String empresa;
+     private String puesto;
+     private String salario;
+     private String telefono;
     private boolean activo;
+
+    public Usuario() {
+    }
 
     public Long getId() {
         return id;
@@ -29,12 +39,20 @@ public class Usuario {
         this.id = id;
     }
 
-    public String getCorreo() {
-        return correo;
+    public String getNombre() {
+        return nombre;
     }
 
-    public void setCorreo(String correo) {
-        this.correo = correo;
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public String getUsuario() {
+        return usuario;
+    }
+
+    public void setUsuario(String usuario) {
+        this.usuario = usuario;
     }
 
     public String getPassword() {
@@ -45,6 +63,54 @@ public class Usuario {
         this.password = password;
     }
 
+    public String getApellidos() {
+        return apellidos;
+    }
+
+    public void setApellidos(String apellidos) {
+        this.apellidos = apellidos;
+    }
+
+    public String getCorreo() {
+        return correo;
+    }
+
+    public void setCorreo(String correo) {
+        this.correo = correo;
+    }
+
+    public String getEmpresa() {
+        return empresa;
+    }
+
+    public void setEmpresa(String empresa) {
+        this.empresa = empresa;
+    }
+
+    public String getPuesto() {
+        return puesto;
+    }
+
+    public void setPuesto(String puesto) {
+        this.puesto = puesto;
+    }
+
+    public String getSalario() {
+        return salario;
+    }
+
+    public void setSalario(String salario) {
+        this.salario = salario;
+    }
+
+    public String getTelefono() {
+        return telefono;
+    }
+
+    public void setTelefono(String telefono) {
+        this.telefono = telefono;
+    }
+
     public boolean isActivo() {
         return activo;
     }
@@ -53,16 +119,19 @@ public class Usuario {
         this.activo = activo;
     }
 
-    public Usuario() {
-      
-    }
-    
-    public Usuario(Long id, String correo, String password, boolean activo) {
+    public Usuario(Long id, String nombre, String usuario, String password, String apellidos, String correo, String empresa, String puesto, String salario, String telefono, boolean activo) {
         this.id = id;
-        this.correo = correo;
+        this.nombre = nombre;
+        this.usuario = usuario;
         this.password = password;
+        this.apellidos = apellidos;
+        this.correo = correo;
+        this.empresa = empresa;
+        this.puesto = puesto;
+        this.salario = salario;
+        this.telefono = telefono;
         this.activo = activo;
     }
-
-
+    
+    
 }

@@ -1,69 +1,61 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org"
-      xmlns="http://www.w3.org/1999/xhtml">
-    <head th:replace="~{layout/plantilla :: head}">
-        <title>Excalibur-Tech</title>        
-    </head>
+<html xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/xhtml">
+
+<head th:replace="~{layout/plantilla :: head}">
+    <title>Excalibur-Tech</title>
+</head>
+
+<body>
+    <header th:replace="~{layout/plantilla :: header}" />
+    </header>
+
     <body>
-        <header th:replace="~{layout/plantilla :: header}"/>
+        <div class="grid-container">
+            <div class="grid-item">
+                <h2>Estadistica</h2>
 
-        <!-- Alerta de cookies -->
-        <div class="alert alert-warning alert-dismissible fade show fixed-bottom" role="alert"
-             style="text-align: center;">
-            <i class="bi bi-exclamation-triangle-fill me-2"></i>
-            <strong> Esta página usa Cookies 🍪 para su funcionamiento. </strong>
-            <button type="button" class="btn btn-success" data-bs-dismiss="alert" id="acceptButton">ACEPTAR</button>
+                <p>Podrá obtener reportes exactos sobre las siguientes categorías:</p>
+                <p>– Clientes</p>
+                <p>– Agentes de venta</p>
+                <p>– Productos</p>
+                <p>– Zonas geográficas</p>
+                <p>– Canales de Venta</p>
+                <p>– Provincia y cantón</p>
+                <p>– Segmento de Mercado</p>
+                <p>– Actividad de Clientes</p>
+            </div>
+            <div class="grid-item">
+                <br>
+                <p><img src="http://www.excalibur-tech.com/wp-content/uploads/2017/03/internas/estadisticas.jpg"
+                        alt="estadistica" width="100%" height="500" /></p>
+
+            </div>
         </div>
+    </body>
 
 
-        </header>
+    <style>
+        .grid-container {
+            display: grid;
+            grid-template-columns: 2fr 2fr;
+            grid-gap: 10px;
+            padding: 82px;
+        }
 
-       <body>
-    <div class="grid-container">
-        <div class="grid-item">
-            <h2>Estadistica</h2>
-            
-            <p>Podrá obtener reportes exactos sobre las siguientes categorías:</p>
-            <p>– Clientes</p>
-            <p>– Agentes de venta</p>
-            <p>– Productos</p>
-            <p>– Zonas geográficas</p>
-            <p>– Canales de Venta</p>
-            <p>– Provincia y cantón</p>
-            <p>– Segmento de Mercado</p>
-            <p>– Actividad de Clientes</p>
-        </div>
-        <div class="grid-item">
-            <br>
-            <p><img src="http://www.excalibur-tech.com/wp-content/uploads/2017/03/internas/estadisticas.jpg" alt="estadistica" width="100%" height="500"/></p>
+        .grid-item {
+            padding: 10px;
+            text-align: center;
+        }
 
-        </div>
-    </div>
+        .grid-item .row1 {
+            padding: 10px;
+            text-align: center;
+            border: 1px solid black;
+
+        }
+    </style>
+
+    <footer th:replace="~{layout/plantilla :: footer}" />
 </body>
 
-
-        <style>
-            .grid-container {
-                display: grid;
-                grid-template-columns: 2fr 2fr;
-                grid-gap: 10px;
-                padding: 82px;
-            }
-
-            .grid-item {
-                padding: 10px;
-                text-align: center;
-            }
-
-            .grid-item .row1 {
-                padding: 10px;
-                text-align: center;
-                border: 1px solid black;
-                
-            }
-
-        </style>         
-
-        <footer th:replace="~{layout/plantilla :: footer}"/>          
-    </body>
 </html>

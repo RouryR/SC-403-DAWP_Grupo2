@@ -1,156 +1,562 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org"
-      xmlns="http://www.w3.org/1999/xhtml">
-    <head th:replace="~{layout/plantilla :: head}">
-        <title>Excalibur-Tech</title>        
-    </head>
-    <body>
-        <header th:replace="~{layout/plantilla :: header}"/>
+<html xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/xhtml">
 
-        <!-- Alerta de cookies -->
-        <div class="alert alert-warning alert-dismissible fade show fixed-bottom" role="alert"
-             style="text-align: center;">
-            <i class="bi bi-exclamation-triangle-fill me-2"></i>
-            <strong> Esta página usa Cookies 🍪 para su funcionamiento. </strong>
-            <button type="button" class="btn btn-success" data-bs-dismiss="alert" id="acceptButton">ACEPTAR</button>
+<head th:replace="~{layout/plantilla :: head}">
+    <title>Excalibur-Tech</title>
+</head>
+
+<body>
+    <header th:replace="~{layout/plantilla :: header}" />
+
+    <!-- Alerta de cookies -->
+    <div class="alert alert-warning alert-dismissible fade show fixed-bottom" role="alert" style="text-align: center;">
+        <i class="bi bi-exclamation-triangle-fill me-2"></i>
+        <strong> Esta página usa Cookies 🍪 para su funcionamiento. </strong>
+        <button type="button" class="btn btn-success" data-bs-dismiss="alert" id="acceptButton">ACEPTAR</button>
+    </div>
+
+    <div id="carouselExampleDark" class="carousel carousel-dark slide" data-bs-ride="carousel">
+        <div class="carousel-indicators">
+            <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="0" class="active"
+                aria-current="true" aria-label=""></button>
+
+            <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="1" aria-label=""></button>
+
+            <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="2" aria-label=""></button>
+
+
         </div>
-
-        <div id="carouselExampleDark" class="carousel carousel-dark slide" data-bs-ride="carousel">
-            <div class="carousel-indicators">
-                <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="0" class="active"
-                        aria-current="true" aria-label=""></button>
-
-                <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="1"
-                        aria-label=""></button>
-
-                <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="2"
-                        aria-label=""></button>
-
-
+        <div class="carousel-inner">
+            <div class="carousel-item active" data-bs-interval="4000">
+                <img th:src="@{/carousel/slide1.jpg}" class="d-block mx-auto" alt=""
+                    style="width: 70%; max-height: 350px;" />
+                <div class="carousel-caption d-none d-md-block">
+                    <h5 style="font-size: 30px;">Soporte</h5>
+                    <p style="font-size: 38px; color: #163A59">Contamos con personal altamente capacitado</p>
+                </div>
             </div>
-            <div class="carousel-inner">
-    <div class="carousel-item active" data-bs-interval="4000">
-        <img th:src="@{/carousel/slide1.jpg}" class="d-block mx-auto" alt="" style="width: 70%; max-height: 350px;" />
-        <div class="carousel-caption d-none d-md-block">
-            <h5 style="font-size: 30px;">Soporte</h5>
-            <p style="font-size: 38px; color: #163A59">Contamos con personal altamente capacitado</p>
+
+            <div class="carousel-item" data-bs-interval="4000">
+                <img th:src="@{/carousel/slide2.jpg}" class="d-block mx-auto" alt=""
+                    style="width: 70%; max-height: 350px;" />
+                <div class="carousel-caption d-none d-md-block">
+                    <h5 style="font-size: 30px;">Soluciones</h5>
+                    <p style="font-size: 38px; color: #163A59">Visitamos y brindamos soluciones inmediatas</p>
+                </div>
+            </div>
+
+            <div class="carousel-item" data-bs-interval="4000">
+                <img th:src="@{/carousel/slide3.jpg}" class="d-block mx-auto" alt=""
+                    style="width: 70%; max-height: 350px;" />
+                <div class="carousel-caption d-none d-md-block">
+                    <h5 style="font-size: 30px;">Tutoría</h5>
+                    <p style="font-size: 38px; color: #163A59">Capacitaciones en la comodidad de su empresa</p>
+                </div>
+            </div>
         </div>
+
+
+        <!-- Anterior -->
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="prev">
+            <img th:src="@{/carousel/prev.png}" alt="Anterior">
+            <span class="visually-hidden">Anterior</span>
+        </button>
+        <!-- Siguiente -->
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="next">
+            <img th:src="@{/carousel/next.png}" alt="Siguiente">
+            <span class="visually-hidden">Siguiente</span>
+        </button>
     </div>
+    
 
-    <div class="carousel-item" data-bs-interval="4000">
-        <img th:src="@{/carousel/slide2.jpg}" class="d-block mx-auto" alt="" style="width: 70%; max-height: 350px;" />
-        <div class="carousel-caption d-none d-md-block">
-            <h5 style="font-size: 30px;">Soluciones</h5>
-            <p style="font-size: 38px; color: #163A59">Visitamos y brindamos soluciones inmediatas</p>
-        </div>
-    </div>
+    <div class="content-container">
+        <section>
 
-    <div class="carousel-item" data-bs-interval="4000">
-        <img th:src="@{/carousel/slide3.jpg}" class="d-block mx-auto" alt="" style="width: 70%; max-height: 350px;" />
-        <div class="carousel-caption d-none d-md-block">
-            <h5 style="font-size: 30px;">Tutoría</h5>
-            <p style="font-size: 38px; color: #163A59">Capacitaciones en la comodidad de su empresa</p>
-        </div>
-    </div>
-</div>
+            <p
+                style="color: white; font-weight: bold; font-size: 25px; background-color: #2069AD; margin-top: 0; text-align: center; border-bottom: 1px solid black">
+                <i class="fa-solid fa-briefcase fa-beat fa-sm" style="color: #ffffff;"></i> ¡Bienvenido!
+            </p>
+
+            <h2>Sobre nosotros</h2>
+            <p class="espaciado-p">
+                <i class="fa-solid fa-bullseye fa-3x" style="color: #edb718; vertical-align: middle;"></i>
+                Misión: En <strong>Excalibur-Tech S.A.</strong> somos una empresa líder en soluciones de tecnología de
+                la información, ofreciendo
+                un servicio de
+                calidad del más alto nivel competitivo que garantiza a nuestros clientes la administración adecuada de
+                su información.
+            </p>
 
 
-            <!-- Anterior -->
-            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="prev">
-                <img th:src="@{/carousel/prev.png}" alt="Anterior">
-                    <span class="visually-hidden">Anterior</span>
-            </button>
-            <!-- Siguiente -->
-            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="next">
-                <img th:src="@{/carousel/next.png}" alt="Siguiente">
-                    <span class="visually-hidden">Siguiente</span>
-            </button>
-        </div>
-        </header>
+            <p class="espaciado-p">
+                <i class="fa-solid fa-arrows-to-eye fa-3x" style="color: #edb718; vertical-align: middle;"></i>
+                Visión: En <strong>Excalibur-Tech S.A.</strong> buscamos ser un proveedor de servicios de tecnología de
+                la información de primer
+                nivel, que ayude
+                a los clientes en el cumplimiento de sus objetivos mediante una herramienta flexible, amigable, poderosa
+                y acorde a las
+                necesidades de cada uno.
+            </p>
 
-        <div class="content-container">
-            <section>
-                
-                <p style="color: white; font-weight: bold; font-size: 25px; background-color: #2069AD; margin-top: 0; text-align: center; border-bottom: 1px solid black">
-    <i class="fa-solid fa-briefcase fa-beat fa-sm" style="color: #ffffff;"></i> ¡Bienvenido!
-</p>
+            <p
+                style="color: white; font-weight: bold; font-size: 25px; background-color: #2069AD; margin-top: 0; text-align: center; border-bottom: 1px solid black">
+                <i class="fa-solid fa-grip fa-beat fa-sm" style="color: #ffffff;"></i> Nuestros Servicios
+            </p>
 
-                <h2>Sobre nosotros</h2>
-                <p>Somos un grupo dinámico con gran experiencia en el mercado del desarrollo de software empresarial aplicables al ámbito del ERP 
-                    en áreas como Ruteo y Distribución, Financiero Contable, Importaciones, Manufactura y más..</p>
 
-                <p2>Con EXCALIBUR-TECH, usted como empresario, desde cualquier rincón del mundo podrá ver el tiempo real, el comportamiento de 
-                    su compañía, a tan solo un click de su mano.</p2>
-
-            </section>
-
-            <aside class="text-center">
-                <!-- Contenido de la barra lateral izquierda -->
-                <p style="color: white; font-weight: bold; font-size: 25px; background-color: #2069AD; margin-top: 0; text-align: center; border-bottom: 1px solid black">
-                    <i class="fa-solid fa-thumbs-up fa-beat fa-sm" style="color: #ffffff;"></i> Casos de Éxito</p>
-                <div id="carouselExampleDark" class="carousel carousel-dark slide" data-bs-ride="carousel">
-                    <div class="carousel-inner">
-                        <div class="carousel-item active" data-bs-interval="3000">
-                            <img th:src="@{/CasosExito/02.jpg}" class="d-block w-100" alt="...">
-                        </div>
-                        <div class="carousel-item" data-bs-interval="3000">
-                            <img th:src="@{/CasosExito/04.jpg}" class="d-block w-100" alt="...">
-                        </div>
-                        <div class="carousel-item" data-bs-interval="3000">
-                            <img th:src="@{/CasosExito/10.jpg}" class="d-block w-100" alt="...">
-                        </div>
-                    </div>
-                    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="prev">
-                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                        <span class="visually-hidden">Anterior</span>
-                    </button>
-                    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="next">
-                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                        <span class="visually-hidden">Siguiente</span>
-                    </button>
+            <div class="grid-container">
+                <div class="grid-item">
+                    <i class="fa-solid fa-cash-register fa-3x"></i>
+                    <span>Estadísticas de ventas</span>
                 </div>
 
-                <div class="card" style="width: 265; border:  1px solid black;">
-                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3929.493143790535!2d-84.14319946496333!3d9.976061027686155!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8fa0fb07759872f9%3A0x6ea635cbbf7e8f60!2sMulticomercial+Baden!5e0!3m2!1sen!2s!4v1489010248162" width="264" height="218" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0" class="d-block mx-auto"></iframe>
-                    <div class="card-body text-center">
-                        <h5 class="card-title">Encuentranos</h5>
-                        <p>Multicomercial Badem, Heredia</p>
-                        <a href="https://maps.app.goo.gl/7rQVKvmHe2rrWDg3A" class="btn btn-success" target="_blank">Abrir Mapa</a>
+                <div class="grid-item">
+                    <i class="fa-solid fa-chart-line fa-3x"></i>
+                    <span>Facturación</span>
+                </div>
+
+                <div class="grid-item">
+                    <i class="fa-solid fa-sack-dollar fa-3x"></i>
+                    <span>Cuentas por cobrar</span>
+                </div>
+
+                <div class="grid-item">
+                    <i class="fa-solid fa-chalkboard-user fa-3x"></i>
+                    <span>Liquidaciones de agentes</span>
+                </div>
+
+                <div class="grid-item">
+                    <i class="fa-solid fa-person-arrow-down-to-line fa-3x"></i>
+                    <span>Comisiones</span>
+                </div>
+
+                <div class="grid-item">
+                    <i class="fa-solid fa-file-circle-exclamation fa-3x"></i>
+                    <span>Contabilidad</span>
+                </div>
+
+                <div class="grid-item">
+                    <i class="fa-solid fa-building-columns fa-3x"></i>
+                    <span>Bancos y conciliaciones</span>
+                </div>
+
+                <div class="grid-item">
+                    <i class="fa-solid fa-money-bill-transfer fa-3x"></i>
+                    <span>Cuentas por pagar</span>
+                </div>
+
+                <div class="grid-item">
+                    <i class="fa-solid fa-swatchbook fa-3x"></i>
+                    <span>Activos fijos</span>
+                </div>
+
+                <div class="grid-item">
+                    <i class="fa-solid fa-paste fa-3x"></i>
+                    <span>Inventarios</span>
+                </div>
+
+                <div class="grid-item mb-3">
+                    <i class="fa-solid fa-truck-fast fa-3x"></i>
+                    <span>Compras</span>
+                </div>
+            </div>
+
+
+            <p class="espaciado-p"> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor
+                incididunt ut labore et
+                dolore magna
+                aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
+                commodo
+                consequat.
+
+                Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+                pariatur.
+                Excepteur sint
+                occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore
+                et
+                dolore magna
+                aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
+                commodo
+                consequat.
+
+                Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+                pariatur.
+                Excepteur sint
+                occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                </p>
+
+
+            <p
+                style="color: white; font-weight: bold; font-size: 25px; background-color: #2069AD; margin-top: 0; text-align: center; border-bottom: 1px solid black">
+                <i class="fa-solid fa-thumbs-up fa-beat fa-sm" style="color: #ffffff;"></i> Casos de Éxito
+            </p>
+            <div class="row mb-3">
+                <div class="col-sm-6 mb-5">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">Distriubuidora Gonzalez</h5>
+                            <img th:src="@{/CasosExito/1.jpg}" class="card-img-top" alt="...">
+                            <p class="card-text">With supporting text below as a natural lead-in to additional
+                                content.
+                            </p>
+                        </div>
                     </div>
                 </div>
-            </aside>
-        </div>
+                <div class="col-sm-6 mb-5">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">CetranS.A</h5>
+                            <img th:src="@{/CasosExito/2.jpg}" class="card-img-top" alt="...">
+                            <p class="card-text">With supporting text below as a natural lead-in to additional
+                                content.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">Cervantes</h5>
+                            <img th:src="@{/CasosExito/3.png}" class="card-img-top" alt="...">
+                            <p class="card-text">With supporting text below as a natural lead-in to additional
+                                content.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6 mb-5">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">Distriubuidora Cervantes</h5>
+                            <img th:src="@{/CasosExito/4.jpg}" class="card-img-top" alt="...">
+                            <p class="card-text">With supporting text below as a natural lead-in to additional
+                                content.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6 mb-5">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">alserro</h5>
+                            <img th:src="@{/CasosExito/5.png}" class="card-img-top" alt="...">
+                            <p class="card-text">With supporting text below as a natural lead-in to additional
+                                content.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6 mb-5">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title"> Quimica Del Norte</h5>
+                            <img th:src="@{/CasosExito/6.jpg}" class="card-img-top" alt="...">
+                            <p class="card-text">With supporting text below as a natural lead-in to additional
+                                content.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6 mb-5">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">Establishment Labs</h5>
+                            <img th:src="@{/CasosExito/7.jpg}" class="card-img-top" alt="...">
+                            <p class="card-text">With supporting text below as a natural lead-in to additional
+                                content.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6 mb-5">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">Distriubuidora Naranjo</h5>
+                            <img th:src="@{/CasosExito/8.jpg}" class="card-img-top" alt="...">
+                            <p class="card-text">With supporting text below as a natural lead-in to additional
+                                content.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6 mb-5">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">La Abejita</h5>
+                            <img th:src="@{/CasosExito/9.png}" class="card-img-top" alt="...">
+                            <p class="card-text">With supporting text below as a natural lead-in to additional
+                                content.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6 mb-5">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">Manza Té</h5>
+                            <img th:src="@{/CasosExito/10.png}" class="card-img-top" alt="...">
+                            <p class="card-text">With supporting text below as a natural lead-in to additional
+                                content.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6 mb-5">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">Supermercado Media Luna</h5>
+                            <img th:src="@{/CasosExito/11.jpg}" class="card-img-top" alt="...">
+                            <p class="card-text">With supporting text below as a natural lead-in to additional
+                                content.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6 mb-5">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">Distribuidora Barrantes y Cia</h5>
+                            <img th:src="@{/CasosExito/12.jpg}" class="card-img-top" alt="...">
+                            <p class="card-text">With supporting text below as a natural lead-in to additional
+                                content.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6 mb-5">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">La Central</h5>
+                            <img th:src="@{/CasosExito/13.png}" class="card-img-top" alt="...">
+                            <p class="card-text">With supporting text below as a natural lead-in to additional
+                                content.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6 mb-5">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">Ferreteria Ferconce</h5>
+                            <img th:src="@{/CasosExito/14.png}" class="card-img-top" alt="...">
+                            <p class="card-text">With supporting text below as a natural lead-in to additional
+                                content.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6 mb-5">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">iGloo</h5>
+                            <img th:src="@{/CasosExito/15.png}" class="card-img-top" alt="...">
+                            <p class="card-text">With supporting text below as a natural lead-in to additional
+                                content.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-        <style>
-            /* Estilos para el section */
-            section {
-                width: 50%; /* O el porcentaje que desees */
-                color: white; /* Color del texto del section */
-                padding: 0px; /* Espaciado interior del section */
-                color: #000000;
-                text-align: center;
-                margin-left: 10%;
+        <aside class="text-center">
+            <!-- Contenido de la barra lateral izquierda -->
+            <div class="card card-no-effect mb-1" style="width: 265; border:  transparent;">
+                <p
+                    style="color: white; font-weight: bold; font-size: 25px; background-color: #475152; margin-top: 0; text-align: center;">
+                    <i class="fa-solid fa-location-dot fa-beat fa-sm" style="color: #ffffff;"></i> Encuentranos
+                </p>
+                <iframe
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3929.493143790535!2d-84.14319946496333!3d9.976061027686155!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8fa0fb07759872f9%3A0x6ea635cbbf7e8f60!2sMulticomercial+Baden!5e0!3m2!1sen!2s!4v1489010248162"
+                    width="340" height="250" frameborder="1" style="border:1px;" allowfullscreen="" aria-hidden="false" tabindex="0"
+                    class="d-block mx-auto"></iframe>
+                <div class="card-body text-center" style="color: black;">
+                    <p>Dirección: Multicomercial Badem, Heredia</p>
+                    <a href="https://maps.app.goo.gl/7rQVKvmHe2rrWDg3A" class="btn btn-success" target="_blank">Abrir
+                        Mapa</a>
+                </div>
+            </div>
+            <div class="card card-no-effect mb-3 mx-auto" style="width: 265;  ">
+                <div class="card-header" style="color: white; background: #475152; font-weight: bold; font-size: 25px;">
+                Accesos Rapidos
+                </div>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">
+                        <i class="fa-solid fa-phone fa-lg" style="color: #2069ad;"></i>
+                        2293-4504 / 2293- 3878
+                    </li>
+                    <li class="list-group-item">
+                        <i class="fa-solid fa-envelope fa-lg" style="color: #2069ad;"></i>
+                        servicioalcliente@excalibur-tech.com
+                    </li>
+                    <li class="list-group-item card">
+                        <a th:href="@{/tiketes/FormularioTiketes}" style="text-decoration: none; color: inherit;">
+                            <i class="fa-solid fa-headset fa-lg" style="color: #2069ad;"></i>
+                            Soporte
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </aside>
+    </div>
+
+    <style>
+        .row.mb-3 .col-sm-6 {
+            flex: 0 0 calc(33.333% - 16px);
+            max-width: calc(25% - 16px);
+            margin-left: 1%;
+        }
+
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 16px;
+            /* Espaciado entre los elementos */
+        }
+
+        .grid-item {
+            text-align: center;
+            white-space: nowrap;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            transition: transform 0.3s, background-color 0.3s;
+        }
+
+        .grid-item:hover {
+            transform: scale(1.1);
+            background-color: #edb718;
+        }
+
+        .grid-item i {
+            font-size: 3em;
+            color: #edb718;
+            transition: color 0.3s;
+        }
+
+        .grid-item:hover i {
+            color: #000000;
+        }
+
+        .grid-item span {
+            font-weight: bold;
+        }
+
+        .grid-item:hover span {
+            color: #ffffff;
+        }
+
+        .espaciado-p {
+            margin-bottom: 16px;
+        }
+
+      section {
+                    width: 70%;
+                    color: white;
+                    padding: 0px;
+                    color: #000000;
+                    text-align: center;
+                    margin-left: 4%;
+                }
+
+                /* Estilos para el aside */
+                aside {
+                    position: sticky;
+                    top: 80px;
+                    width: 24%;
+                    background-color: #2069AD;
+                    color: white;
+                    padding: 10px;
+                    text-align: center;
+                    height: 90vh;
+                    overflow-y: auto;
+                    z-index: 1;
+                }
+
+                .content-container {
+                    display: flex;
+                    justify-content: space-between;
+                    padding: 0px;
+                    margin-top: 20px;
+                }
+
+        .card-hidden {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.5s, transform 0.5s;
+        }
+
+        .card-visible {
+            opacity: 1;
+            transform: translateY(0);
+            transition: opacity 0.5s, transform 0.5s, background-color 0.5s, box-shadow 0.5s;
+        }
+
+        .card-visible:hover {
+            background-color: #edb718;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .card-no-effect {
+            opacity: 1 !important;
+            transform: scale(1) !important;
+            transition: none !important;
+            background-color: white !important;
+        }
+    </style>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            var acceptButton = document.getElementById("acceptButton");
+            var cookieAlert = document.querySelector(".alert");
+
+            acceptButton.addEventListener("click", function () {
+                // Establecer la cookie al hacer clic en ACEPTAR
+                document.cookie = "cookies_accepted=true;";
+
+                // Ocultar la alerta de cookies después de aceptar
+                cookieAlert.style.display = "none";
+            });
+
+            // Verificar si el usuario ya ha aceptado las cookies
+            if (document.cookie.split(';').some((item) => item.trim().startsWith('cookies_accepted='))) {
+                // Si ya ha aceptado las cookies, ocultar la alerta
+                cookieAlert.style.display = "none";
             }
+        });
 
-            /* Estilos para el aside */
-            aside {
-                width: 25%; /* O el porcentaje que desees */
-                background-color: #cccccc; /* Color de fondo del aside */
-                color: white; /* Color del texto del aside */
-                padding: 20px; /* Espaciado interior del aside */
-                color: #000000;
-                text-align: center;
+        document.addEventListener("DOMContentLoaded", function () {
+            var cards = document.querySelectorAll(".card");
+
+            // Agregar evento de desplazamiento
+            window.addEventListener("scroll", function () {
+                cards.forEach(function (card) {
+                    // Verificar si la tarjeta está en la pantalla
+                    if (isElementInViewport(card)) {
+                        card.classList.add("card-visible");
+                        card.classList.remove("card-hidden");
+                    } else {
+                        card.classList.add("card-hidden");
+                        card.classList.remove("card-visible");
+                    }
+                });
+            });
+
+            // Función para verificar si un elemento está en la pantalla
+            function isElementInViewport(el) {
+                var rect = el.getBoundingClientRect();
+                return (
+                    rect.top >= 0 &&
+                    rect.left >= 0 &&
+                    rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
+                    rect.right <= (window.innerWidth || document.documentElement.clientWidth)
+                );
             }
-            .content-container {
-                display: flex;
-                justify-content: space-between; /* Alinea los elementos a los extremos */
-                padding: 20px; /* Espaciado interior del contenedor */
-            }
-        </style>
+        });
+    </script>
+    <footer th:replace="~{layout/plantilla :: footer}" />
+</body>
 
-
-
-
-        <footer th:replace="~{layout/plantilla :: footer}"/>          
-    </body>
 </html>

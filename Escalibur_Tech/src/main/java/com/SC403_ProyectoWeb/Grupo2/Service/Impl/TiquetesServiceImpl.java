@@ -13,35 +13,42 @@ import org.springframework.transaction.annotation.Transactional;
 
 @Service
 public class TiquetesServiceImpl implements TiquetesService {
-    
+
     @Autowired
-    private TiquetesDao categoriaDao;
+    private TiquetesDao tiqueteDao;
+
     @Override
-    @Transactional(readOnly=true)
+    @Transactional(readOnly = true)
     public List<Tiquetes> getTiquetes(boolean activos) {
-        var lista=categoriaDao.findAll();
+        List<Tiquetes> lista = tiqueteDao.findAll();
         if (activos) {
-           lista.removeIf(e -> !e.isActivo());
+            lista.removeIf(e -> !e.isActivo());
         }
         return lista;
     }
-    
+
     @Override
     @Transactional(readOnly = true)
     public Tiquetes getTiquetes(Tiquetes categoria) {
-        return categoriaDao.findById(categoria.getId_tiquete()).orElse(null);
+        return tiqueteDao.findById(categoria.getId()).orElse(null);
     }
-    
+
     @Override
     @Transactional
     public void save(Tiquetes categoria) {
-        categoriaDao.save(categoria);
+        tiqueteDao.save(categoria);
     }
-    
+
     @Override
     @Transactional
     public void delete(Tiquetes categoria) {
-        categoriaDao.delete(categoria);
+        tiqueteDao.delete(categoria);
     }
-       
+
+    @Override
+    @Transactional(readOnly = true)
+    public List<Tiquetes> getTiquetesByUsuario(Long usuarioId) {
+        return tiqueteDao.findByUsuarioId(usuarioId);
+    }
 }
+

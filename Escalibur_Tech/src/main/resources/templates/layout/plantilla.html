@@ -1,319 +1,432 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:th="http://www.thymeleaf.org">
-    <head th:fragment="head">
-        <title>Excalibur-Tech</title>
-        <meta charset="UTF-8"/>
-        <link th:href="@{/webjars/bootstrap/css/bootstrap.min.css}" rel="stylesheet"/>
-        <link th:href="@{/webjars/font-awesome/css/all.css}" rel="stylesheet"/>
-        <link th:href="@{/webjars/font-awesome/css/all.css}" rel="stylesheet"/>
-        <script th:src="@{/js/rutinas.js}"></script>
-        <script th:src="@{/webjars/popper.js/umd/popper.min.js}"></script>
-        <script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>    
-        <script src="https://kit.fontawesome.com/eb496ab1a0.js" crossorigin="anonymous"></script>
-        <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
-    </head>
-    <body>
-        <header th:fragment="header" class="header">
-            <!--inicio del header-->
-            <nav class="navbar navbar-light bg-light fixed-top" style="list-style: none;">
-                <div class="container-fluid">
-                    <div class="d-flex justify-content-start align-items-center">
-                        <div class="logo-container">
-                            <a class="justify-content-start align-items-center navbar-brand" href="http://localhost/">
-                                <img th:src="@{/img/logo.svg}" alt="" class="logo-img"/>
-                            </a>
-                        </div>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
+<head th:fragment="head">
+    <title>Excalibur-Tech</title>
+    <meta charset="UTF-8" />
+    <link th:href="@{/webjars/bootstrap/css/bootstrap.min.css}" rel="stylesheet" />
+    <link th:href="@{/webjars/font-awesome/css/all.css}" rel="stylesheet" />
+    <script th:src="@{/js/rutinas.js}"></script>
+    <script th:src="@{/webjars/popper.js/umd/popper.min.js}"></script>
+    <script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
+    <script src="https://kit.fontawesome.com/eb496ab1a0.js" crossorigin="anonymous"></script>
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.1.3/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+    <header th:fragment="header" class="header">
+        <!--inicio del header-->
+        <nav class="navbar navbar-light bg-light fixed-top" style="list-style: none;">
+            <div class="container-fluid">
+                <div class="d-flex justify-content-start align-items-center">
+                    <div class="logo-container">
+                        <a class="justify-content-start align-items-center navbar-brand" href="http://localhost/">
+                            <img th:src="@{/img/logo.svg}" alt="" class="logo-img" />
+                        </a>
                     </div>
-                    <div class="d-flex justify-content-center align-items-center">
-                        <div class="nav-container d-flex">
-                            <div class="btn-group">
-                                <button type="button" class="btn btn-primary btn-lg me-2 rounded-pill dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-                                    [[#{main.productos}]]
-                                </button>
-                                <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="dropdownMenuButton2">
-                                    <li><a class="dropdown-item" th:href="@{/productos/ERP}"> [[#{main.ERP}]]</a></li>
-                                    <li><a class="dropdown-item" th:href="@{/productos/RuteoYDistribucion}">[[#{main.ruteo}]]</a></li>
-                                    <li><a class="dropdown-item" th:href="@{/productos/PuntoDeVenta}">[[#{main.punto_venta}]]</a></li>
-                                    <li><a class="dropdown-item" th:href="@{/productos/NominaYRecursosHumanos}">[[#{main.nomina}]]</a></li>
-                                    <li><a class="dropdown-item" th:href="@{/productos/Manufactura}">[[#{main.manufactura}]]</a></li>
-                                    <li><a class="dropdown-item" th:href="@{/productos/Importaciones}">[[#{main.importaciones}]]</a></li>
-                                    <li><a class="dropdown-item" th:href="@{/productos/FacturacionIntercompany}">[[#{main.intercompany}]]</a></li>
-                                    <li><a class="dropdown-item" th:href="@{/productos/Facturacion}">[[#{main.facturacion}]]</a></li>
-                                    <li><a class="dropdown-item" th:href="@{/productos/Estadistica}">[[#{main.estadistica}]]</a></li>
-                                    <li><a class="dropdown-item" th:href="@{/productos/LiquidacionDeAgentes}">[[#{main.liquidaciones}]]</a></li>
-                                    <li><a class="dropdown-item" th:href="@{/productos/CuentasPorCobrar}">[[#{main.cxc}]]</a></li>
-                                    <li><a class="dropdown-item" th:href="@{/productos/Contabilidad}">[[#{main.contabilidad}]]</a></li>
-                                    <li><a class="dropdown-item" th:href="@{/productos/Comisiones}">[[#{main.comisiones}]]</a></li>
-                                    <li><a class="dropdown-item" th:href="@{/productos/CuentasPorPagar}">[[#{main.cxp}]]</a></li>
-                                    <li><a class="dropdown-item" th:href="@{/productos/Bancos}">[[#{main.bancos}]]</a></li>
-                                    <li><a class="dropdown-item" th:href="@{/productos/Inventario}">[[#{main.inventario}]]</a></li>
-                                    <li><a class="dropdown-item" th:href="@{/productos/ActivosFijos}">[[#{main.activos}]]</a></li>
-                                    <li><a class="dropdown-item" th:href="@{/productos/Compras}">[[#{main.compras}]]</a></li>
-
-                                </ul>
-                            </div>
-                            <div class="btn-group">
-                                <button type="button" class="btn btn-primary btn-lg me-2 rounded-pill dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-                                    [[#{main.servicios}]]
-                                </button>
-                                <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="dropdownMenuButton2">
-                                    <li><a class="dropdown-item" th:href="@{/servicios/callcenter}">[[#{main.callcenter}]]</a></li>
-                                    <li><a class="dropdown-item" th:href="@{/servicios/capacitacion}">[[#{main.capacitacion}]]</a></li>
-                                    <li><a class="dropdown-item" th:href="@{/servicios/soporte}">[[#{main.soporte}]]</a></li>
-
-
-                                </ul>
-                            </div>
-                            <li class="nav-item" role="presentation">
-                                <a  class="btn btn-primary btn-lg me-2 rounded-pill" tabindex="-1" role="button" aria-disabled="true" th:href="@{/casoExito/CasosExito}">[[#{main.casos_Exito}]]</a>
-                            </li>
-                            <li class="nav-item" role="presentation">
-                                <a  class="btn btn-primary btn-lg me-2 rounded-pill" tabindex="-1" role="button" aria-disabled="true" th:href="@{/contactenos/info}">[[#{main.contactenos}]]</a>
-                            </li>
-                            <li class="nav-item" role="presentation">
-                                <a  class="btn btn-primary btn-lg me-2 rounded-pill" tabindex="-1" role="button" aria-disabled="true" th:href="@{/acercade/nosotros}">[[#{main.about}]]</a>
-                            </li>
-                        </div>
-                    </div>
-
-
-                    <div class="d-flex justify-content-end align-items-center ">
-                        <div class="nav-container">
-                            <li class="nav-item" role="presentation">
-                                 
-                                <th:block th:if="${usuarioAutenticado}">
-                                    <a class="btn bg-warning text-dark rounded-pill" tabindex="-1" role="button" aria-disabled="true" th:href="@{/sesion/CerrarSesion}">[[#{main.cerrar_Sesion}]]</a>
-                                </th:block>
-                                <th:block th:unless="${usuarioAutenticado}">
-                                    <a class="btn bg-warning text-dark rounded-pill" tabindex="-1" role="button" aria-disabled="true" th:href="@{/sesion/InicioSesion}">[[#{main.iniciar_Sesion}]]</a>
-                                </th:block>
-                                
-                                                                
-<!--                                <div th:if="${#authorization.expression('isAuthenticated()')}">
-                                    <form th:action="@{/sesion/CerrarSesion}" method="post">
-                                        <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
-                                        <button type="submit" class="btn btn-danger">[[#{main.cerrar_Sesion}]]</button>
-                                    </form>
-                                </div>
-                                <div th:unless="${#authorization.expression('isAuthenticated()')}">
-                                    <a th:href="@{sesion/InicioSesion}" class="btn btn-success">[[#{main.iniciar_Sesion}]]</a>
-                                </div>-->
-
-
-
-                                <a class="btn bg-warning text-dark rounded-pill nav-item px-2" tabindex="-1" role="button" aria-disabled="true" th:href="@{/(lang=es)}">ES</a>
-                                <a class="btn bg-warning text-dark rounded-pill nav-item px-1" tabindex="-1" role="button" aria-disabled="true" th:href="@{/(lang=en)}">EN</a>
-                            </li>
-                        </div>
-
-                    </div>
-
-                    <div class="container-bar">
-                        <input type="checkbox" id="btn-social">
-                            <label for="btn-social" class="fa fa-play"></label>
-                            <div class="icon-social">
-                                <a href="#" class="fa fa-facebook">
-                                    <span id="title">Facebook</span>
-                                </a>
-                                <a href="#" class="fa fa-youtube">
-                                    <span id="title">Youtube</span>
-                                </a>
-                                <a href="#" class="fa fa-twitter">
-                                    <span id="title">Twitter</span>
-                                </a>
-                                <a href="#" class="fa fa-whatsapp">
-                                    <span id="title">Whatsapp</span> 
-                                </a>
-                                <a href="#" class="fa fa-envelope">
-                                    <span id="title">Correo</span>
-                                </a>
-                            </div>
-                    </div>
-
                 </div>
+                <div class="d-flex justify-content-center align-items-center">
+                    <div class="nav-container d-flex">
+                        <div class="btn-group">
+                            <button type="button" class="btn btn-primary btn-lg me-2 rounded-pill dropdown-toggle"
+                                data-bs-toggle="dropdown" aria-expanded="false">
+                                [[#{main.productos}]]
+                            </button>
+                            <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="dropdownMenuButton2">
+                                <li><a class="dropdown-item" th:href="@{/productos/ERP}"> [[#{main.ERP}]]</a></li>
+                                <li><a class="dropdown-item"
+                                        th:href="@{/productos/RuteoYDistribucion}">[[#{main.ruteo}]]</a></li>
+                                <li><a class="dropdown-item"
+                                        th:href="@{/productos/PuntoDeVenta}">[[#{main.punto_venta}]]</a></li>
+                                <li><a class="dropdown-item"
+                                        th:href="@{/productos/NominaYRecursosHumanos}">[[#{main.nomina}]]</a></li>
+                                <li><a class="dropdown-item"
+                                        th:href="@{/productos/Manufactura}">[[#{main.manufactura}]]</a></li>
+                                <li><a class="dropdown-item"
+                                        th:href="@{/productos/Importaciones}">[[#{main.importaciones}]]</a></li>
+                                <li><a class="dropdown-item"
+                                        th:href="@{/productos/FacturacionIntercompany}">[[#{main.intercompany}]]</a>
+                                </li>
+                                <li><a class="dropdown-item"
+                                        th:href="@{/productos/Facturacion}">[[#{main.facturacion}]]</a></li>
+                                <li><a class="dropdown-item"
+                                        th:href="@{/productos/Estadistica}">[[#{main.estadistica}]]</a></li>
+                                <li><a class="dropdown-item"
+                                        th:href="@{/productos/LiquidacionDeAgentes}">[[#{main.liquidaciones}]]</a></li>
+                                <li><a class="dropdown-item"
+                                        th:href="@{/productos/CuentasPorCobrar}">[[#{main.cxc}]]</a></li>
+                                <li><a class="dropdown-item"
+                                        th:href="@{/productos/Contabilidad}">[[#{main.contabilidad}]]</a></li>
+                                <li><a class="dropdown-item"
+                                        th:href="@{/productos/Comisiones}">[[#{main.comisiones}]]</a></li>
+                                <li><a class="dropdown-item" th:href="@{/productos/CuentasPorPagar}">[[#{main.cxp}]]</a>
+                                </li>
+                                <li><a class="dropdown-item" th:href="@{/productos/Bancos}">[[#{main.bancos}]]</a></li>
+                                <li><a class="dropdown-item"
+                                        th:href="@{/productos/Inventario}">[[#{main.inventario}]]</a></li>
+                                <li><a class="dropdown-item"
+                                        th:href="@{/productos/ActivosFijos}">[[#{main.activos}]]</a></li>
+                                <li><a class="dropdown-item" th:href="@{/productos/Compras}">[[#{main.compras}]]</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="btn-group">
+                            <button type="button" class="btn btn-primary btn-lg me-2 rounded-pill dropdown-toggle"
+                                data-bs-toggle="dropdown" aria-expanded="false">
+                                [[#{main.servicios}]]
+                            </button>
+                            <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="dropdownMenuButton2">
+                                <li><a class="dropdown-item"
+                                        th:href="@{/servicios/callcenter}">[[#{main.callcenter}]]</a></li>
+                                <li><a class="dropdown-item"
+                                        th:href="@{/servicios/capacitacion}">[[#{main.capacitacion}]]</a></li>
+                                <li><a class="dropdown-item" th:href="@{/servicios/soporte}">[[#{main.soporte}]]</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <li class="nav-item" role="presentation">
+                            <a class="btn btn-primary btn-lg me-2 rounded-pill" tabindex="-1" role="button"
+                                aria-disabled="true" th:href="@{/casoExito/CasosExito}">[[#{main.casos_Exito}]]</a>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <a class="btn btn-primary btn-lg me-2 rounded-pill" tabindex="-1" role="button"
+                                aria-disabled="true" th:href="@{/contactenos/info}">[[#{main.contactenos}]]</a>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <a class="btn btn-primary btn-lg me-2 rounded-pill" tabindex="-1" role="button"
+                                aria-disabled="true" th:href="@{/acercade/nosotros}">[[#{main.about}]]</a>
+                        </li>
+                    </div>
+                </div>
+                <div class="d-flex justify-content-end align-items-center">
+                    <div class="nav-container">
+                        <li class="nav-item" role="presentation">
+                            <a th:if="${usuarioAutenticado}" class="btn bg-warning text-dark rounded-pill" tabindex="-1" role="button"
+                                aria-disabled="true" th:href="@{/sesion/CerrarSesion}">
+                                [[#{main.cerrar_Sesion}]]
+                            </a>
+                            <a th:unless="${usuarioAutenticado}" class="btn bg-warning text-dark rounded-pill" tabindex="-1" role="button"
+                                aria-disabled="true" th:href="@{/sesion/InicioSesion}">
+                                [[#{main.iniciar_Sesion}]]
+                            </a>
 
-                <style>
-                    /* Estilos Header */
-                    .container-fluid {
-                        position: fixed;
-                        top: 0;
-                        height: 80px;
-                        width: 100%;
-                        border-bottom: 1px solid black;
-                        z-index: 5;
-                        background-color: #2069AD;
-                        /*Color de fondo de la barra lateral */
-                        border-bottom: 1px solid black;
-                    }
-
-
-                    .logo-img {
-                        height: 79px;
-                        /* Ajusta según el tamaño deseado */
-                    }
-
-                    .carousel {
-                        border-bottom: 1px solid black;
-                        background-color: lightgray;
-                        width: 100%;
-                        padding: 0px;
-                        margin-top: 50px;
-
-                    }
-
-
-                    .active {
-                        background-color: #ffffff !important;
-                        color: #000000 !important;
-                        border: 1px solid black !important;
-                    }
-
-
-                    .nav-container .btn{
-                        font-size: 15px;
-                        color: #ffffff;
-                        background-color: #475152;
-                        margin-top: 14px;
-                        border: 1px solid white;
-                    }
-
-
-                    .btn:hover {
-                        color: #000000 !important;
-                        ;
-                        /* Cambia este valor al color que desees cuando se pasa el mouse sobre el botón */
-                        background-color: #ffffff !important;
-                        border: 1px solid black !important;
-                    }
-
-                    /* Estilos para el contenedor de contenido */
-                    .content-container {
-                        display: flex;
-                        justify-content: space-between; /* Alinea los elementos a los extremos */
-                        padding: 20px; /* Espaciado interior del contenedor */
-                    }
-
-                    .container-bar{
-                        width: 100%;
-                        max-width: 50px;
-                        position: fixed;
-                        left: 0;
-                        top: 25%;
-                    }
-                    .container-bar a{
-                        display: block;
-                        width: 50px;
-                        height: 50px;
-                        line-height: 50px;
-                        text-align: center;
-                        text-decoration: none;
-                        font-size: 18px;
-                        position: relative;
-                        transition: all 500ms ease;
-                        color: #fff;
-                    }
-                    .container-bar a:hover{
-                        background: #1c1c1c;
-                    }
-                    .container-bar .fa-facebook{
-                        background: #3b5998;
-                        border-radius: 0px 5px 0px 0px;
-                    }
-                    .container-bar .fa-youtube{
-                        background: #e52a23;
-                    }
-                    .container-bar .fa-twitter{
-                        background: #00acee;
-                    }
-                    .container-bar .fa-whatsapp{
-                        background: #4ac926;
-                    }
-                    .container-bar .fa-envelope{
-                        background: #999999;
-                        border-radius: 0px 0px 5px 0px;
-                    }
-                    .container-bar #title{
-                        position: absolute;
-                        background: #1c1c1c;
-                        padding: 0px 8px;
-                        height: 30px;
-                        line-height: 30px;
-                        text-align: center;
-                        border-radius: 3px;
-                        font-size: 15px;
-                        top:12px;
-                        left: 0px;
-                        transition: all 500ms ease;
-                        opacity: 0;
-                        visibility: hidden;
-                        z-index: -1;
-                    }
-                    .container-bar a:hover #title{
-                        opacity: 1;
-                        visibility: visible;
-                        left: 64px;
-                    }
-                    .container-bar #title:after{
-                        position: absolute;
-                        content: '';
-                        border-left: 7px solid transparent;
-                        border-right: 6px solid #1c1c1c;
-                        border-top: 7px solid transparent;
-                        border-bottom: 7px solid transparent;
-                        right: 100%;
-                        top: 8px;
-                    }
-                    #btn-social{
-                        display: none;
-                    }
-                    .fa-play{
-                        cursor: pointer;
-                        transition: all 0.4s;
-                        font-size: 12px;
-                        margin-bottom: 5px;
-                        display: inline-block;
-                        transform: rotate(180deg);
-                        color: #49b0e6;
-                    }
-                    #btn-social:checked ~ .fa-play{
-                        transform: rotate(0deg);
-                    }
-                    .icon-social{
-                        transition: all 0.4s;
-                        transform: translateX(0%);
-                        box-shadow: 0px 1px 10px rgba(0,0,0,0.3);
-                    }
-                    #btn-social:checked ~ .icon-social{
-                        transform: translateX(-100%);
-                        box-shadow: 0px 1px 10px rgba(0,0,0,0.0);
-                    }
-
-                </style>
-            </nav>
-            <!--fin del header-->
-            <!--            <section id="main-header" class="py-2 bg-success text-white">
-                            <div class="container">
-                                <div class="row">
-                                    <div class="col-md-6">
-                                        <h1><i class="fa-solid fa-shop"></i> [[#{main.web_Name}]]</h1>
-                                                                    <img src="../../static/img/icons8-casa-64.png" alt="TechShop Logo" style="height: 50px;" class="logo-img"/>
-                                    </div>
-                                </div>
-                            </div>
-                        </section>-->
-
-        </header>
-
-
-        <footer th:fragment="footer" class="bg-dark text-white mt-5 p-2">
-            <div class="container">
-                <div class="col">
-                    <p class="lead text-center">
-                        &COPY [[#{main.derechos}]]
-                    </p>
+                            <a class="btn bg-warning text-dark rounded-pill nav-item px-2" tabindex="-1" role="button"
+                                aria-disabled="true" th:href="@{/(lang=es)}">ES</a>
+                            <a class="btn bg-warning text-dark rounded-pill nav-item px-1" tabindex="-1" role="button"
+                                aria-disabled="true" th:href="@{/(lang=en)}">EN</a>
+                        </li>
+                    </div>
+                </div>
+                <div class="container-bar">
+                    <input type="checkbox" id="btn-social">
+                    <label for="btn-social" class="fa fa-play"></label>
+                    <div class="icon-social">
+                        <a href="#" class="fa fa-facebook">
+                            <span id="title">Facebook</span>
+                        </a>
+                        <a href="#" class="fa fa-youtube">
+                            <span id="title">Youtube</span>
+                        </a>
+                        <a href="#" class="fa fa-twitter">
+                            <span id="title">Twitter</span>
+                        </a>
+                        <a href="#" class="fa fa-whatsapp">
+                            <span id="title">Whatsapp</span>
+                        </a>
+                        <a href="#" class="fa fa-envelope">
+                            <span id="title">Correo</span>
+                        </a>
+                    </div>
                 </div>
             </div>
-        </footer>
-    </body>
+
+            <style>
+                /* Estilos Header */
+                .container-fluid {
+                    position: fixed;
+                    top: 0;
+                    height: 80px;
+                    width: 100%;
+                    z-index: 5;
+                    background-color: #2069AD;
+                    /*Color de fondo de la barra lateral */
+                }
+
+                .logo-img {
+                    height: 79px;
+                    /* Ajusta según el tamaño deseado */
+                }
+
+                .carousel {
+                    border-bottom: 1px solid black;
+                    background-color: lightgray;
+                    width: 100%;
+                    padding: 0px;
+                    margin-top: 50px;
+                }
+
+                .active {
+                    background-color: #ffffff !important;
+                    color: #000000 !important;
+                    border: 1px solid black !important;
+                }
+
+                .nav-container .btn {
+                    font-size: 15px;
+                    color: #ffffff;
+                    background-color: #475152;
+                    margin-top: 14px;
+                    border: 1px solid white;
+                }
+
+                .btn:hover {
+                    color: #000000 !important;
+                    ;
+                    /* Cambia este valor al color que desees cuando se pasa el mouse sobre el botón */
+                    background-color: #ffffff !important;
+                    border: 1px solid black !important;
+                }
+
+                /* Estilos para el contenedor de contenido */
+                .content-container {
+                    display: flex;
+                    justify-content: space-between;
+                    /* Alinea los elementos a los extremos */
+                    padding: 20px;
+                    /* Espaciado interior del contenedor */
+                }
+
+                .container-bar {
+                    width: 100%;
+                    max-width: 50px;
+                    position: fixed;
+                    left: 0;
+                    top: 25%;
+                }
+
+                .container-bar a {
+                    display: block;
+                    width: 50px;
+                    height: 50px;
+                    line-height: 50px;
+                    text-align: center;
+                    text-decoration: none;
+                    font-size: 18px;
+                    position: relative;
+                    transition: all 500ms ease;
+                    color: #fff;
+                }
+
+                .container-bar a:hover {
+                    background: #1c1c1c;
+                }
+
+                .container-bar .fa-facebook {
+                    background: #3b5998;
+                    border-radius: 0px 5px 0px 0px;
+                }
+
+                .container-bar .fa-youtube {
+                    background: #e52a23;
+                }
+
+                .container-bar .fa-twitter {
+                    background: #00acee;
+                }
+
+                .container-bar .fa-whatsapp {
+                    background: #4ac926;
+                }
+
+                .container-bar .fa-envelope {
+                    background: #999999;
+                    border-radius: 0px 0px 5px 0px;
+                }
+
+                .container-bar #title {
+                    position: absolute;
+                    background: #1c1c1c;
+                    padding: 0px 8px;
+                    height: 30px;
+                    line-height: 30px;
+                    text-align: center;
+                    border-radius: 3px;
+                    font-size: 15px;
+                    top: 12px;
+                    left: 0px;
+                    transition: all 500ms ease;
+                    opacity: 0;
+                    visibility: hidden;
+                    z-index: -1;
+                }
+
+                .container-bar a:hover #title {
+                    opacity: 1;
+                    visibility: visible;
+                    left: 64px;
+                }
+
+                .container-bar #title:after {
+                    position: absolute;
+                    content: '';
+                    border-left: 7px solid transparent;
+                    border-right: 6px solid #1c1c1c;
+                    border-top: 7px solid transparent;
+                    border-bottom: 7px solid transparent;
+                    right: 100%;
+                    top: 8px;
+                }
+
+                #btn-social {
+                    display: none;
+                }
+
+                .fa-play {
+                    cursor: pointer;
+                    transition: all 0.4s;
+                    font-size: 12px;
+                    margin-bottom: 5px;
+                    display: inline-block;
+                    transform: rotate(180deg);
+                    color: #49b0e6;
+                }
+
+                #btn-social:checked~.fa-play {
+                    transform: rotate(0deg);
+                }
+
+                .icon-social {
+                    transition: all 0.4s;
+                    transform: translateX(0%);
+                    box-shadow: 0px 1px 10px rgba(0, 0, 0, 0.3);
+                }
+
+                #btn-social:checked~.icon-social {
+                    transform: translateX(-100%);
+                    box-shadow: 0px 1px 10px rgba(0, 0, 0, 0.0);
+                }
+
+
+                footer {
+                    bottom: 0;
+                    width: 100%;
+                    background-color: #343a40;
+                    /* Color de fondo oscuro */
+                    color: #fff;
+                    /* Color del texto blanco */
+                    padding: 10px;
+                    /* Relleno */
+                    text-align: center;
+                    z-index: 2;
+                }
+
+                footer p {
+                    text-align: center;
+                    font-size: 20px;
+                }
+            </style>
+        </nav>
+
+
+    </header>
+
+    <div th:fragment="content-container" class="content-container">
+        <section id="miSection">
+
+        </section>
+
+
+        <aside class="text-center">
+            <!-- Contenido de la barra lateral izquierda -->
+            <div class="card card-no-effect mb-1" style="width: 265; border:  transparent;">
+                <p
+                    style="color: white; font-weight: bold; font-size: 25px; background-color: #475152; margin-top: 0; text-align: center; border-bottom: 1px solid black">
+                    <i class="fa-solid fa-location-dot fa-beat fa-sm" style="color: #ffffff;"></i> Encuentranos
+                </p>
+                <iframe
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3929.493143790535!2d-84.14319946496333!3d9.976061027686155!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8fa0fb07759872f9%3A0x6ea635cbbf7e8f60!2sMulticomercial+Baden!5e0!3m2!1sen!2s!4v1489010248162"
+                    width="340" height="250" frameborder="1" style="border:1px;" allowfullscreen="" aria-hidden="false"
+                    tabindex="0" class="d-block mx-auto"></iframe>
+                <div class="card-body text-center" style="color: black;">
+                    <p>Dirección: Multicomercial Badem, Heredia</p>
+                    <a href="https://maps.app.goo.gl/7rQVKvmHe2rrWDg3A" class="btn btn-success" target="_blank">Abrir
+                        Mapa</a>
+                </div>
+            </div>
+            <div class="card mx-auto" style="width: 265;  ">
+                <div class="card-header" style="color: white; background: #475152; font-weight: bold; font-size: 25px;">
+                    Accesos Rapidos
+                </div>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">
+                        <i class="fa-solid fa-phone fa-lg" style="color: #2069ad;"></i>
+                        2293-4504 / 2293- 3878
+                    </li>
+                    <li class="list-group-item">
+                        <i class="fa-solid fa-envelope fa-lg" style="color: #2069ad;"></i>
+                        servicioalcliente@excalibur-tech.com
+                    </li>
+                    <li class="list-group-item card_soporte">
+                        <a th:href="@{/tiketes/FormularioTiketes}" class="soporte-link"
+                            style="text-decoration: none; color: inherit;">
+                            <i class="fa-solid fa-headset fa-lg" style="color: #2069ad;"></i>
+                            Soporte
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <style>
+                /* Estilos para el section */
+                section {
+                    width: 70%;
+                    color: white;
+                    padding: 0px;
+                    color: #000000;
+                    text-align: center;
+                    margin-left: 4%;
+                }
+
+                /* Estilos para el aside */
+                aside {
+                    position: sticky;
+                    top: 80px;
+                    width: 24%;
+                    background-color: #2069AD;
+                    color: white;
+                    padding: 10px;
+                    text-align: center;
+                    height: 90vh;
+                    overflow-y: auto;
+                    z-index: 1;
+                }
+
+                .content-container {
+                    display: flex;
+                    justify-content: space-between;
+                    padding: 0px;
+                    margin-top: 100px;
+                }
+
+                .card_soporte:hover {
+                    background: #edb718;
+                    font-weight: bold;
+                }
+            </style>
+        </aside>
+    </div>
+
+    <footer th:fragment="footer">
+        <div class="container">
+            <div class="col">
+                <p class="lead">
+                    &COPY [[#{main.derechos}]]
+                </p>
+            </div>
+        </div>
+    </footer>
+
+</body>
+
 </html>

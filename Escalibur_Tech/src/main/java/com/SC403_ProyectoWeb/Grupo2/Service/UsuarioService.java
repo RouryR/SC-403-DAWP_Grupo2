@@ -14,6 +14,7 @@ import com.SC403_ProyectoWeb.Grupo2.Domain.Usuario;
 
 public interface UsuarioService {
     Usuario autenticarUsuario(String correo, String password);
+    Usuario save(Usuario usuario);
 }
 
 

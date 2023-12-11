@@ -5,11 +5,10 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-@RequestMapping("/productos") //nombre de la carpeta
+@RequestMapping("/productos")
 public class ERPController {
-    @GetMapping("/ERP") //nombre del html
-    public String acercade() {
-
-        return "/productos/ERP"; //Ruta completa
+    @GetMapping("/ERP")
+    public String ERP() {
+        return "/productos/ERP"; // La ruta relativa a la carpeta "templates"
     }
 }

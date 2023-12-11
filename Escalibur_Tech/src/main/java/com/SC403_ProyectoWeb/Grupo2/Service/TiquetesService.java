@@ -21,4 +21,7 @@ public interface TiquetesService {
     // Se elimina el categoria que tiene el id pasado por parámetro
     public void delete(Tiquetes categoria);
     
+    // Obtener tiquetes por usuario
+    List<Tiquetes> getTiquetesByUsuario(Long usuarioId);
 }
+

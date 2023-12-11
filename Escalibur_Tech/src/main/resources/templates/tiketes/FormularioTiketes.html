@@ -8,13 +8,7 @@
     <body>
         <header th:replace="~{layout/plantilla :: header}">
 
-            <!-- Alerta de cookies -->
-            <div class="alert alert-warning alert-dismissible fade show fixed-bottom" role="alert"
-                 style="text-align: center;">
-                <i class="bi bi-exclamation-triangle-fill me-2"></i>
-                <strong> Esta página usa Cookies 🍪 para su funcionamiento. </strong>
-                <button type="button" class="btn btn-success" data-bs-dismiss="alert" id="acceptButton">ACEPTAR</button>
-            </div>
+            
         </header>
 
         <section class="h-100 gradient-form" style="background-color: #eee;">
@@ -115,21 +109,7 @@
                 }
             }
 
-            .zoom-form {
-                transition: transform 0.3s;
-            }
-
-            .zoom-form:hover {
-                transform: scale(1.1);
-            }
-
-            .custom-margin-left {
-                margin-left: 6cm; /* Ajusta el valor según tus necesidades */
-            }
-            .custom-background {
-                background-color: #edb718; /* Reemplaza el color con el que desees */
-                border: none;
-            }
+          
         </style>
 
         <footer th:replace="~{layout/plantilla :: footer}" />

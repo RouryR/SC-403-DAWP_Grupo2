@@ -25,5 +25,11 @@ public class UsuarioServiceImpl implements UsuarioService {
 
         return usuarioDao.findByCorreoAndPassword(correo, password);
     }
+    
+    @Override
+    public Usuario save(Usuario usuario) {
+        usuarioDao.save(usuario);
+        return usuario;
+    }
 }
 

@@ -1,0 +1,14 @@
+{
+  "configurations": [
+    {
+      "type": "java",
+      "name": "Spring Boot-Grupo2Application<Grupo2>",
+      "request": "launch",
+      "cwd": "${workspaceFolder}",
+      "mainClass": "com.SC403_ProyectoWeb.Grupo2.Grupo2Application",
+      "projectName": "Grupo2",
+      "args": "",
+      "envFile": "${workspaceFolder}/.env"
+    }
+  ]
+}

@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/xhtml">
+
+<head th:replace="~{layout/plantilla :: head}">
+    <title>Excalibur-Tech</title>
+        <!-- ... (estiolo para no cargar el section de pnatilla) ... -->
+    <style>
+        #miSection {
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <header th:replace="~{layout/plantilla :: header}">
+    </header>
+
+    <div th:replace="~{layout/plantilla :: content-container}">
+    </div>
+
+    <footer th:replace="~{layout/plantilla :: footer}">
+    </footer>
+
+    <script>
+        window.addEventListener('load', function () {
+            var miSection = document.getElementById('miSection');
+            if (miSection) {
+                console.log('Script ejecutado correctamente.');
+                miSection.innerHTML = `
+                <!-- ... (titulo) ... -->
+                <p
+                style="color: white; font-weight: bold; font-size: 25px; background-color: #2069AD; margin-top: 0; text-align: center; border-bottom: 1px solid black">
+                <i class="fa-solid fa-briefcase fa-beat fa-sm" style="color: #ffffff;"></i> XXXXXXXXXXXXX
+            </p>
+
+            <!-- ... (Inicio del grid) ... -->
+                <div class="grid-container">
+                    <!-- ... (Bloque de la izquierda) ... -->
+                    <div class="zoom-effect">
+                        <a href="/img/GRAFICO-1.jpg" id="popupLink">
+                            <p><img class="custom-image" src="/img/GRAFICO-1.jpg" alt="ERP" /></p>
+                        </a>
+                    </div>
+                    <!-- ... (FIN Bloque de la izquierda) ... -->
+
+            <!-- ... (Bloque de la derecha) ... -->
+            <div class="custom-card">
+            <p class="custom-card-text">Para toda empresa es importante poseer una herramienta multi-usuarios,
+                multi-compañía y multi-moneda que sea ágil, sencilla de utilizar, que permita a sus trabajadores el
+                cumplimiento de funciones de forma ordenada, controlando todo proceso administrativo, operativo y
+                financiero.</p>
+            <p class="custom-card-text">"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+                tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation
+                ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in
+                voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+                proident, sunt in culpa qui officia deserunt mollit anim id est laborum."</p>
+            <p class="custom-card-text">"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+                tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation
+                ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in
+                voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+                proident, sunt in culpa qui officia deserunt mollit anim id est laborum."</p>
+        </div>
+        <!-- ... (FIN Bloque de la derecha) ... -->
+
+
+                </div>
+            `;
+            } else {
+                console.error('miSection" no encontrado.');
+            }
+            var popupLink = document.getElementById('popupLink');
+            if (popupLink) {
+                console.log('Script para el popup ejecutado correctamente.');
+
+                popupLink.addEventListener('click', function (event) {
+                    event.preventDefault();
+
+                    var popup = document.createElement('div');
+                    popup.className = 'popup';
+                    popup.innerHTML = '<img src="' + popupLink.getAttribute('href') + '" alt="Popup Image" />';
+
+                    document.body.appendChild(popup);
+
+                    popup.addEventListener('click', function () {
+                        document.body.removeChild(popup);
+                    });
+                });
+            } else {
+                console.error('Elemento con ID "popupLink" no encontrado.');
+            }
+        });
+    </script>
+
+    <!-- ... (Estilo para los grids) ... -->
+    <style>
+        .grid-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .custom-image {
+            width: 100%;
+            height: 500px;
+        }
+
+        .popup {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+
+        .popup img {
+            max-width: 100%;
+            max-height: 100%;
+            border: 2px solid #fff;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+        }
+    </style>
+
+</body>
+
+</html>

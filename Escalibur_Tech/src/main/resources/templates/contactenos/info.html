@@ -1,131 +1,151 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org"
-      xmlns="http://www.w3.org/1999/xhtml">
-    <head th:replace="~{layout/plantilla :: head}">
-        <title>Excalibur-Tech</title>        
-    </head>
-    <body>
-        <header th:replace="~{layout/plantilla :: header}"/>
+<html xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/xhtml">
 
-        <!-- Alerta de cookies -->
-        <div class="alert alert-warning alert-dismissible fade show fixed-bottom" role="alert"
-             style="text-align: center;">
-            <i class="bi bi-exclamation-triangle-fill me-2"></i>
-            <strong> Esta página usa Cookies 🍪 para su funcionamiento. </strong>
-            <button type="button" class="btn btn-success" data-bs-dismiss="alert" id="acceptButton">ACEPTAR</button>
-        </div>
+<head th:replace="~{layout/plantilla :: head}">
+    <title>Excalibur-Tech</title>
+    <!-- ... (estiolo para no cargar el section de pnatilla) ... -->
+    <style>
+        #miSection {
+            display: none;
+        }
+    </style>
+</head>
 
+<body>
+    <header th:replace="~{layout/plantilla :: header}">
+    </header>
 
-        </header>
+    <div th:replace="~{layout/plantilla :: content-container}">
+    </div>
 
-        <div class="grid-container">
-            <div class="grid-item "> 
-                <p style="color: white; font-weight: bold; font-size: 25px; background-color: #2069AD; margin-top: 0; text-align: center; border-bottom: 1px solid black">Quiénes Somos</p>
-                <strong> Información: </strong>
-                <p <strong> Cedula Jurídica 3-101-251620 </strong></p>
-                <p <strong> Teléfono:2293-3878 / 2293-3878 </strong> </p>
-                 <p<strong> Correo: servicioalcliente@excalibur-tech.com </strong> </p>
-
-            </div>
-
-            <div class="grid-item ">
-                <p style="color: white; font-weight: bold; font-size: 25px; background-color: #2069AD; margin-top: 0; text-align: center; border-bottom: 1px solid black"> Enviar solicitud o comentarios </p>
-
-                <div class="row1 mb-3">
-                    <label for="colFormLabel" class="col-sm-2 col-form-label">Nombre</label>
-                    <div class="col-sm-10">
-                        <input type="email" class="form-control" id="colFormLabel" placeholder="Ingrese Correo">
-                    </div>
-                </div>
-
-                <div class="row1 mb-3 ">
-                    <label for="colFormLabel" class="col-sm-2 col-form-label ">Email</label>
-                    <div class="col-sm-10" style="">
-                        <input type="email" class="form-control" id="colFormLabel" placeholder="Ingrese Correo">
-                    </div>
-                </div>
-
-                <div class="row1 mb-3">
-                    <label for="exampleFormControlTextarea1" class="form-label">Información</label>
-                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
-                </div>
-            </div>
-
-            <div class="grid-item">
-                <p style="color: white; font-weight: bold; font-size: 25px; background-color: #2069AD; margin-top: 0; text-align: center; border-bottom: 1px solid black">Vista de mapa</p>
-                <div class="card" style="width: 265; border:  1px solid black;">
-                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3929.493143790535!2d-84.14319946496333!3d9.976061027686155!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8fa0fb07759872f9%3A0x6ea635cbbf7e8f60!2sMulticomercial+Baden!5e0!3m2!1sen!2s!4v1489010248162" width="327" height="251" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0" class="d-block mx-auto"></iframe>
-                    <div class="card-body text-center">
-                        <h5 class="card-title">Encuentranos</h5>
-                        <p>Multicomercial Badem, Heredia</p>
-                        <a href="https://maps.app.goo.gl/7rQVKvmHe2rrWDg3A" class="btn btn-success" target="_blank">Abrir Mapa</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-
-        <style>
-            .grid-container {
-                display: grid;
-                grid-template-columns: 1fr 1.4fr 1fr; 
-                grid-gap: 10px; 
-                padding: 82px;
-            }
-
-            .grid-item {
-                padding: 10px;
-                text-align: center;
-            }
-
-            .grid-item .row1 {
-                padding: 10px;
-                text-align: center;
-                border: 1px solid black;
-
-            }
-
-        </style>         
-
-
-
-        <!--        <p style="color: white; font-weight: bold; font-size: 25px; background-color: #2069AD; margin-top: 0; text-align: center; border-bottom: 1px solid black"> Enviar solicitud o comentarios </p>
+    <footer th:replace="~{layout/plantilla :: footer}">
         
-                <div class="row mb-3">
-                    <label for="colFormLabel" class="col-sm-2 col-form-label">Nombre</label>
-                    <div class="col-sm-10">
-                        <input type="email" class="form-control" id="colFormLabel" placeholder="Ingrese Correo">
-                    </div>
-                </div>-->
+    </footer>
 
-        <!--        <div class="row mb-3 ">
-                    <label for="colFormLabel" class="col-sm-2 col-form-label">Email</label>
-                    <div class="col-sm-10">
-                        <input type="email" class="form-control" id="colFormLabel" placeholder="Ingrese Correo">
-                    </div>
-                </div>-->
+    <script>
+        window.addEventListener('load', function () {
+            var miSection = document.getElementById('miSection');
+            if (miSection) {
+                console.log('Script ejecutado correctamente.');
+                miSection.innerHTML = `
+                <!-- ... (titulo) ... -->
+                <p
+                style="color: white; font-weight: bold; font-size: 25px; background-color: #2069AD; margin-top: 0; text-align: center; border-bottom: 1px solid black">
+                <i class="fa-solid fa-headset fa-sm" style="color: #ffffff;"></i> Contactenos / Enviar solicitud o comentarios
+            </p>
 
-        <!--        <div class="mb-3">
-                    <label for="exampleFormControlTextarea1" class="form-label">Información</label>
-                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
-                </div>-->
+                 <main class="h-0 gradient-form" >
+            <div class="container py-5 h-0">
+                <div class="row d-flex justify-content-center align-items-center h-0">
+                    <div class="col-xl-10">
+                        <div class="card rounded-3 text-black">
+                            <div class="row g-0">
+                                <div class="col-lg-6">
+                                    <div class="card-body p-md-5 mx-md-4">
+                                        <div class="text-center mb-2">
+                                            <img src="/img/logo.svg" style="width: 240px;" alt="logo" />                                           
+                                        </div>
+                                        <form class="zoom-form">
+                                            <div class="row">
+                                                <div class="col mb-3">
+                                                    <input type="text" class="form-control" placeholder="Nombre" aria-label="*Nombre">
+                                                </div>
+                                                <div class="col mb-3">
+                                                    <input type="text" class="form-control" placeholder="Apellidos" aria-label="*Apellidos">
+                                                </div>
+                                            </div>
+                                            <div class="mb-3">
+                                                <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="*Correo" aria-label="Correo">
+                                                    <div id="emailHelp" class="form-text">No compartiremos su correo con terceros.</div>
+                                            </div>
+
+                                            <div class="mb-3">
+                                                <input type="text" class="form-control" id="formGroupExampleInput" placeholder="*Teléfono">
+                                            </div>
+
+                                            <div class="mb-3">
+                                                <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Nombre de la empresa">
+                                            </div>
+                                            <div class="input-group mb-3">
+                                                <span class="input-group-text">*Detalles</span>
+                                                <textarea class="form-control" aria-label="With textarea"></textarea>
+                                            </div>
+
+                                            <div class="orm-check mb-3">
+                                                <p class="small mb-0">Compos con * son obligatorios.</p>
+                                            </div>
 
 
-        <!--        <aside class="text-center">
-                    Contenido de la barra lateral izquierda 
-                    <p style="color: white; font-weight: bold; font-size: 25px; background-color: #2069AD; margin-top: 0; text-align: center; border-bottom: 1px solid black">Vista de mapa</p>
-                    <div class="card" style="width: 265; border:  1px solid black;">
-                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3929.493143790535!2d-84.14319946496333!3d9.976061027686155!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8fa0fb07759872f9%3A0x6ea635cbbf7e8f60!2sMulticomercial+Baden!5e0!3m2!1sen!2s!4v1489010248162" width="327" height="251" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0" class="d-block mx-auto"></iframe>
-                        <div class="card-body text-center">
-                            <h5 class="card-title">Encuentranos</h5>
-                            <p>Multicomercial Badem, Heredia</p>
-                            <a href="https://maps.app.goo.gl/7rQVKvmHe2rrWDg3A" class="btn btn-success" target="_blank">Abrir Mapa</a>
+                                            <a th:href="@{/sesion/InicioSesion}" class="btn btn-primary custom-background">Regresar</a>
+                                            <button type="submit" class="btn btn-primary custom-margin-left">Enviar</button>
+                                        </form>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 d-flex align-items-center justify-content-center gradient-custom-2">
+                                    <div class="text-white px-3 py-4 p-md-5 mx-md-4 text-center">
+                                        <i class="fa-solid fa-bell-concierge fa-beat mb-3" style="color: #ffffff; font-size: 5em;"></i>
+                                        <h2 class="mt-1 mb-5 pb-1">¡La solución a un clic!</h2>
+                                        <h4 class="mb-4">Más que una compañia</h4>
+                                        <p class="small mb-0">Somos un grupo dinámico con gran experiencia en el mercado del desarrollo de software empresarial aplicables al ámbito del ERP en áreas como Ruteo y Distribución, Financiero Contable, Importaciones, Manufactura y más.</p>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                </aside>-->
+                </div>
+            </div>
+        </main>
+            `;
+            } else {
+                console.error('miSection" no encontrado.');
+            }
+            var popupLink = document.getElementById('popupLink');
+            if (popupLink) {
+                console.log('Script para el popup ejecutado correctamente.');
 
+                popupLink.addEventListener('click', function (event) {
+                    event.preventDefault();
 
-        <footer th:replace="~{layout/plantilla :: footer}"/>          
-    </body>
+                    var popup = document.createElement('div');
+                    popup.className = 'popup';
+                    popup.innerHTML = '<img src="' + popupLink.getAttribute('href') + '" alt="Popup Image" />';
+
+                    document.body.appendChild(popup);
+
+                    popup.addEventListener('click', function () {
+                        document.body.removeChild(popup);
+                    });
+                });
+            } else {
+                console.error('Elemento con ID "popupLink" no encontrado.');
+            }
+        });
+    </script>
+
+    <!-- ... (Estilo para los grids) ... -->
+    <style>
+       .gradient-custom-2 {
+                background: #fccb90;
+                background: -webkit-linear-gradient(to right, #ee7724, #d8363a, #dd3675, #b44593);
+                background: linear-gradient(to right, #1f66f2, #1943ae, #12338d, #0a246f);
+            }
+
+            @media (min-width: 768px) {
+                .gradient-form {
+                    height: 100vh !important;
+                }
+            }
+
+            @media (min-width: 769px) {
+                .gradient-custom-2 {
+                    border-top-right-radius: .3rem;
+                    border-bottom-right-radius: .5rem;
+                }
+            }
+            
+
+    </style>
+
+</body>
+
 </html>
-

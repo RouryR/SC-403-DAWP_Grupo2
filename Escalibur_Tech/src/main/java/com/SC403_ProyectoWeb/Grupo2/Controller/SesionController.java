@@ -7,6 +7,7 @@ package com.SC403_ProyectoWeb.Grupo2.Controller;
 
 import com.SC403_ProyectoWeb.Grupo2.Domain.Usuario;
 import com.SC403_ProyectoWeb.Grupo2.Service.UsuarioService;
+import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -20,16 +21,6 @@ import org.springframework.web.bind.annotation.RequestParam;
  *
  * @author ROURY
  */
-//@Controller
-//@RequestMapping("/sesion") //nombre de la carpeta
-//public class SesionController {
-
-//    @GetMapping("/InicioSesion") //nombre del html
-//    public String acercade() {
-//
-//        return "/sesion/InicioSesion"; //Ruta completa
-//    }
-
 
 @Controller
 @RequestMapping("/sesion")
@@ -41,21 +32,35 @@ public class SesionController {
     @GetMapping("/InicioSesion")
     public String mostrarPaginaLogin(Model model) {
         model.addAttribute("usuarioAutenticado", false);
-        return "/sesion/InicioSesion";  
+        return "/sesion/InicioSesion";
     }
 
     @PostMapping("/login")
-public String autenticar(@RequestParam String correo, @RequestParam String password, Model model) {
-    Usuario usuarioAutenticado = authService.autenticarUsuario(correo, password);
+    public String autenticar(@RequestParam String correo, @RequestParam String password, HttpSession session,
+            Model model) {
+        Usuario usuarioAutenticado = authService.autenticarUsuario(correo, password);
 
-    if (usuarioAutenticado != null) {
-        model.addAttribute("usuarioAutenticado", true);
-        return "redirect:/usuario/UsuarioPage";
-    } else {
-        model.addAttribute("error", "Credenciales inválidas");
-        return "/sesion/InicioSesion";
+        if (usuarioAutenticado != null) {
+            session.setAttribute("usuarioAutenticado", true);
+            session.setAttribute("usuario", usuarioAutenticado);
+
+            // Agrega el nombre de usuario al modelo
+            model.addAttribute("username", usuarioAutenticado.getUsuario());
+
+            return "redirect:/usuario/UsuarioPage?success=true";
+        } else {
+            model.addAttribute("error", "Credenciales inválidas");
+            return "/sesion/InicioSesion";
+        }
     }
-}
+    
+    @GetMapping("/sesion/CerrarSesion")
+    public String cerrarSesion(HttpSession session) {
+        // Invalida la sesión
+        session.invalidate();
+        // Redirige al home page
+        return "redirect:/sesion/InicioSesion";
+    }
 }
 
 
