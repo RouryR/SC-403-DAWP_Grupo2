@@ -1,157 +1,144 @@
-// package com.SC403_ProyectoWeb.Grupo2.Domain;
+package com.SC403_ProyectoWeb.Grupo2.Domain;
 
-// import java.sql.Date;
+import java.sql.Date;
 
-// import jakarta.persistence.Column;
-// import jakarta.persistence.Entity;
-// import jakarta.persistence.Id;
-// import jakarta.persistence.GeneratedValue;
-// import jakarta.persistence.GenerationType;
-// import jakarta.persistence.ManyToOne;
-// import jakarta.persistence.JoinColumn;
-
-
-// @Entity
-// public class Empleados {
-
-//     @Id
-//     @GeneratedValue(strategy = GenerationType.IDENTITY)
-//     @Column(name = "id_empleado")  // Nombre real de la columna en la base de datos
-//     private Long idEmpleado;
-//     private String nombre;
-//     private String password;
-//     private String correo;
-//     private String empresa;
-//     private String puesto;
-//     private double salario;
-//     private String telefono;
-//     private Date fechaContratacion;
-//     private boolean activo;
-//     private int idUsuario;
-   
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.JoinColumn;
 
 
-//     @ManyToOne
-//     @JoinColumn(name = "id_usuario")
-//     private Usuario usuario;
+@Entity
+public class Empleados {
 
-//     public Empleados() {
-//     }
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id_empleado")  // Nombre real de la columna en la base de datos
+    private Long idEmpleado;
+    private String nombre;
+    private String password;
+    private String correo;
+    private String empresa;
+    private String puesto;
+    private double salario;
+    private String telefono;
+    private Date fechaContratacion;
+    private boolean activo;
 
-//     public Long getIdEmpleado() {
-//         return idEmpleado;
-//     }
 
-//     public void setIdEmpleado(Long idEmpleado) {
-//         this.idEmpleado = idEmpleado;
-//     }
+    @ManyToOne
+    @JoinColumn(name = "id_usuario")
+    private Usuario usuario;
 
-//     public String getNombre() {
-//         return nombre;
-//     }
+    public Empleados() {
+    }
 
-//     public void setNombre(String nombre) {
-//         this.nombre = nombre;
-//     }
+    public Long getIdEmpleado() {
+        return idEmpleado;
+    }
 
-//     public String getPassword() {
-//         return password;
-//     }
+    public void setIdEmpleado(Long idEmpleado) {
+        this.idEmpleado = idEmpleado;
+    }
 
-//     public void setPassword(String password) {
-//         this.password = password;
-//     }
+    public String getNombre() {
+        return nombre;
+    }
 
-//     public String getCorreo() {
-//         return correo;
-//     }
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
 
-//     public void setCorreo(String correo) {
-//         this.correo = correo;
-//     }
+    public String getPassword() {
+        return password;
+    }
 
-//     public String getEmpresa() {
-//         return empresa;
-//     }
+    public void setPassword(String password) {
+        this.password = password;
+    }
 
-//     public void setEmpresa(String empresa) {
-//         this.empresa = empresa;
-//     }
+    public String getCorreo() {
+        return correo;
+    }
 
-//     public String getPuesto() {
-//         return puesto;
-//     }
+    public void setCorreo(String correo) {
+        this.correo = correo;
+    }
 
-//     public void setPuesto(String puesto) {
-//         this.puesto = puesto;
-//     }
+    public String getEmpresa() {
+        return empresa;
+    }
 
-//     public double getSalario() {
-//         return salario;
-//     }
+    public void setEmpresa(String empresa) {
+        this.empresa = empresa;
+    }
 
-//     public void setSalario(double salario) {
-//         this.salario = salario;
-//     }
+    public String getPuesto() {
+        return puesto;
+    }
 
-//     public String getTelefono() {
-//         return telefono;
-//     }
+    public void setPuesto(String puesto) {
+        this.puesto = puesto;
+    }
 
-//     public void setTelefono(String telefono) {
-//         this.telefono = telefono;
-//     }
+    public double getSalario() {
+        return salario;
+    }
 
-//     public Date getFechaContratacion() {
-//         return fechaContratacion;
-//     }
+    public void setSalario(double salario) {
+        this.salario = salario;
+    }
 
-//     public void setFechaContratacion(Date fechaContratacion) {
-//         this.fechaContratacion = fechaContratacion;
-//     }
+    public String getTelefono() {
+        return telefono;
+    }
 
-//     public boolean isActivo() {
-//         return activo;
-//     }
+    public void setTelefono(String telefono) {
+        this.telefono = telefono;
+    }
 
-//     public void setActivo(boolean activo) {
-//         this.activo = activo;
-//     }
+    public Date getFechaContratacion() {
+        return fechaContratacion;
+    }
 
-//     public int getIdUsuario() {
-//         return idUsuario;
-//     }
+    public void setFechaContratacion(Date fechaContratacion) {
+        this.fechaContratacion = fechaContratacion;
+    }
 
-//     public void setIdUsuario(int idUsuario) {
-//         this.idUsuario = idUsuario;
-//     }
+    public boolean isActivo() {
+        return activo;
+    }
 
-//     public Usuario getUsuario() {
-//         return usuario;
-//     }
+    public void setActivo(boolean activo) {
+        this.activo = activo;
+    }
 
-//     public void setUsuario(Usuario usuario) {
-//         this.usuario = usuario;
-//     }
 
-//     public Empleados(Long idEmpleado, String nombre, String password, String correo, String empresa, String puesto,
-//             double salario, String telefono, Date fechaContratacion, boolean activo, int idUsuario, Usuario usuario) {
-//         this.idEmpleado = idEmpleado;
-//         this.nombre = nombre;
-//         this.password = password;
-//         this.correo = correo;
-//         this.empresa = empresa;
-//         this.puesto = puesto;
-//         this.salario = salario;
-//         this.telefono = telefono;
-//         this.fechaContratacion = fechaContratacion;
-//         this.activo = activo;
-//         this.idUsuario = idUsuario;
-//         this.usuario = usuario;
-//     }
+    public Usuario getUsuario() {
+        return usuario;
+    }
 
-    
-    
-    
-// }
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
+    }
+
+    public Empleados(Long idEmpleado, String nombre, String password, String correo, String empresa, String puesto,
+            double salario, String telefono, Date fechaContratacion, boolean activo, Usuario usuario) {
+        this.idEmpleado = idEmpleado;
+        this.nombre = nombre;
+        this.password = password;
+        this.correo = correo;
+        this.empresa = empresa;
+        this.puesto = puesto;
+        this.salario = salario;
+        this.telefono = telefono;
+        this.fechaContratacion = fechaContratacion;
+        this.activo = activo;
+        this.usuario = usuario;
+    }
+
+}
 

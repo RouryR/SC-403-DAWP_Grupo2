@@ -1,7 +1,9 @@
 package com.SC403_ProyectoWeb.Grupo2.Controller;
 
+import com.SC403_ProyectoWeb.Grupo2.Domain.Empleados;
 import com.SC403_ProyectoWeb.Grupo2.Domain.Tiquetes;
 import com.SC403_ProyectoWeb.Grupo2.Domain.Usuario;
+import com.SC403_ProyectoWeb.Grupo2.Service.EmpleadosService;
 import com.SC403_ProyectoWeb.Grupo2.Service.TiquetesService;
 import com.SC403_ProyectoWeb.Grupo2.Service.UsuarioService;
 import jakarta.servlet.http.HttpSession;
@@ -13,14 +15,16 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+
 import java.util.List;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 
 
 @Controller
-@Slf4j
 @RequestMapping("/usuario")
 public class UsuarioPageController {
 
@@ -28,7 +32,10 @@ public class UsuarioPageController {
     private TiquetesService tiqueteService;
     
      @Autowired
-    private UsuarioService usuarioService; 
+     private UsuarioService usuarioService;
+    
+      @Autowired
+    private EmpleadosService empleadoService; 
 
     @GetMapping("/UsuarioPage")
     public String inicio(Model model, HttpSession session) {
@@ -95,11 +102,68 @@ public String editarUsuario(@ModelAttribute Usuario usuarioForm, HttpSession ses
         return "/usuario/creartiquete"; //Ruta completa
     }
 
-     @GetMapping("/GestionEmpleados") //nombre del html
-    public String Gestionusuarios() {
+    @GetMapping("/GestionEmpleados") //nombre del html
+    public String GestionEmpleados(Model model, HttpSession session) {
+        if (session.getAttribute("usuarioAutenticado") != null) {
+            Usuario usuario = (Usuario) session.getAttribute("usuario");
+            model.addAttribute("usuario", usuario);
+            List<Empleados> empleadosUsuario = empleadoService.getEmpleadosByUsuario(usuario.getId());
+            model.addAttribute("empleados", empleadosUsuario);
+            model.addAttribute("totalempleados", empleadosUsuario.size());
+        }
 
         return "/usuario/GestionEmpleados"; //Ruta completa
     }
 
+    @PostMapping("/eliminarEmpleado")
+    public String eliminarEmpleado(@RequestParam Long empleadoId, HttpSession session) {
+        if (session.getAttribute("usuarioAutenticado") != null) {
+            // Verificar si el usuario tiene permisos para eliminar empleados (puedes agregar más lógica según tus requisitos)
+
+            // Llamar al servicio para eliminar el empleado
+            empleadoService.deleteEmpleado(empleadoId);
+        }
+
+        return "redirect:/usuario/GestionEmpleados";
+    }
+
+    @PostMapping("/actualizarEmpleado")
+    public String actualizarEmpleado(@ModelAttribute Empleados empleadoForm, HttpSession session) {
+        if (session.getAttribute("usuarioAutenticado") != null) {
+            Usuario usuario = (Usuario) session.getAttribute("usuario");
+
+            // Fetch the existing employee by ID
+            Empleados existingEmpleado = empleadoService.getEmpleados(empleadoForm);
+
+            // Check if the employee exists and belongs to the current user
+            if (existingEmpleado != null && existingEmpleado.getUsuario().getId().equals(usuario.getId())) {
+                // Update employee details only if the form fields are not blank
+                if (empleadoForm.getNombre() != null && !empleadoForm.getNombre().isEmpty()) {
+                    existingEmpleado.setNombre(empleadoForm.getNombre());
+                }
+                if (empleadoForm.getCorreo() != null && !empleadoForm.getCorreo().isEmpty()) {
+                    existingEmpleado.setCorreo(empleadoForm.getCorreo());
+                }
+                if (empleadoForm.getPuesto() != null && !empleadoForm.getPuesto().isEmpty()) {
+                    existingEmpleado.setPuesto(empleadoForm.getPuesto());
+                }
+                if (empleadoForm.getSalario() != 0.0) {
+                    existingEmpleado.setSalario(empleadoForm.getSalario());
+                }
+                if (empleadoForm.getTelefono() != null && !empleadoForm.getTelefono().isEmpty()) {
+                    existingEmpleado.setTelefono(empleadoForm.getTelefono());
+                }
+                // Update other fields as needed
+
+                // Save the updated employee
+                empleadoService.updateEmpleado(existingEmpleado);
+            }
+        }
+
+        return "redirect:/usuario/GestionEmpleados";
+    }
+    
+
+    
 }
 
