@@ -3,28 +3,55 @@
 
 <head th:replace="~{layout/plantilla :: head}">
     <title>Excalibur-Tech</title>
+        <!-- ... (estiolo para no cargar el section de pnatilla) ... -->
+    <style>
+        #miSection {
+            display: none;
+        }
+    </style>
 </head>
 
 <body>
-    <header th:replace="~{layout/plantilla :: header}" />
+    <header th:replace="~{layout/plantilla :: header}">
     </header>
 
-    <body>
-        <div class="grid-container">
-            <div class="grid-item">
-                <br>
-                <br>
-                <br>
-                <br>
-                <br>
-                <br>
+    <div th:replace="~{layout/plantilla :: content-container}">
+    </div>
 
-                <a><img src="http://www.excalibur-tech.com/wp-content/uploads/2017/03/internas/ruteo.jpg" alt="ruteo"
-                        width="100%" height="400" /></a>
-            </div>
-            <div class="grid-item">
+    <footer th:replace="~{layout/plantilla :: footer}">
+    </footer>
 
-                <h2>Ruteo y distribución</h2>
+    <script>
+        window.addEventListener('load', function () {
+            var miSection = document.getElementById('miSection');
+            if (miSection) {
+                console.log('Script ejecutado correctamente.');
+                miSection.innerHTML = `
+                <!-- ... (titulo) ... -->
+                <p
+                style="color: white; font-weight: bold; font-size: 25px; background-color: #2069AD; margin-top: 0; text-align: center; border-bottom: 1px solid black">
+                <i class="fa-solid fa-briefcase fa-beat fa-sm" style="color: #ffffff;"></i> Ruteo y distribución
+            </p>
+
+            <!-- ... (Inicio del grid) ... -->
+                <div class="grid-container">
+                    <!-- ... (Bloque de la izquierda) ... -->
+                        <div class="custom-card">
+            <p class="custom-card-text">
+
+                        <a href="http://www.excalibur-tech.com/wp-content/uploads/2017/03/internas/ruteo.jpg" id="popupLink">
+                            <p><img class="custom-image" src="http://www.excalibur-tech.com/wp-content/uploads/2017/03/internas/ruteo.jpg" alt="ERP" /></p>
+                        </a>
+                
+        </div>
+
+                    <!-- ... (FIN Bloque de la izquierda) ... -->
+
+            <!-- ... (Bloque de la derecha) ... -->
+
+            
+                    <div class="zoom-effect">
+                    <p class="custom-card-text">
                 <p>Con esta herramienta usted podrá mediante el uso de herramientas como celulares, netbooks,
                     portátiles o tablets en la plataforma android, realizar procesos de facturación Directa y Pre Venta,
                     administrando rutas de venta, reparto y cobro según sea su necesidad empresarial.
@@ -46,33 +73,75 @@
                 <p>–Análisis de la efectividad de Rutas y tiempos de visitas de los diferentes agentes.</p>
                 <p>-Geolocalización mediante Google Maps o Waze.</p>
 
-            </div>
-        </div>
-    </body>
+            </p>
+
+                    </div>
+
+        <!-- ... (FIN Bloque de la derecha) ... -->
 
 
+                </div>
+            `;
+            } else {
+                console.error('miSection" no encontrado.');
+            }
+            var popupLink = document.getElementById('popupLink');
+            if (popupLink) {
+                console.log('Script para el popup ejecutado correctamente.');
+
+                popupLink.addEventListener('click', function (event) {
+                    event.preventDefault();
+
+                    var popup = document.createElement('div');
+                    popup.className = 'popup';
+                    popup.innerHTML = '<img src="' + popupLink.getAttribute('href') + '" alt="Popup Image" />';
+
+                    document.body.appendChild(popup);
+
+                    popup.addEventListener('click', function () {
+                        document.body.removeChild(popup);
+                    });
+                });
+            } else {
+                console.error('Elemento con ID "popupLink" no encontrado.');
+            }
+        });
+    </script>
+
+    <!-- ... (Estilo para los grids) ... -->
     <style>
         .grid-container {
             display: grid;
-            grid-template-columns: 2fr 2fr;
-            grid-gap: 10px;
-            padding: 82px;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
         }
 
-        .grid-item {
-            padding: 10px;
-            text-align: center;
+        .custom-image {
+            width: 100%;
+            height: 500px;
         }
 
-        .grid-item .row1 {
-            padding: 10px;
-            text-align: center;
-            border: 1px solid black;
+        .popup {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
 
+        .popup img {
+            max-width: 100%;
+            max-height: 100%;
+            border: 2px solid #fff;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
         }
     </style>
 
-    <footer th:replace="~{layout/plantilla :: footer}" />
 </body>
 
 </html>
