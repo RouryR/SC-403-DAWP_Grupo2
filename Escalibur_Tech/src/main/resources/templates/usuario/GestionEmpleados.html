@@ -62,18 +62,20 @@
                 </div>
                 <div class="wizard">
                     <nav class="list-group list-group-flush">
-                    
+
                         <a class="list-group-item" th:href="@{/usuario/GestionEmpleados}">
                             <div class="d-flex justify-content-between align-items-center">
                                 <div><i class="fa fa-tag mr-1 text-muted"></i>
-                                    <div class="d-inline-block font-weight-medium text-uppercase">Gestionar Empleados</div>
+                                    <div class="d-inline-block font-weight-medium text-uppercase">Gestionar Empleados
+                                    </div>
                                 </div><span class="badge badge-secondary">4</span>
                             </div>
                         </a>
-                    
-                        <a class="list-group-item" th:href="@{/usuario/UsuarioSettings}"><i class="fa fa-user text-muted"></i>Ajustes de
+
+                        <a class="list-group-item" th:href="@{/usuario/UsuarioSettings}"><i
+                                class="fa fa-user text-muted"></i>Ajustes de
                             Perfil</a>
-                    
+
                         <a class="list-group-item" th:href="@{/usuario/UsuarioPage}">
                             <div class="d-flex justify-content-between align-items-center">
                                 <div><i class="fa fa-tag mr-1 text-muted"></i>
@@ -81,7 +83,7 @@
                                 </div><span class="badge badge-secondary">4</span>
                             </div>
                         </a>
-                    
+
                         <a class="list-group-item" th:href="@{/usuario/creartiquete}">
                             <div class="d-flex justify-content-between align-items-center">
                                 <div><i class="fa fa-tag mr-1 text-muted"></i>
@@ -126,21 +128,24 @@
                                 <td th:text="${empleado.salario}"></td>
                                 <td th:text="${empleado.telefono}"></td>
                                 <td>
-                                    <form id="formEliminar" th:action="@{/usuario/eliminarEmpleado}" method="post">                                      
+                                    <form th:id="'formEliminar_' + ${empleado.idEmpleado}" th:action="@{/usuario/eliminarEmpleado}" method="post">
                                         <input type="hidden" name="empleadoId" th:value="${empleado.idEmpleado}" />
-                                        <button type="button" class="btn btn-danger" onclick="confirmarEliminacion()">Eliminar</button>
+                                        <button type="button" class="btn btn-danger"
+                                            onclick="confirmarEliminacion('${empleado.idEmpleado}')">Eliminar</button>
                                     </form>
 
-                                    <div id="confirmacionEliminar" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-                                        aria-hidden="true">
+                                    <div id="confirmacionEliminar" class="modal fade" tabindex="-1" role="dialog"
+                                        aria-labelledby="exampleModalLabel" aria-hidden="true">
                                         <div class="modal-dialog" role="document">
                                             <div class="modal-content">
                                                 <div class="modal-header">
                                                     <h5 class="modal-title">
-                                                        <i class="fa-solid fa-trash fa-beat fa-lg" style="color: #ff0000;"></i>
+                                                        <i class="fa-solid fa-trash fa-beat fa-lg"
+                                                            style="color: #ff0000;"></i>
                                                         Confirmar Eliminación
                                                     </h5>
-                                                    <button type="button" class="close" onclick="cerrarModal()" aria-label="Close">
+                                                    <button type="button" class="close" onclick="cerrarModal()"
+                                                        aria-label="Close">
                                                         <span aria-hidden="true">&times;</span>
                                                     </button>
                                                 </div>
@@ -149,98 +154,88 @@
                                                 </div>
                                                 <div class="modal-footer">
 
-                                                    <button type="button" class="btn btn-secondary" onclick="cerrarModal()">Cancelar</button>
-                                                    <button type="button" class="btn btn-danger" onclick="eliminarEmpleado()">Eliminar</button>
+                                                    <button type="button" class="btn btn-secondary"
+                                                        onclick="cerrarModal()">Cancelar</button>
+                                                    <button type="button" class="btn btn-danger"
+                                                        onclick="eliminarEmpleado()">Eliminar</button>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
 
-                                    <td>
-                                        <button type="button" class="btn btn-primary"
-                                            onclick="mostrarFormulario('${empleado.idEmpleado}')">Actualizar</button>
-                                    </td>
-                                    <div id="formularioEmpleado" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-                                        aria-hidden="true">
-                                        <div class="modal-dialog" role="document">
-                                            <div class="modal-content">
-                                                <div class="modal-header">
-                                                    <h5 class="modal-title" id="exampleModalLabel">
-                                                        <i class="fa-solid fa-pencil fa-beat fa-lg" style="color: #000000;"></i>
-                                                        Actualizar Empleado
-                                                    </h5>
-                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"
-                                                        onclick="cerrarFormulario()">
-                                                        <span aria-hidden="true">&times;</span>
-                                                    </button>
-                                                </div>
-                                                <div class="modal-body">
-                                                    <form th:action="@{/usuario/actualizarEmpleado}" method="post">
-                                                        <input type="hidden" name="idEmpleado" th:value="${empleado.idEmpleado}" />
-                                    
-                                                        <div class="form-group">
-                                                            <label for="Nombre">Nombre</label>
-                                                            <input type="text" class="form-control" name="Nombre" placeholder="Nombre"
-                                                                th:placeholder="${empleado.nombre}" />
-                                                        </div>
-                                    
-                                                        <div class="form-group">
-                                                            <label for="Correo">Correo</label>
-                                                            <input type="text" class="form-control" name="Correo" placeholder="Correo"
-                                                                th:placeholder="${empleado.correo}" />
-                                                        </div>
-                                    
-                                                        <div class="form-group">
-                                                            <label for="Puesto">Puesto</label>
-                                                            <input type="text" class="form-control" name="Puesto" placeholder="Puesto"
-                                                                th:placeholder="${empleado.puesto}" />
-                                                        </div>
-                                    
-                                                        <div class="form-group">
-                                                            <label for="Salario">Salario</label>
-                                                            <input type="text" class="form-control" name="Salario" placeholder="Salario"
-                                                                th:placeholder="${empleado.salario}" />
-                                                        </div>
-                                    
-                                                        <div class="form-group">
-                                                            <label for="Telefono">Telefono</label>
-                                                            <input type="text" class="form-control" name="Telefono" placeholder="Telefono"
-                                                                th:placeholder="${empleado.telefono}" />
-                                                        </div>
-                                    
-                                                        <!-- Otros campos según sea necesario -->
-                                    
-                                                        <button type="submit" class="btn btn-primary">Actualizar Empleado</button>
-                                                    </form>
-                                                </div>
+                                <td>
+                                    <button type="button" class="btn btn-primary"
+                                        onclick="mostrarFormulario('${empleado.idEmpleado}')">Actualizar</button>
+                                </td>
+                                <div id="formularioEmpleado" class="modal fade" tabindex="-1" role="dialog"
+                                    aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="exampleModalLabel">
+                                                    <i class="fa-solid fa-pencil fa-beat fa-lg"
+                                                        style="color: #000000;"></i>
+                                                    Actualizar Empleado
+                                                </h5>
+                                                <button type="button" class="close" data-dismiss="modal"
+                                                    aria-label="Close" onclick="cerrarFormulario()">
+                                                    <span aria-hidden="true">&times;</span>
+                                                </button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <form th:action="@{/usuario/actualizarEmpleado}" method="post">
+                                                    <input type="hidden" name="idEmpleado"
+                                                        th:value="${empleado.idEmpleado}" />
+
+                                                    <div class="form-group">
+                                                        <label for="Nombre">Nombre</label>
+                                                        <input type="text" class="form-control" name="Nombre"
+                                                            placeholder="Nombre" th:placeholder="${empleado.nombre}" />
+                                                    </div>
+
+                                                    <div class="form-group">
+                                                        <label for="Correo">Correo</label>
+                                                        <input type="text" class="form-control" name="Correo"
+                                                            placeholder="Correo" th:placeholder="${empleado.correo}" />
+                                                    </div>
+
+                                                    <div class="form-group">
+                                                        <label for="Puesto">Puesto</label>
+                                                        <input type="text" class="form-control" name="Puesto"
+                                                            placeholder="Puesto" th:placeholder="${empleado.puesto}" />
+                                                    </div>
+
+                                                    <div class="form-group">
+                                                        <label for="Salario">Salario</label>
+                                                        <input type="text" class="form-control" name="Salario"
+                                                            placeholder="Salario"
+                                                            th:placeholder="${empleado.salario}" />
+                                                    </div>
+
+                                                    <div class="form-group">
+                                                        <label for="Telefono">Telefono</label>
+                                                        <input type="text" class="form-control" name="Telefono"
+                                                            placeholder="Telefono"
+                                                            th:placeholder="${empleado.telefono}" />
+                                                    </div>
+
+                                                    <!-- Otros campos según sea necesario -->
+
+                                                    <button type="submit" class="btn btn-primary">Actualizar
+                                                        Empleado</button>
+                                                </form>
                                             </div>
                                         </div>
                                     </div>
-                                    
+                                </div>
+
                                 </td>
                             </tr>
                         </tbody>
                     </table>
-                    <form action="/usuario/crearEmpleado" method="post">
-                        <label for="nombre">Nombre:</label>
-                        <input type="text" id="nombre" name="nombre" required>
-                    
-                        <label for="correo">Correo:</label>
-                        <input type="email" id="correo" name="correo" required>
-                    
-                        <label for="puesto">Puesto:</label>
-                        <input type="text" id="puesto" name="puesto" required>
-                    
-                        <label for="salario">Salario:</label>
-                        <input type="number" id="salario" name="salario" step="0.01" required>
-                    
-                        <label for="telefono">Teléfono:</label>
-                        <input type="text" id="telefono" name="telefono" required>
-                    
-                        <!-- Otros campos según sea necesario -->
-                    
-                        <button type="submit">Crear Empleado</button>
-                    </form>
+
+                    <a th:href="@{/usuario/CrearEmpleado}" type="button" class="btn btn-success">Agregar Empleado</a>
+
                 </div>
             </div>
         </div>
@@ -491,35 +486,35 @@
         }
 
         function mostrarFormulario(idEmpleado) {
-                // Setea el valor del input hidden con el ID del empleado
-                $('#empleadoIdInput').val(idEmpleado);
+            // Setea el valor del input hidden con el ID del empleado
+            $('#empleadoIdInput').val(idEmpleado);
 
-                // Muestra el formulario
-                $('#formularioEmpleado').modal('show');
-            }
+            // Muestra el formulario
+            $('#formularioEmpleado').modal('show');
+        }
 
-            function cerrarFormulario() {
-                // Cierra el formulario
-                $('#formularioEmpleado').modal('hide');
-            }
+        function cerrarFormulario() {
+            // Cierra el formulario
+            $('#formularioEmpleado').modal('hide');
+        }
 
 
-            function confirmarEliminacion() {
-                    // Muestra el nuevo modal de confirmación de eliminación
-                    $('#confirmacionEliminar').modal('show');
-                }
-                function eliminarEmpleado() {
-                    // Envía el formulario para eliminar el empleado
-                    document.getElementById('formEliminar').submit();
-                }
-                function cerrarModal() {
-                        // Cierra el modal directamente
-                        $('#confirmacionEliminar').modal('hide');
-                    }
-                
-                
+        function confirmarEliminacion() {
+            // Muestra el nuevo modal de confirmación de eliminación
+            $('#confirmacionEliminar').modal('show');
+        }
+        function eliminarEmpleado() {
+            // Envía el formulario para eliminar el empleado
+            document.getElementById('formEliminar').submit();
+        }
+        function cerrarModal() {
+            // Cierra el modal directamente
+            $('#confirmacionEliminar').modal('hide');
+        }
 
-                
+
+
+
     </script>
 
 

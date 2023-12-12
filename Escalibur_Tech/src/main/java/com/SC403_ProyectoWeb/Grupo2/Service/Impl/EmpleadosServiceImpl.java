@@ -17,7 +17,7 @@ public class EmpleadosServiceImpl implements EmpleadosService {
 
     @Override
     @Transactional(readOnly = true)
-    public List<Empleados> getTiquetes(boolean activos) {
+    public List<Empleados> getEmpleados(boolean activos) {
         List<Empleados> lista = empleadosDao.findAll();
         if (activos) {
             lista.removeIf(e -> !e.isActivo());
@@ -31,10 +31,11 @@ public class EmpleadosServiceImpl implements EmpleadosService {
         return empleadosDao.findById(categoria.getIdEmpleado()).orElse(null);
     }
 
+   
     @Override
     @Transactional
-    public void save(Empleados categoria) {
-        empleadosDao.save(categoria);
+    public void save(Empleados empleado) {
+        empleadosDao.save(empleado);
     }
 
     @Override

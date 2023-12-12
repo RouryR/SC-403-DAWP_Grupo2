@@ -1,6 +1,5 @@
 package com.SC403_ProyectoWeb.Grupo2.Domain;
 
-import java.sql.Date;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -19,13 +18,10 @@ public class Empleados {
     @Column(name = "id_empleado")  // Nombre real de la columna en la base de datos
     private Long idEmpleado;
     private String nombre;
-    private String password;
     private String correo;
-    private String empresa;
     private String puesto;
     private double salario;
     private String telefono;
-    private Date fechaContratacion;
     private boolean activo;
 
 
@@ -52,13 +48,6 @@ public class Empleados {
         this.nombre = nombre;
     }
 
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
 
     public String getCorreo() {
         return correo;
@@ -66,14 +55,6 @@ public class Empleados {
 
     public void setCorreo(String correo) {
         this.correo = correo;
-    }
-
-    public String getEmpresa() {
-        return empresa;
-    }
-
-    public void setEmpresa(String empresa) {
-        this.empresa = empresa;
     }
 
     public String getPuesto() {
@@ -100,13 +81,6 @@ public class Empleados {
         this.telefono = telefono;
     }
 
-    public Date getFechaContratacion() {
-        return fechaContratacion;
-    }
-
-    public void setFechaContratacion(Date fechaContratacion) {
-        this.fechaContratacion = fechaContratacion;
-    }
 
     public boolean isActivo() {
         return activo;
@@ -125,17 +99,14 @@ public class Empleados {
         this.usuario = usuario;
     }
 
-    public Empleados(Long idEmpleado, String nombre, String password, String correo, String empresa, String puesto,
-            double salario, String telefono, Date fechaContratacion, boolean activo, Usuario usuario) {
+    public Empleados(Long idEmpleado, String nombre, String correo, String puesto,
+            double salario, String telefono, boolean activo, Usuario usuario) {
         this.idEmpleado = idEmpleado;
         this.nombre = nombre;
-        this.password = password;
         this.correo = correo;
-        this.empresa = empresa;
         this.puesto = puesto;
         this.salario = salario;
         this.telefono = telefono;
-        this.fechaContratacion = fechaContratacion;
         this.activo = activo;
         this.usuario = usuario;
     }

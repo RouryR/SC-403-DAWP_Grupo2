@@ -7,7 +7,18 @@
 
 <body>
     <header th:replace="~{layout/plantilla :: header}">
-        
+
+        <div class="header-right">
+            <div class="header-item">
+                <!-- Agrega esta condición para mostrar el botón de inicio o cierre de sesión -->
+                <span th:if="${usuario == null}">
+                    <a class="btn btn-primary" href="/login">Iniciar Sesión</a>
+                </span>
+                <span th:if="${usuario != null}">
+                    <a class="btn btn-danger" href="/logout">Cerrar Sesión</a>
+                </span>
+            </div>
+        </div>
 
 
     </header>
@@ -24,7 +35,7 @@
                     </div>
                     <div class="author-card-profile">
                         <div class="author-card-avatar"><img src="https://bootdey.com/img/Content/avatar/avatar1.png"
-                                alt="Daniel Adams">
+                                alt="">
                         </div>
                         <div class="author-card-details">
                             <div th:if="${usuario != null}">
@@ -55,13 +66,15 @@
                         <a class="list-group-item" th:href="@{/usuario/GestionEmpleados}">
                             <div class="d-flex justify-content-between align-items-center">
                                 <div><i class="fa fa-tag mr-1 text-muted"></i>
-                                    <div class="d-inline-block font-weight-medium text-uppercase">Gestionar Empleados</div>
+                                    <div class="d-inline-block font-weight-medium text-uppercase">Gestionar Empleados
+                                    </div>
                                 </div><span class="badge badge-secondary">4</span>
                             </div>
                         </a>
 
                         <a class="list-group-item" th:href="@{/usuario/UsuarioSettings}"><i
-                                class="fa fa-user text-muted"></i>Ajustes de Perfil</a>
+                                class="fa fa-user text-muted"></i>Ajustes de
+                            Perfil</a>
 
                         <a class="list-group-item" th:href="@{/usuario/UsuarioPage}">
                             <div class="d-flex justify-content-between align-items-center">
@@ -78,11 +91,9 @@
                                 </div><span class="badge badge-secondary">4</span>
                             </div>
                         </a>
-
                     </nav>
                 </div>
             </div>
-
             <div class="col-lg-8 pb-5">
                 <div class="d-flex justify-content-end pb-3">
                     <div class="form-inline">
@@ -96,38 +107,68 @@
                         </select>
                     </div>
                 </div>
-                <div class="table-responsive">
-                    <table class="table table-hover mb-0">
-                        <thead>
-                            <tr>
-                                <th>#Tiquete</th>
-                                <th>Fecha Apertura</th>
-                                <th>Titulo</th>
-                                <th>Descripción</th>
-                                <th>Estado</th>
-
-                            </tr>
-                        </thead>
-                        <tbody>
-
-                            <tr th:each="tiquete : ${tiquetes}">
-                                <td><a class="navi-link" href="#order-details" data-toggle="modal"
-                                        th:text="${tiquete.id}"></a></td>
-                                <td th:text="${tiquete.fechaApertura}"></td>
-                                <td th:text="${tiquete.titulo}"></td>
-                                <td th:text="${tiquete.descripcion}"></td>
-                                <td>
-                                    <span class="badge badge-info m-0" th:if="${tiquete.activo}"
-                                        style="color: blue; font-weight: bold;">En Progreso</span>
-                                    <span class="badge badge-danger m-0" th:unless="${tiquete.activo}"
-                                        style="color: red; font-weight: bold;">Cancelado</span>
-                                </td>
-                            </tr>
-
-                        </tbody>
-
-                    </table>
-                </div>
+                <form class="row" th:action="@{/usuario/CrearEmpleado}" method="post">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="empleado-nombre">Nombre Completo</label>
+                                    <input class="form-control" id="empleado-nombre" required="" name="nombre"></input>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="empleado-correo">Correo</label>
+                                <input class="form-control" id="empleado-correo" required="" name="correo"></input>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="empleado-puesto">Puesto</label>
+                                <input class="form-control" id="empleado-puesto" required="" name="puesto"></input>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="empleado-salario">Salario</label>
+                                <input class="form-control" id="empleado-salario" required="" name="salario"></input>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="empleado-telefono">Telefono</label>
+                                <input class="form-control" id="empleado-telefono" required="" name="telefono"></input>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12">
+                        <hr class="mt-2 mb-3">
+                        <div class="d-flex flex-wrap justify-content-between align-items-center">
+                            <button class="btn btn-style-1 btn-primary" type="submit" data-toast="" data-toast-position="topRight"
+                                data-toast-type="success" data-toast-icon="fe-icon-check-circle" data-toast-title="Empleado creado!"
+                                data-toast-message="Se ha creado un nuevo Empleado." onclick="mostrarPopup()">Crear Empleado</button>
+                        </div>
+                    </div>
+                
+                    <div id="avisoempleado" class="modal" tabindex="-1" role="dialog" style="display: none;">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title">Aviso de Excalibur-Tech</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close" onclick="cerrarModal()">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                
+                                </div>
+                                <div class="modal-body">
+                                    <p id="avisoMessage"></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+                
             </div>
         </div>
     </div>
@@ -330,52 +371,47 @@
         }
     </style>
 
-<!-- Agrega este div para el popup, inicialmente oculto -->
-<div id="welcomePopup" class="modal" tabindex="-1" role="dialog" style="display: none;">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title">¡Bienvenido!</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close" onclick="cerrarModal()">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <p id="welcomeMessage"></p>
-            </div>
-        </div>
-    </div>
-</div>
 
-<script th:inline="javascript">
-    $(document).ready(function () {
-        var usuario = /*[[${usuario}]]*/ null;
+    
 
-        // Verifica si el popup ya ha sido mostrado antes
-        var popupMostrado = localStorage.getItem('popupMostrado');
+    <script th:inline="javascript">
 
-        if (usuario != null && popupMostrado !== 'true') {
-            // Almacena el nombre del usuario en localStorage
-            localStorage.setItem('nombreUsuario', usuario.usuario);
-
-            $('#welcomeMessage').text('¡Bienvenido, ' + usuario.usuario + '!');
-            $('#welcomePopup').modal('show');
-        }
-    });
-
-    $('#welcomePopup').on('hidden.bs.modal', function () {
-        // Cierra el modal después de 3 segundos y marca el popup como mostrado
-        setTimeout(function () {
+        function cerrarModal() {
             $('#welcomePopup').modal('hide');
             localStorage.setItem('popupMostrado', 'true');
-        }, 3000);
-    });
+        }
 
-    function cerrarModal() {
-        $('#welcomePopup').modal('hide');
-        localStorage.setItem('popupMostrado', 'true');
-    }
-</script>
+        function mostrarFormulario(idEmpleado) {
+            // Setea el valor del input hidden con el ID del empleado
+            $('#empleadoIdInput').val(idEmpleado);
+
+            // Muestra el formulario
+            $('#formularioEmpleado').modal('show');
+        }
+
+        function cerrarFormulario() {
+            // Cierra el formulario
+            $('#formularioEmpleado').modal('hide');
+        }
+
+
+        function confirmarEliminacion() {
+            // Muestra el nuevo modal de confirmación de eliminación
+            $('#confirmacionEliminar').modal('show');
+        }
+        function eliminarEmpleado() {
+            // Envía el formulario para eliminar el empleado
+            document.getElementById('formEliminar').submit();
+        }
+        function cerrarModal() {
+            // Cierra el modal directamente
+            $('#confirmacionEliminar').modal('hide');
+        }
+
+
+
+
+    </script>
 
 
     <footer th:replace="~{layout/plantilla :: footer}" />

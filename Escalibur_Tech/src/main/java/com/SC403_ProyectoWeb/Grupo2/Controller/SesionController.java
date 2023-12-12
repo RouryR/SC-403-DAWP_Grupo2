@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 /**
  *
@@ -30,37 +31,48 @@ public class SesionController {
     private UsuarioService authService;
 
     @GetMapping("/InicioSesion")
-    public String mostrarPaginaLogin(Model model) {
-        model.addAttribute("usuarioAutenticado", false);
+    public String mostrarPaginaLogin(HttpSession session, Model model) {
+        boolean usuarioAutenticado = session.getAttribute("usuarioAutenticado") != null && (boolean) session.getAttribute("usuarioAutenticado");
+        model.addAttribute("usuarioAutenticado", usuarioAutenticado);
         return "/sesion/InicioSesion";
     }
 
+
     @PostMapping("/login")
-    public String autenticar(@RequestParam String correo, @RequestParam String password, HttpSession session,
-            Model model) {
-        Usuario usuarioAutenticado = authService.autenticarUsuario(correo, password);
+public String autenticar(@RequestParam String correo, @RequestParam String password, HttpSession session, RedirectAttributes redirectAttributes) {
+    Usuario usuarioAutenticado = authService.autenticarUsuario(correo, password);
 
-        if (usuarioAutenticado != null) {
-            session.setAttribute("usuarioAutenticado", true);
-            session.setAttribute("usuario", usuarioAutenticado);
+    if (usuarioAutenticado != null) {
+        // Establecer en la sesión
+        session.setAttribute("usuarioAutenticado", true);
+        session.setAttribute("usuario", usuarioAutenticado);
+        redirectAttributes.addFlashAttribute("username", usuarioAutenticado.getUsuario());
+        redirectAttributes.addFlashAttribute("usuarioAutenticado", true);
 
-            // Agrega el nombre de usuario al modelo
-            model.addAttribute("username", usuarioAutenticado.getUsuario());
+        // Imprimir mensajes para la depuración
+        System.out.println("Usuario autenticado: " + usuarioAutenticado.getUsuario());
+        System.out.println("Sesión autenticada: " + session.getAttribute("usuarioAutenticado"));
 
-            return "redirect:/usuario/UsuarioPage?success=true";
-        } else {
-            model.addAttribute("error", "Credenciales inválidas");
-            return "/sesion/InicioSesion";
-        }
-    }
-    
-    @GetMapping("/sesion/CerrarSesion")
-    public String cerrarSesion(HttpSession session) {
-        // Invalida la sesión
+        return "redirect:/usuario/UsuarioPage";
+    } else {
+        // Limpiar la sesión en caso de autenticación fallida
+        session.removeAttribute("usuarioAutenticado");
         session.invalidate();
-        // Redirige al home page
+        redirectAttributes.addFlashAttribute("error", "Credenciales inválidas");
         return "redirect:/sesion/InicioSesion";
     }
 }
+
+
+    @GetMapping("/cerrarSesion")
+    public String cerrarSesion(HttpSession session) {
+        session.removeAttribute("usuarioAutenticado");
+        session.invalidate();
+        return "redirect:/";
+    }
+
+
+}
+
 
 

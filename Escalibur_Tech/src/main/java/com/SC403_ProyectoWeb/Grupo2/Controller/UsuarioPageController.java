@@ -7,19 +7,15 @@ import com.SC403_ProyectoWeb.Grupo2.Service.EmpleadosService;
 import com.SC403_ProyectoWeb.Grupo2.Service.TiquetesService;
 import com.SC403_ProyectoWeb.Grupo2.Service.UsuarioService;
 import jakarta.servlet.http.HttpSession;
-
-
-import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-
 import java.util.List;
 import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 
@@ -30,12 +26,12 @@ public class UsuarioPageController {
 
     @Autowired
     private TiquetesService tiqueteService;
-    
-     @Autowired
-     private UsuarioService usuarioService;
-    
-      @Autowired
-    private EmpleadosService empleadoService; 
+
+    @Autowired
+    private UsuarioService usuarioService;
+
+    @Autowired
+    private EmpleadosService empleadoService;
 
     @GetMapping("/UsuarioPage")
     public String inicio(Model model, HttpSession session) {
@@ -50,51 +46,50 @@ public class UsuarioPageController {
 
         return "/usuario/UsuarioPage";
     }
-    
-    
+
     @GetMapping("/UsuarioSettings")
-public String Settings(Model model, HttpSession session){
-    if (session.getAttribute("usuarioAutenticado") != null) {
+    public String Settings(Model model, HttpSession session) {
+        if (session.getAttribute("usuarioAutenticado") != null) {
             Usuario usuario = (Usuario) session.getAttribute("usuario");
             model.addAttribute("usuario", usuario);
             List<Tiquetes> tiquetesUsuario = tiqueteService.getTiquetesByUsuario(usuario.getId());
             model.addAttribute("tiquetes", tiquetesUsuario);
             model.addAttribute("totalTiquetes", tiquetesUsuario.size());
         }
-     return "/usuario/UsuarioSettings";
-}
-
-@PostMapping("/editar")
-public String editarUsuario(@ModelAttribute Usuario usuarioForm, HttpSession session) {
-    if (session.getAttribute("usuarioAutenticado") != null) {
-        Usuario usuario = (Usuario) session.getAttribute("usuario");
-
-        if (usuarioForm.getNombre() != null) {
-            usuario.setNombre(usuarioForm.getNombre());
-        }
-
-        if (usuarioForm.getPassword() != null) {
-            usuario.setPassword(usuarioForm.getPassword());
-        }
-
-        if (usuarioForm.getApellidos() != null) {
-            usuario.setApellidos(usuarioForm.getApellidos());
-        }
-
-        if (usuarioForm.getTelefono() != null) {
-            usuario.setTelefono(usuarioForm.getTelefono());
-        }
-
-        if (usuarioForm.getCorreo() != null) {
-            usuario.setCorreo(usuarioForm.getCorreo());
-        }
-
-        // Guarda 
-        usuarioService.save(usuario);
+        return "/usuario/UsuarioSettings";
     }
 
-    return "redirect:/usuario/UsuarioSettings";
-}
+    @PostMapping("/editar")
+    public String editarUsuario(@ModelAttribute Usuario usuarioForm, HttpSession session) {
+        if (session.getAttribute("usuarioAutenticado") != null) {
+            Usuario usuario = (Usuario) session.getAttribute("usuario");
+
+            if (usuarioForm.getNombre() != null) {
+                usuario.setNombre(usuarioForm.getNombre());
+            }
+
+            if (usuarioForm.getPassword() != null) {
+                usuario.setPassword(usuarioForm.getPassword());
+            }
+
+            if (usuarioForm.getApellidos() != null) {
+                usuario.setApellidos(usuarioForm.getApellidos());
+            }
+
+            if (usuarioForm.getTelefono() != null) {
+                usuario.setTelefono(usuarioForm.getTelefono());
+            }
+
+            if (usuarioForm.getCorreo() != null) {
+                usuario.setCorreo(usuarioForm.getCorreo());
+            }
+
+            // Guarda 
+            usuarioService.save(usuario);
+        }
+
+        return "redirect:/usuario/UsuarioSettings";
+    }
 
     @GetMapping("/creartiquete") //nombre del html
     public String creartiquete() {
@@ -138,6 +133,7 @@ public String editarUsuario(@ModelAttribute Usuario usuarioForm, HttpSession ses
             // Check if the employee exists and belongs to the current user
             if (existingEmpleado != null && existingEmpleado.getUsuario().getId().equals(usuario.getId())) {
                 // Update employee details only if the form fields are not blank
+                //convertir texto a double
                 if (empleadoForm.getNombre() != null && !empleadoForm.getNombre().isEmpty()) {
                     existingEmpleado.setNombre(empleadoForm.getNombre());
                 }
@@ -162,8 +158,40 @@ public String editarUsuario(@ModelAttribute Usuario usuarioForm, HttpSession ses
 
         return "redirect:/usuario/GestionEmpleados";
     }
-    
 
     
+    @RequestMapping(value = "/CrearEmpleado", method = { RequestMethod.GET, RequestMethod.POST })
+    public String crearEmpleado(@ModelAttribute Empleados empleadoForm, HttpSession session) {
+        if (session.getAttribute("usuarioAutenticado") != null) {
+            Usuario usuario = (Usuario) session.getAttribute("usuario");
+      
+
+            // Crea un nuevo empleado solo si los campos obligatorios no están vacíos
+            if (empleadoForm.getNombre() != null && !empleadoForm.getNombre().isEmpty()
+                    && empleadoForm.getCorreo() != null && !empleadoForm.getCorreo().isEmpty()
+                    && empleadoForm.getPuesto() != null && !empleadoForm.getPuesto().isEmpty()
+                    && empleadoForm.getSalario() != 0.0
+                    && empleadoForm.getTelefono() != null && !empleadoForm.getTelefono().isEmpty()) {
+
+                Empleados nuevoEmpleado = new Empleados();
+                nuevoEmpleado.setNombre(empleadoForm.getNombre());
+                nuevoEmpleado.setCorreo(empleadoForm.getCorreo());
+                nuevoEmpleado.setPuesto(empleadoForm.getPuesto());
+                nuevoEmpleado.setSalario(empleadoForm.getSalario());
+                nuevoEmpleado.setTelefono(empleadoForm.getTelefono());
+                // Asigna el ID del usuario al empleado
+
+                nuevoEmpleado.setUsuario(usuario);
+                nuevoEmpleado.setActivo(true);
+
+                // Guarda el nuevo empleado
+                empleadoService.save(nuevoEmpleado);
+            }
+        }
+        
+
+        return "/usuario/CrearEmpleado";
+    }
+
 }
 
