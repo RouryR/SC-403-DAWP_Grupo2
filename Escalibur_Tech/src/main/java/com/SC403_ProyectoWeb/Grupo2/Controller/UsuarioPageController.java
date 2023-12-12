@@ -6,6 +6,8 @@ import com.SC403_ProyectoWeb.Grupo2.Domain.Usuario;
 import com.SC403_ProyectoWeb.Grupo2.Service.EmpleadosService;
 import com.SC403_ProyectoWeb.Grupo2.Service.TiquetesService;
 import com.SC403_ProyectoWeb.Grupo2.Service.UsuarioService;
+
+import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -123,17 +125,27 @@ public class UsuarioPageController {
     }
 
     @PostMapping("/actualizarEmpleado")
-    public String actualizarEmpleado(@ModelAttribute Empleados empleadoForm, HttpSession session) {
+    public String actualizarEmpleado(@ModelAttribute Empleados empleadoForm,
+            @RequestParam("empleadoId") Long idEmpleado,
+            HttpSession session,
+            HttpServletRequest request) {
         if (session.getAttribute("usuarioAutenticado") != null) {
             Usuario usuario = (Usuario) session.getAttribute("usuario");
 
+            // Set the ID from the request parameter
+            empleadoForm.setIdEmpleado(idEmpleado);
+
             // Fetch the existing employee by ID
             Empleados existingEmpleado = empleadoService.getEmpleados(empleadoForm);
+            
 
             // Check if the employee exists and belongs to the current user
             if (existingEmpleado != null && existingEmpleado.getUsuario().getId().equals(usuario.getId())) {
                 // Update employee details only if the form fields are not blank
-                //convertir texto a double
+                if (empleadoForm.getIdEmpleado() != null) {
+                    existingEmpleado.setIdEmpleado(empleadoForm.getIdEmpleado());
+                }
+
                 if (empleadoForm.getNombre() != null && !empleadoForm.getNombre().isEmpty()) {
                     existingEmpleado.setNombre(empleadoForm.getNombre());
                 }
@@ -149,9 +161,7 @@ public class UsuarioPageController {
                 if (empleadoForm.getTelefono() != null && !empleadoForm.getTelefono().isEmpty()) {
                     existingEmpleado.setTelefono(empleadoForm.getTelefono());
                 }
-                // Update other fields as needed
 
-                // Save the updated employee
                 empleadoService.updateEmpleado(existingEmpleado);
             }
         }

@@ -105,30 +105,43 @@
                     <div class="nav-container">
                         <li class="nav-item" role="presentation">
                             <div th:unless="${usuarioAutenticado}">
-                                <a id="botonSesion" class="btn bg-warning text-dark rounded-pill " tabindex="-1" role="button"
-                                    aria-disabled="true"
+                                <a id="botonSesion" class="btn bg-warning text-dark rounded-pill " tabindex="-1"
+                                    role="button" aria-disabled="true"
                                     th:href="${usuarioAutenticado} ? @{/sesion/cerrarSesion} : @{/sesion/InicioSesion}">
-                                    <span th:text="${usuarioAutenticado} ? #{main.cerrar_Sesion} : #{main.iniciar_Sesion}"></span>
-                                    <a class="btn bg-warning text-dark rounded-pill nav-item px-2" tabindex="-1" role="button" aria-disabled="true"
-                                        th:href="@{/(lang=es)}">ES</a>
-                                    <a class="btn bg-warning text-dark rounded-pill nav-item px-1" tabindex="-1" role="button" aria-disabled="true"
-                                        th:href="@{/(lang=en)}">EN</a>
+                                    <span
+                                        th:text="${usuarioAutenticado} ? #{main.cerrar_Sesion} : #{main.iniciar_Sesion}"></span>
+                                    <a class="btn bg-warning text-dark rounded-pill nav-item px-2" tabindex="-1"
+                                        role="button" aria-disabled="true" th:href="@{/(lang=es)}">ES</a>
+                                    <a class="btn bg-warning text-dark rounded-pill nav-item px-1" tabindex="-1"
+                                        role="button" aria-disabled="true" th:href="@{/(lang=en)}">EN</a>
                                 </a>
                             </div>
                             <div th:if="${usuarioAutenticado}">
-                                <a class="btn bg-warning text-dark rounded-pill nav-item px-2" tabindex="-1" role="button"
-                                    th:href="@{/usuario/UsuarioPage}" th:if="${usuarioAutenticado}">[[#{main.mi_perfil}]]</a>
-                                <a class="btn bg-warning text-dark rounded-pill nav-item px-2" tabindex="-1" role="button"
-                                    th:href="@{/sesion/cerrarSesion}" th:if="${usuarioAutenticado}">[[#{main.cerrar_Sesion}]]</a>
-                                <a class="btn bg-warning text-dark rounded-pill nav-item px-2" tabindex="-1" role="button"
-                                    aria-disabled="true" th:href="@{/(lang=es)}">ES</a>
-                                <a class="btn bg-warning text-dark rounded-pill nav-item px-1" tabindex="-1" role="button"
-                                    aria-disabled="true" th:href="@{/(lang=en)}">EN</a>
+                                <div style="display: inline-block; position: relative;">
+                                    <!-- Agrega la foto de perfil con un estilo circular -->
+                                    <a th:href="@{/usuario/UsuarioPage}"
+                                        th:if="${usuarioAutenticado}">
+                                        <!-- Agrega la foto de perfil con un estilo circular -->
+                                        <img src="https://bootdey.com/img/Content/avatar/avatar1.png" alt="Foto de perfil"
+                                            style="border-radius: 50%; width: 50px; height: 50px; object-fit: cover; margin-right: 10px;">
+                                    </a>
+
+                                    <a class="btn bg-warning text-dark rounded-pill nav-item px-2" tabindex="-1"
+                                        role="button" th:href="@{/sesion/cerrarSesion}"
+                                        th:if="${usuarioAutenticado}">[[#{main.cerrar_Sesion}]]</a>
+
+                                    <a class="btn bg-warning text-dark rounded-pill nav-item px-2" tabindex="-1"
+                                        role="button" aria-disabled="true" th:href="@{/(lang=es)}">ES</a>
+
+                                    <a class="btn bg-warning text-dark rounded-pill nav-item px-1" tabindex="-1"
+                                        role="button" aria-disabled="true" th:href="@{/(lang=en)}">EN</a>
+                                </div>
                             </div>
+
                         </li>
                     </div>
                 </div>
-                
+
                 <!-- <div id="google_translate_element" class="google"></div>
                 <script type="text/javascript">
                     function googleTranslateElementInit() {
@@ -138,7 +151,7 @@
                 <script type="text/javascript"
                     src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script> -->
 
-           
+
 
             </div>
 
@@ -148,9 +161,10 @@
                 <div class="icon-social">
 
                     <a href="https://wa.me/+50684119889?text=%C2%A1Buenas!%20Me%20gustar%C3%ADa%20empezar%20el%20proceso%20de%20contrataci%C3%B3n%20de%20su%20servicio."
-                        class="fa fa-whatsapp">
+                        class="fa fa-whatsapp" target="_blank">
                         <span id="title">Whatsapp</span>
                     </a>
+
 
                 </div>
             </div>
@@ -217,7 +231,7 @@
                     max-width: 50px;
                     position: fixed;
                     left: 0;
-                    top: 25%;
+                    top: 50%;
                 }
 
                 .container-bar a {

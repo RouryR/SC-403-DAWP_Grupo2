@@ -56,11 +56,17 @@ public class EmpleadosServiceImpl implements EmpleadosService {
     public List<Empleados> getEmpleadosByUsuario(Long usuarioId) {
         return empleadosDao.findByUsuarioId(usuarioId);
     }
+    
     @Override
     @Transactional
     public void updateEmpleado(Empleados empleado) {
-        // Update the existing employee
-        empleadosDao.save(empleado);
+        // Verificar que el ID no sea nulo antes de actualizar
+        if (empleado.getIdEmpleado() != null) {
+            // Update the existing employee
+            empleadosDao.save(empleado);
+        } else {
+            // Manejar el caso en que el ID es nulo, por ejemplo, lanzar una excepción o loggear un error
+        }
     }
 
 }

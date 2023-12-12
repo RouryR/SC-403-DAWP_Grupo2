@@ -22,7 +22,5 @@ public interface EmpleadosService {
     List<Empleados> getEmpleadosByUsuario(Long usuarioId);
 
     void updateEmpleado(Empleados empleado);
-    
 
-    
 }
