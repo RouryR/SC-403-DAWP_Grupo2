@@ -117,9 +117,9 @@
                             </div>
                             <div th:if="${usuarioAutenticado}">
                                 <a class="btn bg-warning text-dark rounded-pill nav-item px-2" tabindex="-1" role="button"
-                                    th:href="@{/usuario/UsuarioPage}" th:if="${usuarioAutenticado}">Mi Perfil</a>
+                                    th:href="@{/usuario/UsuarioPage}" th:if="${usuarioAutenticado}">[[#{main.mi_perfil}]]</a>
                                 <a class="btn bg-warning text-dark rounded-pill nav-item px-2" tabindex="-1" role="button"
-                                    th:href="@{/sesion/cerrarSesion}" th:if="${usuarioAutenticado}">cerrar sesion</a>
+                                    th:href="@{/sesion/cerrarSesion}" th:if="${usuarioAutenticado}">[[#{main.cerrar_Sesion}]]</a>
                                 <a class="btn bg-warning text-dark rounded-pill nav-item px-2" tabindex="-1" role="button"
                                     aria-disabled="true" th:href="@{/(lang=es)}">ES</a>
                                 <a class="btn bg-warning text-dark rounded-pill nav-item px-1" tabindex="-1" role="button"
