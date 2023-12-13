@@ -7,7 +7,7 @@
 
 <body>
     <header th:replace="~{layout/plantilla :: header}">
-        
+
 
 
     </header>
@@ -55,7 +55,8 @@
                         <a class="list-group-item" th:href="@{/usuario/GestionEmpleados}">
                             <div class="d-flex justify-content-between align-items-center">
                                 <div><i class="fa fa-tag mr-1 text-muted"></i>
-                                    <div class="d-inline-block font-weight-medium text-uppercase">Gestionar Empleados</div>
+                                    <div class="d-inline-block font-weight-medium text-uppercase">Gestionar Empleados
+                                    </div>
                                 </div><span class="badge badge-secondary">4</span>
                             </div>
                         </a>
@@ -100,29 +101,26 @@
                     <table class="table table-hover mb-0">
                         <thead>
                             <tr>
-                                <th>ID</th>
-                                <th>Nombre</th>
-                                <th>Apellidos</th>
-                                <th>Usuario</th>
-                                <th>Empresa</th>
-                                <th>Telefono</th>
+                                <th>#Tiquete</th>
+                                <th>Fecha Apertura</th>
+                                <th>Titulo</th>
+                                <th>Descripción</th>
+                                <th>Estado</th>
 
                             </tr>
                         </thead>
                         <tbody>
 
-                            <tr th:each="usuario : ${usurios}">
+                            <tr th:each="tiquete : ${tiquetes}">
                                 <td><a class="navi-link" href="#order-details" data-toggle="modal"
-                                        th:text="${usuario.id}"></a></td>
-                                <td th:text="${usuario.nombre}"></td>
-                                <td th:text="${usuario.apellidos}"></td>
-                                <td th:text="${usuario.usuario}"></td>
-                                <td th:text="${usuario.empresa}"></td>
-                                <td th:text="${usuario.telefono}"></td>
+                                        th:text="${tiquete.id}"></a></td>
+                                <td th:text="${tiquete.fechaApertura}"></td>
+                                <td th:text="${tiquete.titulo}"></td>
+                                <td th:text="${tiquete.descripcion}"></td>
                                 <td>
-                                    <span class="badge badge-info m-0" th:if="${usuario.activo}"
+                                    <span class="badge badge-info m-0" th:if="${tiquete.activo}"
                                         style="color: blue; font-weight: bold;">En Progreso</span>
-                                    <span class="badge badge-danger m-0" th:unless="${usuario.activo}"
+                                    <span class="badge badge-danger m-0" th:unless="${tiquete.activo}"
                                         style="color: red; font-weight: bold;">Cancelado</span>
                                 </td>
                             </tr>
@@ -333,52 +331,52 @@
         }
     </style>
 
-<!-- Agrega este div para el popup, inicialmente oculto -->
-<div id="welcomePopup" class="modal" tabindex="-1" role="dialog" style="display: none;">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title">¡Bienvenido!</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close" onclick="cerrarModal()">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <p id="welcomeMessage"></p>
+    <!-- Agrega este div para el popup, inicialmente oculto -->
+    <div id="welcomePopup" class="modal" tabindex="-1" role="dialog" style="display: none;">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">¡Bienvenido!</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close" onclick="cerrarModal()">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <p id="welcomeMessage"></p>
+                </div>
             </div>
         </div>
     </div>
-</div>
 
-<script th:inline="javascript">
-    $(document).ready(function () {
-        var usuario = /*[[${usuario}]]*/ null;
+    <script th:inline="javascript">
+        $(document).ready(function () {
+            var usuario = /*[[${usuario}]]*/ null;
 
-        // Verifica si el popup ya ha sido mostrado antes
-        var popupMostrado = localStorage.getItem('popupMostrado');
+            // Verifica si el popup ya ha sido mostrado antes
+            var popupMostrado = localStorage.getItem('popupMostrado');
 
-        if (usuario != null && popupMostrado !== 'true') {
-            // Almacena el nombre del usuario en localStorage
-            localStorage.setItem('nombreUsuario', usuario.usuario);
+            if (usuario != null && popupMostrado !== 'true') {
+                // Almacena el nombre del usuario en localStorage
+                localStorage.setItem('nombreUsuario', usuario.usuario);
 
-            $('#welcomeMessage').text('¡Bienvenido, ' + usuario.usuario + '!');
-            $('#welcomePopup').modal('show');
-        }
-    });
+                $('#welcomeMessage').text('¡Bienvenido, ' + usuario.usuario + '!');
+                $('#welcomePopup').modal('show');
+            }
+        });
 
-    $('#welcomePopup').on('hidden.bs.modal', function () {
-        // Cierra el modal después de 3 segundos y marca el popup como mostrado
-        setTimeout(function () {
+        $('#welcomePopup').on('hidden.bs.modal', function () {
+            // Cierra el modal después de 3 segundos y marca el popup como mostrado
+            setTimeout(function () {
+                $('#welcomePopup').modal('hide');
+                localStorage.setItem('popupMostrado', 'true');
+            }, 3000);
+        });
+
+        function cerrarModal() {
             $('#welcomePopup').modal('hide');
             localStorage.setItem('popupMostrado', 'true');
-        }, 3000);
-    });
-
-    function cerrarModal() {
-        $('#welcomePopup').modal('hide');
-        localStorage.setItem('popupMostrado', 'true');
-    }
-</script>
+        }
+    </script>
 
 
     <footer th:replace="~{layout/plantilla :: footer}" />
