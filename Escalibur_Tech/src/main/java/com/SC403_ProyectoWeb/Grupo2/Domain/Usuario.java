@@ -26,7 +26,9 @@ public class Usuario {
      private String puesto;
      private String salario;
      private String telefono;
-    private boolean activo;
+     private boolean activo;
+
+     private int rol;
 
     public Usuario() {
     }
@@ -119,7 +121,15 @@ public class Usuario {
         this.activo = activo;
     }
 
-    public Usuario(Long id, String nombre, String usuario, String password, String apellidos, String correo, String empresa, String puesto, String salario, String telefono, boolean activo) {
+        public int getRol() {
+        return rol;
+    }
+
+    public void setRol(int rol) {
+        this.rol = rol;
+    }
+
+    public Usuario(Long id, String nombre, String usuario, String password, String apellidos, String correo, String empresa, String puesto, String salario, String telefono, boolean activo, int rol) {
         this.id = id;
         this.nombre = nombre;
         this.usuario = usuario;
@@ -131,7 +141,10 @@ public class Usuario {
         this.salario = salario;
         this.telefono = telefono;
         this.activo = activo;
+        this.rol = rol;
     }
+
+
     
     
 }

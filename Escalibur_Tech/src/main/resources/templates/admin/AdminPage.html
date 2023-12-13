@@ -7,7 +7,7 @@
 
 <body>
     <header th:replace="~{layout/plantilla :: header}">
-        
+
 
 
     </header>
@@ -23,7 +23,7 @@
                                 class="fa-solid fa-circle-check fa-lg" style="color: #217d08;"></i>&nbsp;Verificado</a>
                     </div>
                     <div class="author-card-profile">
-                        <div class="author-card-avatar"><img src="https://bootdey.com/img/Content/avatar/avatar1.png"
+                        <div class="author-card-avatar"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRIXIrqiW3R5OstWAjkuFvNwvjYHRaTmwEQWg&usqp=CAU"
                                 alt="Daniel Adams">
                         </div>
                         <div class="author-card-details">
@@ -52,29 +52,27 @@
                 <div class="wizard">
                     <nav class="list-group list-group-flush">
 
-                        <a class="list-group-item" th:href="@{/usuario/GestionEmpleados}">
+                        <a class="list-group-item" th:href="@{/admin/AdminPage}">
                             <div class="d-flex justify-content-between align-items-center">
                                 <div><i class="fa fa-tag mr-1 text-muted"></i>
-                                    <div class="d-inline-block font-weight-medium text-uppercase">Gestionar Empleados</div>
+                                    <div class="d-inline-block font-weight-medium text-uppercase">Ver Usuarios
+                                    </div>
                                 </div><span class="badge badge-secondary">4</span>
                             </div>
                         </a>
 
-                        <a class="list-group-item" th:href="@{/usuario/UsuarioSettings}"><i
-                                class="fa fa-user text-muted"></i>Ajustes de Perfil</a>
-
-                        <a class="list-group-item" th:href="@{/usuario/UsuarioPage}">
+                        <a class="list-group-item" th:href="@{/admin/AdminPage}">
                             <div class="d-flex justify-content-between align-items-center">
                                 <div><i class="fa fa-tag mr-1 text-muted"></i>
-                                    <div class="d-inline-block font-weight-medium text-uppercase">Mis Tiquetes</div>
+                                    <div class="d-inline-block font-weight-medium text-uppercase">Tiquetes</div>
                                 </div><span class="badge badge-secondary">4</span>
                             </div>
                         </a>
 
-                        <a class="list-group-item" th:href="@{/usuario/creartiquete}">
+                        <a class="list-group-item" th:href="@{/admin/AdminPage}">
                             <div class="d-flex justify-content-between align-items-center">
                                 <div><i class="fa fa-tag mr-1 text-muted"></i>
-                                    <div class="d-inline-block font-weight-medium text-uppercase">Crear Tiquete</div>
+                                    <div class="d-inline-block font-weight-medium text-uppercase">Crear Usuario</div>
                                 </div><span class="badge badge-secondary">4</span>
                             </div>
                         </a>
@@ -84,18 +82,7 @@
             </div>
 
             <div class="col-lg-8 pb-5">
-                <div class="d-flex justify-content-end pb-3">
-                    <div class="form-inline">
-                        <label class="text-muted mr-3" for="order-sort">Filtrar</label>
-                        <select class="form-control" id="order-sort">
-                            <option>Todos</option>
-                            <option>Completados</option>
-                            <option>En Progreso</option>
-                            <option>Retrasado</option>
-                            <option>Cancelado</option>
-                        </select>
-                    </div>
-                </div>
+
                 <div class="table-responsive">
                     <table class="table table-hover mb-0">
                         <thead>
@@ -104,6 +91,7 @@
                                 <th>Nombre</th>
                                 <th>Apellidos</th>
                                 <th>Usuario</th>
+                                <th>Correo</th>
                                 <th>Empresa</th>
                                 <th>Telefono</th>
 
@@ -111,18 +99,19 @@
                         </thead>
                         <tbody>
 
-                            <tr th:each="usuario : ${usurios}">
+                            <tr th:each="usuario : ${usuarios}">
                                 <td><a class="navi-link" href="#order-details" data-toggle="modal"
                                         th:text="${usuario.id}"></a></td>
                                 <td th:text="${usuario.nombre}"></td>
                                 <td th:text="${usuario.apellidos}"></td>
                                 <td th:text="${usuario.usuario}"></td>
+                                <td th:text="${usuario.correo}"></td>
                                 <td th:text="${usuario.empresa}"></td>
                                 <td th:text="${usuario.telefono}"></td>
                                 <td>
-                                    <span class="badge badge-info m-0" th:if="${usuario.activo}"
+                                    <span class="badge badge-info m-0" th:if="${tiquete.activo}"
                                         style="color: blue; font-weight: bold;">En Progreso</span>
-                                    <span class="badge badge-danger m-0" th:unless="${usuario.activo}"
+                                    <span class="badge badge-danger m-0" th:unless="${tiquete.activo}"
                                         style="color: red; font-weight: bold;">Cancelado</span>
                                 </td>
                             </tr>
@@ -333,52 +322,52 @@
         }
     </style>
 
-<!-- Agrega este div para el popup, inicialmente oculto -->
-<div id="welcomePopup" class="modal" tabindex="-1" role="dialog" style="display: none;">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title">¡Bienvenido!</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close" onclick="cerrarModal()">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <p id="welcomeMessage"></p>
+    <!-- Agrega este div para el popup, inicialmente oculto -->
+    <div id="welcomePopup" class="modal" tabindex="-1" role="dialog" style="display: none;">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">¡Bienvenido!</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close" onclick="cerrarModal()">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <p id="welcomeMessage"></p>
+                </div>
             </div>
         </div>
     </div>
-</div>
 
-<script th:inline="javascript">
-    $(document).ready(function () {
-        var usuario = /*[[${usuario}]]*/ null;
+    <script th:inline="javascript">
+        $(document).ready(function () {
+            var usuario = /*[[${usuario}]]*/ null;
 
-        // Verifica si el popup ya ha sido mostrado antes
-        var popupMostrado = localStorage.getItem('popupMostrado');
+            // Verifica si el popup ya ha sido mostrado antes
+            var popupMostrado = localStorage.getItem('popupMostrado');
 
-        if (usuario != null && popupMostrado !== 'true') {
-            // Almacena el nombre del usuario en localStorage
-            localStorage.setItem('nombreUsuario', usuario.usuario);
+            if (usuario != null && popupMostrado !== 'true') {
+                // Almacena el nombre del usuario en localStorage
+                localStorage.setItem('nombreUsuario', usuario.usuario);
 
-            $('#welcomeMessage').text('¡Bienvenido, ' + usuario.usuario + '!');
-            $('#welcomePopup').modal('show');
-        }
-    });
+                $('#welcomeMessage').text('¡Bienvenido, ' + usuario.usuario + '!');
+                $('#welcomePopup').modal('show');
+            }
+        });
 
-    $('#welcomePopup').on('hidden.bs.modal', function () {
-        // Cierra el modal después de 3 segundos y marca el popup como mostrado
-        setTimeout(function () {
+        $('#welcomePopup').on('hidden.bs.modal', function () {
+            // Cierra el modal después de 3 segundos y marca el popup como mostrado
+            setTimeout(function () {
+                $('#welcomePopup').modal('hide');
+                localStorage.setItem('popupMostrado', 'true');
+            }, 3000);
+        });
+
+        function cerrarModal() {
             $('#welcomePopup').modal('hide');
             localStorage.setItem('popupMostrado', 'true');
-        }, 3000);
-    });
-
-    function cerrarModal() {
-        $('#welcomePopup').modal('hide');
-        localStorage.setItem('popupMostrado', 'true');
-    }
-</script>
+        }
+    </script>
 
 
     <footer th:replace="~{layout/plantilla :: footer}" />

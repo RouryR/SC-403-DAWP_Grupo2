@@ -12,7 +12,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -39,29 +38,34 @@ public class SesionController {
 
 
     @PostMapping("/login")
-public String autenticar(@RequestParam String correo, @RequestParam String password, HttpSession session, RedirectAttributes redirectAttributes) {
-    Usuario usuarioAutenticado = authService.autenticarUsuario(correo, password);
+    public String autenticar(@RequestParam String correo, @RequestParam String password, HttpSession session, RedirectAttributes redirectAttributes) {
+        Usuario usuarioAutenticado = authService.autenticarUsuario(correo, password);
 
-    if (usuarioAutenticado != null) {
-        // Establecer en la sesión
-        session.setAttribute("usuarioAutenticado", true);
-        session.setAttribute("usuario", usuarioAutenticado);
-        redirectAttributes.addFlashAttribute("username", usuarioAutenticado.getUsuario());
-        redirectAttributes.addFlashAttribute("usuarioAutenticado", true);
+        if (usuarioAutenticado != null) {
+            // Establecer en la sesión
+            session.setAttribute("usuarioAutenticado", true);
+            session.setAttribute("usuario", usuarioAutenticado);
+            redirectAttributes.addFlashAttribute("username", usuarioAutenticado.getUsuario());
+            redirectAttributes.addFlashAttribute("usuarioAutenticado", true);
 
-        // Imprimir mensajes para la depuración
-        System.out.println("Usuario autenticado: " + usuarioAutenticado.getUsuario());
-        System.out.println("Sesión autenticada: " + session.getAttribute("usuarioAutenticado"));
+            // Redirigir según el rol del usuario
+            if (usuarioAutenticado.getRol() == 2) {
+                return "redirect:/usuario/UsuarioPage";
+            } else if (usuarioAutenticado.getRol() == 1) {
+                return "redirect:/admin/AdminPage";
+            } else {
 
-        return "redirect:/usuario/UsuarioPage";
-    } else {
-        // Limpiar la sesión en caso de autenticación fallida
-        session.removeAttribute("usuarioAutenticado");
-        session.invalidate();
-        redirectAttributes.addFlashAttribute("error", "Credenciales inválidas");
-        return "redirect:/sesion/InicioSesion";
+                return "redirect:/home";
+            }
+        } else {
+            // Limpiar la sesión en caso de autenticación fallida
+            session.removeAttribute("usuarioAutenticado");
+            session.invalidate();
+            redirectAttributes.addFlashAttribute("error", "Credenciales inválidas");
+            return "redirect:/sesion/InicioSesion";
+        }
     }
-}
+
 
 
     @GetMapping("/cerrarSesion")
