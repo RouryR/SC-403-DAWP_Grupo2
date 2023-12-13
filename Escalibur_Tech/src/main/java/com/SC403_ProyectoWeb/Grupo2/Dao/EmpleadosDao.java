@@ -8,4 +8,5 @@ import com.SC403_ProyectoWeb.Grupo2.Domain.Empleados;
 
 public interface EmpleadosDao extends JpaRepository<Empleados, Long> {
     List<Empleados> findByUsuarioId(Long usuarioId);
+    void deleteByUsuarioId(Long usuarioId);
 }

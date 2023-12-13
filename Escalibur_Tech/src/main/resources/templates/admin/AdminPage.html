@@ -14,7 +14,7 @@
 
     <div class="container mb-4 main-container">
         <div class="row">
-            <div class="col-lg-4 pb-5">
+            <div class="col-lg-3 pb-5">
 
                 <div class="author-card pb-3">
                     <div class="author-card-cover"
@@ -23,7 +23,7 @@
                                 class="fa-solid fa-circle-check fa-lg" style="color: #217d08;"></i>&nbsp;Verificado</a>
                     </div>
                     <div class="author-card-profile">
-                        <div class="author-card-avatar"><img src="https://img.favpng.com/21/3/18/computer-icons-clip-art-portable-network-graphics-system-administrator-user-png-favpng-P8LVNtfaNewQkVVxgSgqiy0Tk.jpg"
+                        <div class="author-card-avatar"><img src="https://www.ku.ac.ke/actilhub/wp-content/themes/cera/assets/images/avatars/user-avatar.png"
                                 alt="">
                         </div>
                         <div class="author-card-details">
@@ -81,12 +81,13 @@
                 </div>
             </div>
 
-            <div class="col-lg-8 pb-5">
+            <div class="col-lg-9 pb-5">
 
                 <div class="table-responsive">
                     <table class="table table-hover mb-0">
                         <thead>
                             <tr>
+                                <th>Rol</th>
                                 <th>ID</th>
                                 <th>Nombre</th>
                                 <th>Apellidos</th>
@@ -102,6 +103,7 @@
                         <tbody>
 
                             <tr th:each="usuario : ${usuarios}">
+                                <td th:text="${usuario.rol}"></td>
                                 <td th:text="${usuario.id}"></td>
                                 <td th:text="${usuario.nombre}"></td>
                                 <td th:text="${usuario.apellidos}"></td>
@@ -115,6 +117,10 @@
                                     <span class="badge badge-danger m-0" th:unless="${usuario.activo}"
                                         style="color: red; font-weight: bold;">Cancelado</span>
                                 </td>
+                                <td>
+                                    <button class="btn btn-danger" th:onclick="'eliminarUsuario(' + ${usuario.id} + ');'">Eliminar</button>
+                                </td>
+                                
                             </tr>
 
                         </tbody>
@@ -190,7 +196,7 @@
         }
 
         .author-card .author-card-profile .author-card-avatar {
-            width: 160px;
+            width: 110px;
             border-radius: 70%;
             box-shadow: 0 8px 20px 0 rgba(0, 0, 0, .15);
             overflow: hidden;
@@ -198,7 +204,7 @@
 
         .author-card .author-card-profile .author-card-avatar>img {
             display: block;
-            width: 100%;
+            width: 140%;
         }
 
         .author-card .author-card-profile .author-card-details {
@@ -323,52 +329,21 @@
         }
     </style>
 
-    <!-- Agrega este div para el popup, inicialmente oculto -->
-    <div id="welcomePopup" class="modal" tabindex="-1" role="dialog" style="display: none;">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title">¡Bienvenido!</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close" onclick="cerrarModal()">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <p id="welcomeMessage"></p>
-                </div>
-            </div>
-        </div>
+<div th:if="${exito}">
+    <div class="alert alert-success" role="alert">
+        ¡El usuario se ha creado exitosamente!
     </div>
+</div>
 
     <script th:inline="javascript">
-        $(document).ready(function () {
-            var usuario = /*[[${usuario}]]*/ null;
-
-            // Verifica si el popup ya ha sido mostrado antes
-            var popupMostrado = localStorage.getItem('popupMostrado');
-
-            if (usuario != null && popupMostrado !== 'true') {
-                // Almacena el nombre del usuario en localStorage
-                localStorage.setItem('nombreUsuario', usuario.usuario);
-
-                $('#welcomeMessage').text('¡Bienvenido, ' + usuario.usuario + '!');
-                $('#welcomePopup').modal('show');
+        function eliminarUsuario(userId) {
+            if (confirm('¿Estás seguro de que quieres eliminar este usuario?')) {
+                // Llamada a la función en el controlador para eliminar el usuario
+                window.location.href = '/admin/eliminarUsuario?id=' + userId;
             }
-        });
-
-        $('#welcomePopup').on('hidden.bs.modal', function () {
-            // Cierra el modal después de 3 segundos y marca el popup como mostrado
-            setTimeout(function () {
-                $('#welcomePopup').modal('hide');
-                localStorage.setItem('popupMostrado', 'true');
-            }, 3000);
-        });
-
-        function cerrarModal() {
-            $('#welcomePopup').modal('hide');
-            localStorage.setItem('popupMostrado', 'true');
         }
     </script>
+
 
 
     <footer th:replace="~{layout/plantilla :: footer}" />

@@ -41,6 +41,7 @@ public class UsuarioPageController {
         if (session.getAttribute("usuarioAutenticado") != null) {
             Usuario usuario = (Usuario) session.getAttribute("usuario");
             model.addAttribute("usuario", usuario);
+            model.addAttribute("rol", usuario.getRol());
             List<Tiquetes> tiquetesUsuario = tiqueteService.getTiquetesByUsuario(usuario.getId());
             model.addAttribute("tiquetes", tiquetesUsuario);
             model.addAttribute("totalTiquetes", tiquetesUsuario.size());

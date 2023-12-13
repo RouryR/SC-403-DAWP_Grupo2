@@ -117,12 +117,11 @@
                                 </a>
                             </div>
                             <div th:if="${usuarioAutenticado}">
-                                <div style="display: inline-block; position: relative;">
                                     <!-- Agrega la foto de perfil con un estilo circular -->
-                                    <a th:href="@{/usuario/UsuarioPage}"
-                                        th:if="${usuarioAutenticado}">
+                                    <a th:href="@{/usuario/UsuarioPage}" th:if="${usuarioAutenticado}">
                                         <!-- Agrega la foto de perfil con un estilo circular -->
-                                        <img src="https://bootdey.com/img/Content/avatar/avatar1.png" alt="Foto de perfil"
+                                        <img src="https://bootdey.com/img/Content/avatar/avatar1.png"
+                                            alt="Foto de perfil"
                                             style="border-radius: 50%; width: 50px; height: 50px; object-fit: cover; margin-right: 10px;">
                                     </a>
 
@@ -139,9 +138,7 @@
                             </div>
 
                         </li>
-                    </div>
-                </div>
-
+                    </div>  
             </div>
 
             <div class="container-bar">

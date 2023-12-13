@@ -79,8 +79,18 @@
                                 </div><span class="badge badge-secondary">4</span>
                             </div>
                         </a>
+                        
 
                     </nav>
+                    <div th:if="${rol != 2}">
+                        <a class="list-group-item" th:href="@{/admin/AdminPage}">
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div><i class="fa fa-cogs mr-1 text-muted"></i>
+                                    <div class="d-inline-block font-weight-medium text-uppercase">Administrar</div>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
                 </div>
             </div>
 

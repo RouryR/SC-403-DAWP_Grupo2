@@ -31,6 +31,8 @@ public class Usuario {
      private String telefono;
      private boolean activo;
 
+     
+
      private int rol;
 
     public Usuario() {

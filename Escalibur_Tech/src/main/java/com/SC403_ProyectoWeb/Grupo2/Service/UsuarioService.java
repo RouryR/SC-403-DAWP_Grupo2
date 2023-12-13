@@ -16,7 +16,9 @@ public interface UsuarioService {
     Usuario autenticarUsuario(String correo, String password);
 
     Usuario save(Usuario usuario);
+
     List<Usuario> getAllUsers();
+    void eliminarUsuario(Long id);
     
 }
 

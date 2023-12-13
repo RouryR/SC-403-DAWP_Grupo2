@@ -13,5 +13,6 @@ public class GlobalControllerAdvice {
     public void addAttributes(Model model, HttpSession session) {
         Boolean usuarioAutenticado = (Boolean) session.getAttribute("usuarioAutenticado");
         model.addAttribute("usuarioAutenticado", usuarioAutenticado);
+        
     }
 }

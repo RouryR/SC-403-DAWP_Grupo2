@@ -7,5 +7,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface TiquetesDao extends JpaRepository<Tiquetes, Long> {
     List<Tiquetes> findByUsuarioId(Long usuarioId);
+    void deleteByUsuarioId(Long usuarioId);
+
 }
 

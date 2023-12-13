@@ -24,13 +24,13 @@
                     </div>
                     <div class="author-card-profile">
                         <div class="author-card-avatar"><img
-                                src="https://img.favpng.com/21/3/18/computer-icons-clip-art-portable-network-graphics-system-administrator-user-png-favpng-P8LVNtfaNewQkVVxgSgqiy0Tk.jpg"
+                                src="https://www.ku.ac.ke/actilhub/wp-content/themes/cera/assets/images/avatars/user-avatar.png"
                                 alt="">
                         </div>
                         <div class="author-card-details">
                             <div th:if="${usuario != null}">
-                                <h4 class="author-card-name text-lg" th:text="${usuario.nombre}" style="color: green; font-size: 26px;">
-                                </h4>
+                                <h4 class="author-card-name text-lg" th:text="${usuario.nombre}"
+                                    style="color: green; font-size: 26px;"></h4>
                                 <span class="author-card-position" style="color: black; font-size: 14px;"><i
                                         class="fa-solid fa-user fa-lg" style="color: #1f66f2;"></i> <span
                                         th:text="${usuario.usuario}"></span></span>
@@ -89,63 +89,71 @@
                 
                     <!-- Formulario para crear un nuevo usuario -->
                     <form th:action="@{/admin/AdminPageCrearUsuario}" method="post">
-                        <div class="form-group">
-                            <label for="nombre">nombre:</label>
-                            <input type="text" class="form-control" id="nombre" name="nombre" required>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="nombre">Nombre:</label>
+                                    <input type="text" class="form-control" id="nombre" name="nombre" placeholder="Ej. Juan" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="apellidos">Apellidos:</label>
+                                    <input type="text" class="form-control" id="apellidos" name="apellidos" placeholder="Ej. Pérez" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="usuario">Usuario:</label>
+                                    <input type="text" class="form-control" id="usuario" name="usuario" placeholder="Ej. juan_perez" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="password">Contraseña:</label>
+                                    <input type="password" class="form-control" id="password" name="password" placeholder="Ej. Contr@123" required>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="correo">Correo:</label>
+                                    <input type="text" class="form-control" id="correo" name="correo" placeholder="Ej. MiUsuario123@gmail.com" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="empresa">Empresa:</label>
+                                    <input type="text" class="form-control" id="empresa" name="empresa" placeholder="Ej. Fidelitas" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="puesto">Puesto:</label>
+                                    <input type="text" class="form-control" id="puesto" name="puesto" placeholder="Ej. Recursos Humanos" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="salario">Salario:</label>
+                                    <input type="number" class="form-control" id="salario" name="salario" placeholder="Ej. Contr@475000" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="telefono">Teléfono:</label>
+                                    <input type="text" class="form-control" id="telefono" name="telefono" placeholder="Ej. +506 89438844" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="rol">Rol:</label>
+                                    <select class="form-control" id="rol" name="rol" required>
+                                        <option value="2">Rol Usuario</option>
+                                        <option value="1">Rol Admin</option>
+                                    </select>
+                                </div>
+                            </div>
                         </div>
-                        <div class="form-group">
-                            <label for="apellidos">Apellidos:</label>
-                            <input type="text" class="form-control" id="apellidos" name="apellidos" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="usuario">Usuario:</label>
-                            <input type="text" class="form-control" id="usuario" name="usuario" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="password">Password:</label>
-                            <input type="password" class="form-control" id="password" name="password" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="correo">Correo:</label>
-                            <input type="text" class="form-control" id="correo" name="correo" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="empresa">empresa:</label>
-                            <input type="text" class="form-control" id="empresa" name="empresa" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="puesto">puesto:</label>
-                            <input type="text" class="form-control" id="puesto" name="puesto" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="salario">Salario:</label>
-                            <input type="number" class="form-control" id="salario" name="salario" required>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="telefono">Telefono:</label>
-                            <input type="text" class="form-control" id="telefono" name="telefono" required>
-                        </div>
-
-                        
-
                         <button type="submit" class="btn btn-primary">Crear Usuario</button>
+
+                        <div th:if="${exito}">
+                            <div class="alert alert-success" role="alert">
+                                ¡El usuario se ha creado exitosamente!
+                            </div>
+                        </div>
                     </form>
                 
-                    <!-- Otro contenido de la página... -->
                 </div>
-                <div th:if="${exito}">
-                    <div class="alert alert-success" role="alert">
-                        ¡El usuario se ha creado exitosamente!
-                    </div>
-                </div>
-
-
             </div>
         </div>
     </div>
 
     <style>
+        
         body {
             background: #eee;
         }
@@ -343,52 +351,7 @@
         }
     </style>
 
-    <!-- Agrega este div para el popup, inicialmente oculto -->
-    <div id="welcomePopup" class="modal" tabindex="-1" role="dialog" style="display: none;">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title">¡Bienvenido!</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close" onclick="cerrarModal()">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <p id="welcomeMessage"></p>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <script th:inline="javascript">
-        $(document).ready(function () {
-            var usuario = /*[[${usuario}]]*/ null;
-
-            // Verifica si el popup ya ha sido mostrado antes
-            var popupMostrado = localStorage.getItem('popupMostrado');
-
-            if (usuario != null && popupMostrado !== 'true') {
-                // Almacena el nombre del usuario en localStorage
-                localStorage.setItem('nombreUsuario', usuario.usuario);
-
-                $('#welcomeMessage').text('¡Bienvenido, ' + usuario.usuario + '!');
-                $('#welcomePopup').modal('show');
-            }
-        });
-
-        $('#welcomePopup').on('hidden.bs.modal', function () {
-            // Cierra el modal después de 3 segundos y marca el popup como mostrado
-            setTimeout(function () {
-                $('#welcomePopup').modal('hide');
-                localStorage.setItem('popupMostrado', 'true');
-            }, 3000);
-        });
-
-        function cerrarModal() {
-            $('#welcomePopup').modal('hide');
-            localStorage.setItem('popupMostrado', 'true');
-        }
-    </script>
+    
 
 
     <footer th:replace="~{layout/plantilla :: footer}" />
