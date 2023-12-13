@@ -23,7 +23,8 @@
                                 class="fa-solid fa-circle-check fa-lg" style="color: #217d08;"></i>&nbsp;Verificado</a>
                     </div>
                     <div class="author-card-profile">
-                        <div class="author-card-avatar"><img src="https://img.favpng.com/21/3/18/computer-icons-clip-art-portable-network-graphics-system-administrator-user-png-favpng-P8LVNtfaNewQkVVxgSgqiy0Tk.jpg"
+                        <div class="author-card-avatar"><img
+                                src="https://img.favpng.com/21/3/18/computer-icons-clip-art-portable-network-graphics-system-administrator-user-png-favpng-P8LVNtfaNewQkVVxgSgqiy0Tk.jpg"
                                 alt="">
                         </div>
                         <div class="author-card-details">
@@ -88,37 +89,28 @@
                         <thead>
                             <tr>
                                 <th>ID</th>
-                                <th>Nombre</th>
-                                <th>Apellidos</th>
                                 <th>Usuario</th>
-                                <th>Correo</th>
-                                <th>Empresa</th>
-                                <th>Puesto</th>
-                                <th>Teléfono</th>
+                                <th>Titulo</th>
+                                <th>Descripcion</th>
+                                <th>Fecha Apertura</th>
                                 <th>Estado</th>
-
                             </tr>
                         </thead>
                         <tbody>
-
-                            <tr th:each="usuario : ${usuarios}">
-                                <td th:text="${usuario.id}"></td>
-                                <td th:text="${usuario.nombre}"></td>
-                                <td th:text="${usuario.apellidos}"></td>
-                                <td th:text="${usuario.usuario}"></td>
-                                <td th:text="${usuario.correo}"></td>                               
-                                <td th:text="${usuario.empresa}"></td>
-                                <td th:text="${usuario.puesto}"></td>
-                                <td th:text="${usuario.telefono}"></td>
+                            <tr th:each="tiquete : ${tiquetes}">
+                                <td th:text="${tiquete.id}"></td>
+                                <td th:text="${tiquete.usuario.nombre}"></td>
+                                <td th:text="${tiquete.titulo}"></td>
+                                <td th:text="${tiquete.descripcion}"></td>
+                                <td th:text="${tiquete.fechaApertura}"></td>
                                 <td>
-                                    <span class="badge badge-sucess m-0" th:if="${usuario.activo}" style="color: rgb(55, 180, 17); font-weight: bold;">Activo</span>
-                                    <span class="badge badge-danger m-0" th:unless="${usuario.activo}"
+                                    <span class="badge badge-success m-0" th:if="${tiquete.activo}"
+                                        style="color: rgb(55, 180, 17); font-weight: bold;">Activo</span>
+                                    <span class="badge badge-danger m-0" th:unless="${tiquete.activo}"
                                         style="color: red; font-weight: bold;">Cancelado</span>
                                 </td>
                             </tr>
-
                         </tbody>
-
                     </table>
                 </div>
             </div>

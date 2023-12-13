@@ -183,6 +183,8 @@ public class UsuarioPageController {
                     && empleadoForm.getSalario() != 0.0
                     && empleadoForm.getTelefono() != null && !empleadoForm.getTelefono().isEmpty()) {
 
+                        
+
                 Empleados nuevoEmpleado = new Empleados();
                 nuevoEmpleado.setNombre(empleadoForm.getNombre());
                 nuevoEmpleado.setCorreo(empleadoForm.getCorreo());

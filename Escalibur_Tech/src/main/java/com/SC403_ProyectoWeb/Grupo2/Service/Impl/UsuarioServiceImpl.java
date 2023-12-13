@@ -9,7 +9,7 @@ import com.SC403_ProyectoWeb.Grupo2.Domain.Usuario;
 import com.SC403_ProyectoWeb.Grupo2.Service.UsuarioService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
+import java.util.List;
 /**
  *
  * @author RouryR
@@ -30,6 +30,11 @@ public class UsuarioServiceImpl implements UsuarioService {
     public Usuario save(Usuario usuario) {
         usuarioDao.save(usuario);
         return usuario;
+    }
+
+    @Override
+    public List<Usuario> getAllUsers() {
+        return usuarioDao.findAll();  
     }
 }
 

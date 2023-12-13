@@ -47,14 +47,14 @@ public class SesionController {
             session.setAttribute("usuario", usuarioAutenticado);
             redirectAttributes.addFlashAttribute("username", usuarioAutenticado.getUsuario());
             redirectAttributes.addFlashAttribute("usuarioAutenticado", true);
+            redirectAttributes.addFlashAttribute("rol", usuarioAutenticado.getRol());
 
             // Redirigir según el rol del usuario
             if (usuarioAutenticado.getRol() == 2) {
-                return "redirect:/usuario/UsuarioPage";
+                return "redirect:/usuario/UsuarioPage?rol=" + usuarioAutenticado.getRol();
             } else if (usuarioAutenticado.getRol() == 1) {
-                return "redirect:/admin/AdminPage";
+                return "redirect:/admin/AdminPage?rol=" + usuarioAutenticado.getRol();
             } else {
-
                 return "redirect:/home";
             }
         } else {

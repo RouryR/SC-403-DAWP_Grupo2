@@ -23,13 +23,14 @@
                                 class="fa-solid fa-circle-check fa-lg" style="color: #217d08;"></i>&nbsp;Verificado</a>
                     </div>
                     <div class="author-card-profile">
-                        <div class="author-card-avatar"><img src="https://img.favpng.com/21/3/18/computer-icons-clip-art-portable-network-graphics-system-administrator-user-png-favpng-P8LVNtfaNewQkVVxgSgqiy0Tk.jpg"
+                        <div class="author-card-avatar"><img
+                                src="https://img.favpng.com/21/3/18/computer-icons-clip-art-portable-network-graphics-system-administrator-user-png-favpng-P8LVNtfaNewQkVVxgSgqiy0Tk.jpg"
                                 alt="">
                         </div>
                         <div class="author-card-details">
                             <div th:if="${usuario != null}">
-                                <h4 class="author-card-name text-lg" th:text="${usuario.nombre}"
-                                    style="color: green; font-size: 26px;"></h4>
+                                <h4 class="author-card-name text-lg" th:text="${usuario.nombre}" style="color: green; font-size: 26px;">
+                                </h4>
                                 <span class="author-card-position" style="color: black; font-size: 14px;"><i
                                         class="fa-solid fa-user fa-lg" style="color: #1f66f2;"></i> <span
                                         th:text="${usuario.usuario}"></span></span>
@@ -61,7 +62,7 @@
                             </div>
                         </a>
 
-                        <a class="list-group-item" th:href="@{/admin/AdminPageTiquetes}">
+                        <a class="list-group-item" th:href="@{/admin/AdminPage}">
                             <div class="d-flex justify-content-between align-items-center">
                                 <div><i class="fa fa-tag mr-1 text-muted"></i>
                                     <div class="d-inline-block font-weight-medium text-uppercase">Tiquetes</div>
@@ -81,46 +82,65 @@
                 </div>
             </div>
 
-            <div class="col-lg-8 pb-5">
 
-                <div class="table-responsive">
-                    <table class="table table-hover mb-0">
-                        <thead>
-                            <tr>
-                                <th>ID</th>
-                                <th>Nombre</th>
-                                <th>Apellidos</th>
-                                <th>Usuario</th>
-                                <th>Correo</th>
-                                <th>Empresa</th>
-                                <th>Puesto</th>
-                                <th>Teléfono</th>
-                                <th>Estado</th>
+                
+                <div class="col-lg-8 pb-5">
+                    <!-- Otro contenido de la página... -->
+                
+                    <!-- Formulario para crear un nuevo usuario -->
+                    <form th:action="@{/admin/AdminPageCrearUsuario}" method="post">
+                        <div class="form-group">
+                            <label for="nombre">nombre:</label>
+                            <input type="text" class="form-control" id="nombre" name="nombre" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="apellidos">Apellidos:</label>
+                            <input type="text" class="form-control" id="apellidos" name="apellidos" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="usuario">Usuario:</label>
+                            <input type="text" class="form-control" id="usuario" name="usuario" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="password">Password:</label>
+                            <input type="password" class="form-control" id="password" name="password" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="correo">Correo:</label>
+                            <input type="text" class="form-control" id="correo" name="correo" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="empresa">empresa:</label>
+                            <input type="text" class="form-control" id="empresa" name="empresa" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="puesto">puesto:</label>
+                            <input type="text" class="form-control" id="puesto" name="puesto" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="salario">Salario:</label>
+                            <input type="number" class="form-control" id="salario" name="salario" required>
+                        </div>
 
-                            </tr>
-                        </thead>
-                        <tbody>
+                        <div class="form-group">
+                            <label for="telefono">Telefono:</label>
+                            <input type="text" class="form-control" id="telefono" name="telefono" required>
+                        </div>
 
-                            <tr th:each="usuario : ${usuarios}">
-                                <td th:text="${usuario.id}"></td>
-                                <td th:text="${usuario.nombre}"></td>
-                                <td th:text="${usuario.apellidos}"></td>
-                                <td th:text="${usuario.usuario}"></td>
-                                <td th:text="${usuario.correo}"></td>                               
-                                <td th:text="${usuario.empresa}"></td>
-                                <td th:text="${usuario.puesto}"></td>
-                                <td th:text="${usuario.telefono}"></td>
-                                <td>
-                                    <span class="badge badge-sucess m-0" th:if="${usuario.activo}" style="color: rgb(55, 180, 17); font-weight: bold;">Activo</span>
-                                    <span class="badge badge-danger m-0" th:unless="${usuario.activo}"
-                                        style="color: red; font-weight: bold;">Cancelado</span>
-                                </td>
-                            </tr>
+                        
 
-                        </tbody>
-
-                    </table>
+                        <button type="submit" class="btn btn-primary">Crear Usuario</button>
+                    </form>
+                
+                    <!-- Otro contenido de la página... -->
                 </div>
+                <div th:if="${exito}">
+                    <div class="alert alert-success" role="alert">
+                        ¡El usuario se ha creado exitosamente!
+                    </div>
+                </div>
+
+
             </div>
         </div>
     </div>
